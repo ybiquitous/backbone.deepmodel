@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+npm run eslint
+npm run jscs
+npm run test
+npm run build

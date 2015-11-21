@@ -1,0 +1,12 @@
+{
+  "env": {
+    "browser": true
+  },
+  "ecmaFeatures": {
+    "modules": true,
+    "blockBindings": true,
+    "arrowFunctions": true,
+    "classes": true
+  },
+  "extends": "eslint:recommended"
+}
