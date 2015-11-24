@@ -8,8 +8,11 @@ describe('Backbone.DeepModel', () => {
       initialize: function() {
         this.initialized = true;
       }
+    }, {
+      foo: 1
     });
     new Model().initialized.should.be.true;
+    Model.foo.should.equal(1);
   });
 
   it('extends custom class by `class` syntacs', () => {

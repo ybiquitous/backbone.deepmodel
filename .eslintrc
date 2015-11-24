@@ -6,7 +6,10 @@
     "modules": true,
     "blockBindings": true,
     "arrowFunctions": true,
-    "classes": true
+    "classes": true,
+    "defaultParams": true,
+    "restParams": true,
+    "forOf": true
   },
   "extends": "eslint:recommended"
 }
