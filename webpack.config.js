@@ -8,13 +8,17 @@ module.exports = {
   output: {
     path: 'build',
     filename: 'backbone.deepmodel.es5.js',
+    library: ['Backbone', 'DeepModel'],
     libraryTarget: 'umd'
   },
 
   externals: {
-    'jquery': 'jQuery',
-    'underscore': '_',
-    'backbone': 'Backbone'
+    'backbone': {
+      root: 'Backbone',
+      commonjs2: 'backbone',
+      commonjs: 'backbone',
+      amd: 'backbone'
+    }
   },
 
   module: {
@@ -24,7 +28,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015']
+          presets: ['es2015'],
+          plugins: ['add-module-exports']
         }
       }
     ]
