@@ -24,4 +24,12 @@ describe('Backbone.DeepModel', () => {
     new Model().initialized.should.be.true;
   });
 
+  it('gets nested attributes', () => {
+    class Model extends DeepModel {}
+    let model = new Model({a: 1, b: {x: '*'}});
+    model.get('a').should.equal(1);
+    model.get('b').should.deep.equal({x: '*'});
+    model.get('b.x').should.equal('*');
+  });
+
 });
