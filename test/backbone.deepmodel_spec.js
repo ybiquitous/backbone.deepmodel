@@ -12,6 +12,10 @@ describe('Backbone.DeepModel', () => {
     sandbox.restore();
   });
 
+  it('sets version', () => {
+    DeepModel.VERSION.should.equal('0.0.1');
+  });
+
   it('extends custom class by `extend` static method', () => {
     let Model = DeepModel.extend({
       initialize: function() {

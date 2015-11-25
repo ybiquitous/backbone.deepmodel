@@ -140,6 +140,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return (_get2 = _get(Object.getPrototypeOf(DeepModel), 'extend', this)).call.apply(_get2, [this].concat(args));
 	    }
+	  }, {
+	    key: 'VERSION',
+	    get: function get() {
+	      return '0.0.1';
+	    }
 	  }]);
 
 	  return DeepModel;
