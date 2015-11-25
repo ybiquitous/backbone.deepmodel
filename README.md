@@ -33,7 +33,7 @@ console.log(p.get('pets[0].name')); //=> 'Mi'
 console.log(p.get('pets[0].kind')); //=> 'Cat'
 ```
 
-See [example](https://github.com/ybiquitous/backbone.deepmodel/blob/master/examples/index.html).
+See [example](https://rawgit.com/ybiquitous/backbone.deepmodel/master/examples/index.html).
 
 # LICENSE
 
