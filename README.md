@@ -37,4 +37,4 @@ See [example](https://rawgit.com/ybiquitous/backbone.deepmodel/master/examples/i
 
 # LICENSE
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
