@@ -1,12 +1,12 @@
-/*eslint-env node */
+/* eslint-env node */
 'use strict';
 
 module.exports = {
 
-  entry: './lib/backbone.deepmodel.js',
+  entry: './lib/index.js',
 
   output: {
-    path: 'build',
+    path: '.',
     filename: 'backbone.deepmodel.es5.js',
     library: ['Backbone', 'DeepModel'],
     libraryTarget: 'umd'

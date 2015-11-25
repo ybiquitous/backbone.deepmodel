@@ -2,11 +2,11 @@
   "name": "backbone.deepmodel",
   "version": "0.0.1",
   "description": "Backbone.DeepModel plugin",
-  "main": "lib/backbone.deepmodel.js",
+  "main": "backbone.deepmodel.es5.js",
   "scripts": {
     "test": "karma start --single-run",
     "test-watch": "karma start --auto-watch",
-    "eslint": "eslint --ignore-path .gitignore .",
+    "eslint": "eslint --ignore-path .gitignore --ignore-pattern \"backbone.deepmodel*\" .",
     "jscs": "jscs .",
     "build": "webpack",
     "postinstall": "cp -vf scripts/pre-push .git/hooks"

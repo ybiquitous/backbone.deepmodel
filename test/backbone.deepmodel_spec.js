@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 /* global should, sinon */
-import DeepModel from '../lib/backbone.deepmodel';
+import DeepModel from '../lib';
 
 describe('Backbone.DeepModel', () => {
 
