@@ -230,3 +230,4 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
+//# sourceMappingURL=backbone.deepmodel.es5.min.map
