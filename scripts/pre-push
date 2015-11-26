@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+[ -n "${SKIP}" ] && exit
+
 npm run eslint
 npm run jscs
 npm run test
