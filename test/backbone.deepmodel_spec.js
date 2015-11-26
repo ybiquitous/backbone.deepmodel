@@ -66,12 +66,13 @@ describe('Backbone.DeepModel', () => {
     model.set({'a': 2}, options);
     model.get('a').should.equal(2);
 
-    change.callCount.should.equal(2);
+    change.callCount.should.equal(2, 'change');
     change.args.should.deep.equal([
       [model, options],
       [model, options]
     ]);
-    changeA.callCount.should.equal(2);
+
+    changeA.callCount.should.equal(2, 'change:a');
     changeA.args.should.deep.equal([
       [model, 1, options],
       [model, 2, options]
@@ -80,11 +81,16 @@ describe('Backbone.DeepModel', () => {
 
   it('sets nested attribute', () => {
     class Model extends DeepModel {}
-    let model = new Model({a: {b: {c: null}}});
+    let model = new Model({
+      a: {b: {c: null}},
+      x: {y: [true]}
+    });
     let change = sandbox.spy();
     let changeA = sandbox.spy();
+    let changeX = sandbox.spy();
     model.on('change', change);
     model.on('change:a', changeA);
+    model.on('change:x', changeX);
 
     let options = {};
     model.set('a.b.c', 1, options);
@@ -96,18 +102,29 @@ describe('Backbone.DeepModel', () => {
     model.set('a.b', {c: 3}, options);
     model.get('a.b.c').should.equal(3);
 
-    change.callCount.should.equal(3);
-    change.args.should.deep.equal([
-      [model, options],
-      [model, options],
-      [model, options]
-    ]);
-    changeA.callCount.should.equal(3);
+    model.set('x.y[0]', false);
+    model.get('x.y[0]').should.equal(false);
+    model.get('x').should.deep.equal({y: [false]});
+
+    model.set('x.y[1]', 0);
+    model.get('x.y[1]').should.equal(0);
+    model.get('x').should.deep.equal({y: [false, 0]});
+
+    change.callCount.should.equal(5, 'change');
+    change.args.should.deep.equal(new Array(5).fill([model, options]));
+
+    changeA.callCount.should.equal(3, 'change:a');
     changeA.args.should.deep.equal([
       [model, {b: {c: 1}}, options],
       [model, {b: {c: 2}}, options],
       [model, {b: {c: 3}}, options]
     ]);
+
+    changeX.callCount.should.equal(2, 'change:x');
+    changeX.args.should.deep.equal([
+      [model, {y: [false]}, options],
+      [model, {y: [false, 0]}, options]
+    ], JSON.stringify(changeX.args[0][1]));
   });
 
 });

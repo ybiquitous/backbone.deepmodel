@@ -8,7 +8,8 @@
     "arrowFunctions": true,
     "classes": true,
     "defaultParams": true,
-    "restParams": true
+    "restParams": true,
+    "templateStrings": true
   },
   "extends": "eslint:recommended"
 }

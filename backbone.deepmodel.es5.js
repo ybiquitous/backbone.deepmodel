@@ -105,6 +105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'set',
 	    value: function set(key, val, options) {
+	      var _this2 = this;
+
 	      // BEGIN: copy from original `set` method
 	      if (key == null) {
 	        return this;
@@ -122,12 +124,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      options || (options = {});
 	      // END: copy from original `set` method
 
-	      var target = (0, _deepCopy2.default)(this.attributes);
-	      Object.keys(attrs).forEach(function (key) {
-	        objectPath.set(target, key, attrs[key]);
-	      });
+	      Object.keys(attrs).forEach(function (attrPath) {
+	        var pathElems = objectPath.parse(attrPath);
+	        if (pathElems.length === 0) {
+	          throw new Error(attrPath + ' is invalid attribute');
+	        }
 
-	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, target, options);
+	        var value = attrs[attrPath];
+	        var attr = pathElems[0];
+	        if (pathElems.length === 1) {
+	          _get(Object.getPrototypeOf(DeepModel.prototype), 'set', _this2).call(_this2, attr, (0, _deepCopy2.default)(value), options);
+	        } else {
+	          value = objectPath.set((0, _deepCopy2.default)(_get(Object.getPrototypeOf(DeepModel.prototype), 'get', _this2).call(_this2, attr)), pathElems.slice(1), value);
+	          _get(Object.getPrototypeOf(DeepModel.prototype), 'set', _this2).call(_this2, attr, value, options);
+	        }
+	      }, this);
+
+	      return this;
 	    }
 	  }], [{
 	    key: 'extend',
@@ -168,14 +181,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.parse = parse;
 	exports.get = get;
 	exports.set = set;
-	function split(path) {
+
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+	/**
+	 * @param {string} path
+	 * @returns {string[]}
+	 */
+	function parse(path) {
 	  return path.replace(/\[(\w+)\]/g, '.$1').split('.');
 	}
 
+	/**
+	 * @param {Object} obj
+	 * @param {string} path
+	 * @returns {Object}
+	 */
 	function get(obj, path) {
-	  var pathElements = split(path);
+	  var pathElements = parse(path);
 	  for (var i = 0, len = pathElements.length; i < len; i++) {
 	    var pathElement = pathElements[i];
 	    if (pathElement in obj) {
@@ -187,16 +213,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj;
 	}
 
+	function isNumeric(value) {
+	  return (/^\d+$/.test(value)
+	  );
+	}
+
+	/**
+	 * @param {Object} obj
+	 * @param {string | string[]} path
+	 * @param {*} value
+	 * @returns {Object}
+	 */
 	function set(obj, path, value) {
-	  var pathElements = split(path);
+	  var pathElements = Array.isArray(path) ? path : parse(path);
 	  var lastIndex = pathElements.length - 1;
-	  pathElements.forEach(function (pathElement, index) {
+	  pathElements.reduce(function (current, pathElement, index) {
 	    if (index < lastIndex) {
-	      obj = obj[pathElement];
+	      var _value = current[pathElement];
+	      if (!(_value === undefined || (typeof _value === 'undefined' ? 'undefined' : _typeof(_value)) === 'object')) {
+	        throw new Error(_value + ' is not an object');
+	      }
+
+	      // create new array or object if not exists
+	      if (_value === undefined || _value === null) {
+	        _value = isNumeric(pathElements[index + 1]) ? [] : {};
+	        current[pathElement] = _value;
+	      }
+	      current = _value;
 	    } else {
-	      obj[pathElement] = value;
+	      current[pathElement] = value;
 	    }
-	  });
+	    return current;
+	  }, obj);
 	  return obj;
 	}
 
