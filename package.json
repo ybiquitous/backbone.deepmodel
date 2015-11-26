@@ -11,6 +11,16 @@
     "build": "webpack",
     "postinstall": "cp -vf scripts/pre-push .git/hooks"
   },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "index.js",
+    "package.json",
+    "dist",
+    "examples",
+    "lib",
+    "test"
+  ],
   "keywords": [
     "backbone"
   ],
