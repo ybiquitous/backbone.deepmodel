@@ -7,9 +7,8 @@ function config(production) {
     entry: './lib/index.js',
 
     output: {
-      path: '.',
-      filename: 'backbone.deepmodel.es5' + (production ? '.min' : '') + '.js',
-      sourceMapFilename: 'backbone.deepmodel.es5.min.map',
+      path: './dist',
+      filename: 'backbone.deepmodel' + (production ? '.min' : '') + '.js',
       library: ['Backbone', 'DeepModel'],
       libraryTarget: 'umd'
     },

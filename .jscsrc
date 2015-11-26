@@ -1,6 +1,6 @@
 {
   "preset": "google",
   "excludeFiles": [
-    "backbone.deepmodel*"
+    "dist/**"
   ]
 }

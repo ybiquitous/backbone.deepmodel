@@ -278,4 +278,4 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-//# sourceMappingURL=backbone.deepmodel.es5.min.map
+//# sourceMappingURL=backbone.deepmodel.js.map
