@@ -4,8 +4,14 @@
 
 # Install
 
+Node.js:
 ```sh
 npm install backbone.deepmodel --save
+```
+
+HTML:
+```html
+<script src="https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js"></script>
 ```
 
 # Usage
