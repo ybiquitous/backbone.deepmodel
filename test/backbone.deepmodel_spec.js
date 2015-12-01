@@ -38,8 +38,7 @@ describe('Backbone.DeepModel', () => {
   });
 
   it('gets attributes', () => {
-    class Model extends DeepModel {}
-    let model = new Model({a: 1, b: {x: '*', y: [true, false]}});
+    let model = new DeepModel({a: 1, b: {x: '*', y: [true, false]}});
     model.get('a').should.equal(1);
     model.get('b').should.deep.equal({x: '*', y: [true, false]});
     model.get('b.x').should.equal('*');
@@ -52,8 +51,7 @@ describe('Backbone.DeepModel', () => {
   });
 
   it('sets simple attribute', () => {
-    class Model extends DeepModel {}
-    let model = new Model();
+    let model = new DeepModel();
     let change = sandbox.spy();
     let changeA = sandbox.spy();
     model.on('change', change);
@@ -80,8 +78,7 @@ describe('Backbone.DeepModel', () => {
   });
 
   it('sets nested attribute', () => {
-    class Model extends DeepModel {}
-    let model = new Model({
+    let model = new DeepModel({
       a: {b: {c: null}},
       x: {y: [true]}
     });
@@ -125,6 +122,16 @@ describe('Backbone.DeepModel', () => {
       [model, {y: [false]}, options],
       [model, {y: [false, 0]}, options]
     ]);
+  });
+
+  it('cannot set non-existent nested attribute', () => {
+    (() => { new DeepModel().set('a.b', 1); }).should.throw(Error);
+  });
+
+  it('cannot set non-object nested attribute', () => {
+    (() => { new DeepModel({a: 0}).set('a.b', 1); }).should.throw(Error);
+    (() => { new DeepModel({a: {b: 0}}).set('a.b.c', 1); })
+      .should.throw('"b.c" in {"b":0} must be an object');
   });
 
 });
