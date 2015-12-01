@@ -11,5 +11,8 @@
     "restParams": true,
     "templateStrings": true
   },
+  "rules": {
+    "no-shadow": 2
+  },
   "extends": "eslint:recommended"
 }
