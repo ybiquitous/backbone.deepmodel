@@ -124,7 +124,7 @@ describe('Backbone.DeepModel', () => {
     changeX.args.should.deep.equal([
       [model, {y: [false]}, options],
       [model, {y: [false, 0]}, options]
-    ], JSON.stringify(changeX.args[0][1]));
+    ]);
   });
 
 });
