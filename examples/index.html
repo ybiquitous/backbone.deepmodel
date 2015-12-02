@@ -5,12 +5,19 @@
     <title>Backbone.DeepModel example</title>
   </head>
   <body>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
-    <script src="https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js"></script>
+    <script src="../dist/backbone.deepmodel.js"></script>
     <script>
+      function log(arg) {
+        console.log(arg);
+
+        var output = document.createElement('pre');
+        output.textContent = JSON.stringify(arg);
+        document.body.appendChild(output);
+      }
+
       var Person = Backbone.DeepModel.extend({
         defaults: {
           name: {first: '', last: ''},
@@ -23,14 +30,14 @@
       // Object
       p.set('name.first', 'Tom');
       p.set('name.last', 'Watson');
-      console.log(p.get('name')); //=> {first: 'Tom', last: 'Watson'}
-      console.log(p.get('name.first')); //=> 'Tom'
-      console.log(p.get('name.last')); //=> 'Watson'
+      log(p.get('name')); //=> {first: 'Tom', last: 'Watson'}
+      log(p.get('name.first')); //=> 'Tom'
+      log(p.get('name.last')); //=> 'Watson'
 
       // Array
       p.set('pets[0]', {name: 'Mi', kind: 'Cat'});
-      console.log(p.get('pets[0].name')); //=> 'Mi'
-      console.log(p.get('pets[0].kind')); //=> 'Cat'
+      log(p.get('pets[0].name')); //=> 'Mi'
+      log(p.get('pets[0].kind')); //=> 'Cat'
     </script>
   </body>
 </html>

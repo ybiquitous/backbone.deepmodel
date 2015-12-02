@@ -6,7 +6,7 @@
 
 Node.js:
 ```sh
-npm install backbone.deepmodel --save
+$ npm install backbone.deepmodel --save
 ```
 
 HTML:
@@ -39,8 +39,18 @@ console.log(p.get('pets[0].name')); //=> 'Mi'
 console.log(p.get('pets[0].kind')); //=> 'Cat'
 ```
 
-See [example](https://rawgit.com/ybiquitous/backbone.deepmodel/master/examples/index.html).
+# Examples
+
+To try examples, please run the following commands.
+When the web server is started on localhost, then go to `/examples` directory.
+
+```sh
+$ git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
+$ cd backbone.deepmodel
+$ npm install
+$ npm run examples
+```
 
 # LICENSE
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](https://github.com/ybiquitous/backbone.deepmodel/blob/master/LICENSE)
