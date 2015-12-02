@@ -26,10 +26,8 @@
   ],
   "author": "ybiquitous",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ybiquitous/backbone.deepmodel.git"
-  },
+  "repository": "ybiquitous/backbone.deepmodel",
+  "homepage": "https://github.com/ybiquitous/backbone.deepmodel",
   "dependencies": {
     "backbone": "^1.2.3"
   },
