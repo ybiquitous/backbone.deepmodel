@@ -51,6 +51,21 @@ $ npm install
 $ npm run examples
 ```
 
+# Test
+
+```sh
+$ npm install
+$ npm test
+# or watch mode "npm run test-watch"
+```
+
+# Build
+
+```sh
+$ npm install
+$ npm run build
+```
+
 # LICENSE
 
 [MIT](https://github.com/ybiquitous/backbone.deepmodel/blob/master/LICENSE)
