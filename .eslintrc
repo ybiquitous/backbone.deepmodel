@@ -9,7 +9,8 @@
     "classes": true,
     "defaultParams": true,
     "restParams": true,
-    "templateStrings": true
+    "templateStrings": true,
+    "objectLiteralShorthandMethods": true
   },
   "rules": {
     "no-shadow": 2

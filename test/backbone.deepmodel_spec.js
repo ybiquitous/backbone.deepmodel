@@ -131,7 +131,7 @@ describe('Backbone.DeepModel', () => {
   it('cannot set non-object nested attribute', () => {
     (() => { new DeepModel({a: 0}).set('a.b', 1); }).should.throw(Error);
     (() => { new DeepModel({a: {b: 0}}).set('a.b.c', 1); })
-      .should.throw('"b.c" in {"b":0} must be an object');
+      .should.throw('"a.b.c" does not exist in {"a":{"b":0}}');
   });
 
 });
