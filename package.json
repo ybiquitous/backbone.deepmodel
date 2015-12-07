@@ -10,7 +10,7 @@
     "jscs": "jscs .",
     "build": "webpack",
     "postinstall": "cp -vf scripts/pre-push .git/hooks",
-    "examples": "http-server . -o"
+    "examples": "http-server . -o -c-1"
   },
   "files": [
     "README.md",
