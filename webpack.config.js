@@ -1,6 +1,8 @@
 /* eslint-env node */
 'use strict';
+var util = require('util');
 var webpack = require('webpack');
+var pkg = require('./package');
 
 function config(production) {
   return {
@@ -38,7 +40,18 @@ function config(production) {
       ]
     },
 
-    plugins: (production ? [new webpack.optimize.UglifyJsPlugin()] : [])
+    plugins: (function() {
+      var plugins = [
+        new webpack.BannerPlugin(util.format(
+          '%s v%s\nCopyright 2015 %s\n%s Licensed',
+          pkg.name, pkg.version, pkg.author, pkg.license
+        ))
+      ];
+      if (production) {
+        plugins.push(new webpack.optimize.UglifyJsPlugin());
+      }
+      return plugins;
+    })()
   };
 }
 
