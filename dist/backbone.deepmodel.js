@@ -1,3 +1,8 @@
+/*!
+ * backbone.deepmodel v0.0.1
+ * Copyright 2015 ybiquitous
+ * MIT Licensed
+ */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("backbone"));
@@ -70,13 +75,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _objectPath = __webpack_require__(2);
 
-	var objectPath = _interopRequireWildcard(_objectPath);
+	var _objectPath2 = _interopRequireDefault(_objectPath);
 
 	var _deepCopy = __webpack_require__(3);
 
 	var _deepCopy2 = _interopRequireDefault(_deepCopy);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -100,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(DeepModel, [{
 	    key: 'get',
 	    value: function get(attr) {
-	      return objectPath.get(this.attributes, attr);
+	      return _objectPath2.default.get(this.attributes, attr);
 	    }
 	  }, {
 	    key: 'set',
@@ -124,23 +127,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      options || (options = {});
 	      // END: copy from original `set` method
 
-	      Object.keys(attrs).forEach(function (attrPath) {
-	        var pathElems = objectPath.parse(attrPath);
-	        if (pathElems.length === 0) {
-	          throw new Error(attrPath + ' is invalid attribute');
+	      var newAttrs = Object.keys(attrs).reduce(function (target, path) {
+	        var paths = _objectPath2.default.parse(path);
+	        if (paths.length === 1) {
+	          target[path] = attrs[path];
+	          return target;
 	        }
 
-	        var value = attrs[attrPath];
-	        var attr = pathElems[0];
-	        if (pathElems.length === 1) {
-	          _get(Object.getPrototypeOf(DeepModel.prototype), 'set', _this2).call(_this2, attr, (0, _deepCopy2.default)(value), options);
-	        } else {
-	          value = objectPath.set((0, _deepCopy2.default)(_get(Object.getPrototypeOf(DeepModel.prototype), 'get', _this2).call(_this2, attr)), pathElems.slice(1), value);
-	          _get(Object.getPrototypeOf(DeepModel.prototype), 'set', _this2).call(_this2, attr, value, options);
+	        var parentPath = paths.slice(0, -1);
+	        var obj = _objectPath2.default.get(_this2.attributes, parentPath);
+	        if (!obj) {
+	          throw new Error('"' + path + '" does not exist in ' + JSON.stringify(_this2));
 	        }
-	      }, this);
+	        _objectPath2.default.set(target, parentPath, (0, _deepCopy2.default)(obj));
 
-	      return this;
+	        return _objectPath2.default.set(target, paths, attrs[path]);
+	      }, {});
+
+	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
 	    }
 	  }], [{
 	    key: 'extend',
@@ -181,72 +185,80 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.parse = parse;
-	exports.get = get;
-	exports.set = set;
 
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
-	/**
-	 * @param {string} path
-	 * @returns {string[]}
-	 */
-	function parse(path) {
-	  return path.replace(/\[(\w+)\]/g, '.$1').split('.');
+	function isObject(value) {
+	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 	}
 
-	/**
-	 * @param {Object} obj
-	 * @param {string} path
-	 * @returns {Object}
-	 */
-	function get(obj, path) {
-	  var pathElements = parse(path);
-	  for (var i = 0, len = pathElements.length; i < len; i++) {
-	    var pathElement = pathElements[i];
-	    if (pathElement in obj) {
-	      obj = obj[pathElement];
-	    } else {
-	      return;
+	function isArrayIndex(value) {
+	  var num = Number(value);
+	  return num >= 0 && num % 1 === 0;
+	}
+
+	var separator = '.';
+
+	exports.default = {
+
+	  /**
+	   * @param {string | string[]} path
+	   * @returns {string[]}
+	   *
+	   * @example
+	   * parse('a.b') //=> ['a', 'b']
+	   */
+
+	  parse: function parse(path) {
+	    if (Array.isArray(path)) {
+	      return path;
 	    }
+	    return path.replace(/\[(\w+)\]/g, separator + '$1').split(separator);
+	  },
+
+	  /**
+	   * @param {Object} obj
+	   * @param {string | string[]} path
+	   * @returns {?Object}
+	   */
+	  get: function get(obj, path) {
+	    var pathElements = this.parse(path);
+	    for (var i = 0, len = pathElements.length; i < len; i++) {
+	      var pathElement = pathElements[i];
+	      if (pathElement in obj) {
+	        obj = obj[pathElement];
+	      } else {
+	        return;
+	      }
+	    }
+	    return obj;
+	  },
+
+	  /**
+	   * @param {Object} obj
+	   * @param {string | string[]} path
+	   * @param {*} value
+	   * @returns {Object}
+	   */
+	  set: function set(obj, path, value) {
+	    var pathElements = this.parse(path);
+	    var lastIndex = pathElements.length - 1;
+	    pathElements.reduce(function (current, pathElement, index) {
+	      if (index < lastIndex) {
+	        var v = current[pathElement];
+	        if (!isObject(v)) {
+	          v = current[pathElement] = isArrayIndex(pathElements[index + 1]) ? [] : {};
+	        }
+	        current = v;
+	      } else {
+	        current[pathElement] = value;
+	      }
+	      return current;
+	    }, obj);
+	    return obj;
 	  }
-	  return obj;
-	}
-
-	function isNumeric(value) {
-	  return (/^\d+$/.test(value)
-	  );
-	}
-
-	/**
-	 * @param {Object} obj
-	 * @param {string | string[]} path
-	 * @param {*} value
-	 * @returns {Object}
-	 */
-	function set(obj, path, value) {
-	  var pathElements = Array.isArray(path) ? path : parse(path);
-	  var lastIndex = pathElements.length - 1;
-	  pathElements.reduce(function (current, pathElement, index) {
-	    if (index < lastIndex) {
-	      var _value = current[pathElement];
-	      if (!(_value === undefined || (typeof _value === 'undefined' ? 'undefined' : _typeof(_value)) === 'object')) {
-	        throw new Error(_value + ' is not an object');
-	      }
-
-	      // create new array or object if not exists
-	      if (_value === undefined || _value === null) {
-	        _value = isNumeric(pathElements[index + 1]) ? [] : {};
-	        current[pathElement] = _value;
-	      }
-	      current = _value;
-	    } else {
-	      current[pathElement] = value;
-	    }
-	    return current;
-	  }, obj);
-	  return obj;
-	}
+	};
+	module.exports = exports['default'];
 
 /***/ },
 /* 3 */
