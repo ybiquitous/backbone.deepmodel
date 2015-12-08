@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ybiquitous/backbone.deepmodel.svg?branch=master)](https://travis-ci.org/ybiquitous/backbone.deepmodel)
+
 # Backbone.DeepModel
 
 [Backbone](http://backbonejs.org/) Plugin for handling nested attributes of `Backbone.Model`.
