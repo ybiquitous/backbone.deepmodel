@@ -108,7 +108,13 @@ describe('Backbone.DeepModel', () => {
     model.get('x').should.deep.equal({y: [false, 0]});
 
     change.callCount.should.equal(5, 'change');
-    change.args.should.deep.equal(new Array(5).fill([model, options]));
+    change.args.should.deep.equal([
+      [model, options],
+      [model, options],
+      [model, options],
+      [model, options],
+      [model, options]
+    ]);
 
     changeA.callCount.should.equal(3, 'change:a');
     changeA.args.should.deep.equal([
