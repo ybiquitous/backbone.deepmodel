@@ -83,6 +83,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -107,41 +109,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, {
 	    key: 'set',
-	    value: function set(key, val, options) {
+	    value: function set(key, value, options) {
 	      var _this2 = this;
 
-	      // BEGIN: copy from original `set` method
 	      if (key == null) {
 	        return this;
 	      }
 
-	      // Handle both `"key", value` and `{key: value}` -style arguments.
-	      var attrs;
+	      var attrs = undefined;
 	      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
 	        attrs = key;
-	        options = val;
+	        options = value;
 	      } else {
-	        (attrs = {})[key] = val;
+	        attrs = _defineProperty({}, key, value);
 	      }
 
-	      options || (options = {});
-	      // END: copy from original `set` method
-
-	      var newAttrs = Object.keys(attrs).reduce(function (target, path) {
+	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
 	        var paths = _objectPath2.default.parse(path);
 	        if (paths.length === 1) {
-	          target[path] = attrs[path];
-	          return target;
+	          newObj[path] = attrs[path];
+	          return newObj;
 	        }
 
 	        var parentPath = paths.slice(0, -1);
-	        var obj = _objectPath2.default.get(_this2.attributes, parentPath);
+	        var obj = _objectPath2.default.get(newObj, parentPath) || _objectPath2.default.get(_this2.attributes, parentPath);
 	        if (!obj) {
 	          throw new Error('"' + path + '" does not exist in ' + JSON.stringify(_this2));
 	        }
-	        _objectPath2.default.set(target, parentPath, (0, _deepCopy2.default)(obj));
+	        _objectPath2.default.set(newObj, parentPath, (0, _deepCopy2.default)(obj));
 
-	        return _objectPath2.default.set(target, paths, attrs[path]);
+	        return _objectPath2.default.set(newObj, paths, attrs[path]);
 	      }, {});
 
 	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
