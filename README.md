@@ -18,7 +18,7 @@ HTML:
 <script src="https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js"></script>
 ```
 
-# Usage
+# Use
 
 ```js
 var Person = Backbone.DeepModel.extend({
