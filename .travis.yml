@@ -1,6 +1,12 @@
 language: node_js
+
 node_js:
   - "0.12"
+
+script:
+  - "npm test"
+  - "npm run eslint"
+  - "npm run jscs"
 
 before_script:
   - "export CHROME_BIN=chromium-browser"
