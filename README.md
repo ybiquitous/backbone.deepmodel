@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/ybiquitous/backbone.deepmodel.svg?branch=master)](https://travis-ci.org/ybiquitous/backbone.deepmodel)
+[![Dependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel)
+[![devDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
 
 # Backbone.DeepModel
 
