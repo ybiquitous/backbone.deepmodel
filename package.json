@@ -9,7 +9,7 @@
     "eslint": "eslint --ignore-path .gitignore --ignore-pattern dist .",
     "jscs": "jscs .",
     "build": "webpack",
-    "postinstall": "cp -vf scripts/pre-push .git/hooks",
+    "postinstall": "cp -vf scripts/validate .git/hooks/pre-commit",
     "examples": "http-server . -o -c-1"
   },
   "files": [
