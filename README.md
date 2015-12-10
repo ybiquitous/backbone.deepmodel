@@ -1,8 +1,10 @@
+# Backbone.DeepModel
+
+[![NPM](https://nodei.co/npm/backbone.deepmodel.png?downloads=true)](https://nodei.co/npm/backbone.deepmodel/)
+
 [![Build Status](https://travis-ci.org/ybiquitous/backbone.deepmodel.svg?branch=master)](https://travis-ci.org/ybiquitous/backbone.deepmodel)
 [![Dependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel)
-[![devDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
-
-# Backbone.DeepModel
+[![DevDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
 
 [Backbone](http://backbonejs.org/) Plugin for handling nested attributes of `Backbone.Model`.
 
