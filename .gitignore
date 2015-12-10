@@ -28,3 +28,6 @@ node_modules
 
 # Tern (http://ternjs.net/)
 .tern-*
+
+# Emacs Directory Variables
+.dir-locals.el
