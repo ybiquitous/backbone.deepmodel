@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* jscs:disable disallowVar */
 'use strict';
 var util = require('util');
 var webpack = require('webpack');

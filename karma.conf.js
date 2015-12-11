@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* jscs:disable disallowVar */
 'use strict';
 var path = require('path');
 var webpackConfig = require('./webpack.config')[0];

@@ -3,5 +3,6 @@
   "excludeFiles": [
     "dist/**",
     "coverage/**"
-  ]
+  ],
+  "disallowVar": true
 }
