@@ -72,6 +72,13 @@ $ npm install
 $ npm run build
 ```
 
+# Lint
+
+```sh
+$ npm install
+$ npm run lint
+```
+
 # LICENSE
 
 [MIT](https://github.com/ybiquitous/backbone.deepmodel/blob/master/LICENSE) Copyright (c) 2015 ybiquitous

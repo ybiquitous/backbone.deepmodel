@@ -8,6 +8,7 @@
     "test-watch": "karma start --auto-watch",
     "eslint": "eslint --ignore-path .gitignore --ignore-pattern dist,coverage .",
     "jscs": "jscs .",
+    "lint": "npm run eslint && npm run jscs",
     "build": "webpack",
     "examples": "http-server . -o -c-1"
   },
