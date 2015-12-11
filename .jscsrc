@@ -1,6 +1,7 @@
 {
   "preset": "google",
   "excludeFiles": [
-    "dist/**"
+    "dist/**",
+    "coverage/**"
   ]
 }
