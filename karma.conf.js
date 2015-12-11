@@ -1,5 +1,6 @@
 /* eslint-env node */
 'use strict';
+var path = require('path');
 var webpackConfig = require('./webpack.config')[0];
 
 module.exports = function(config) {
@@ -28,7 +29,15 @@ module.exports = function(config) {
     },
 
     webpack: {
-      module: webpackConfig.module
+      module: (function() {
+        var module = webpackConfig.module;
+        module.postLoaders = [{
+          test: /\.js$/,
+          exclude: /(test|node_modules)/,
+          loader: 'istanbul-instrumenter'
+        }];
+        return module;
+      })()
     },
 
     webpackMiddleware: {
@@ -38,7 +47,12 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      type: 'html',
+      dir: path.join(__dirname, 'coverage')
+    },
 
     // web server port
     port: 9876,
