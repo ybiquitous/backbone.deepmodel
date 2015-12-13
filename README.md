@@ -46,6 +46,24 @@ console.log(p.get('pets[0].name')); //=> 'Mi'
 console.log(p.get('pets[0].kind')); //=> 'Cat'
 ```
 
+# Use in ES2015(ES6)
+
+```js
+import DeepModel from 'backbone.deepmodel/lib'
+
+class Person extends DeepModel {
+  defaults() {
+    return {
+      name: {first: '', last: ''},
+      pets: []
+    };
+  }
+}
+
+let p = new Person();
+p.set('name.first', 'Tom');
+```
+
 # Examples
 
 To try examples, please run the following commands.
