@@ -75,6 +75,12 @@ describe('Backbone.DeepModel', () => {
     should.equal(model.get('b.z'), undefined);
   });
 
+  it('sets no arguments', () => {
+    const model = new DeepModel({a: 1});
+    model.get('a').should.equal(1);
+    model.set().should.equal(model);
+  });
+
   it('sets simple attribute', () => {
     const model = new DeepModel();
     const change = sandbox.spy();
