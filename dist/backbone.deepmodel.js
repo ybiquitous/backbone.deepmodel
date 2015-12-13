@@ -144,17 +144,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
 	    }
 	  }], [{
-	    key: 'extend',
-	    value: function extend() {
-	      var _get2;
-
-	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	        args[_key] = arguments[_key];
-	      }
-
-	      return (_get2 = _get(Object.getPrototypeOf(DeepModel), 'extend', this)).call.apply(_get2, [this].concat(args));
-	    }
-	  }, {
 	    key: 'VERSION',
 	    get: function get() {
 	      return '0.0.1';
@@ -165,6 +154,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_backbone2.default.Model);
 
 	exports.default = DeepModel;
+
+	DeepModel.extend = _backbone2.default.Model.extend;
 	module.exports = exports['default'];
 
 /***/ },

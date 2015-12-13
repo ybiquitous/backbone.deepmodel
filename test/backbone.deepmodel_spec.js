@@ -18,23 +18,48 @@ describe('Backbone.DeepModel', () => {
 
   it('extends custom class by `extend` static method', () => {
     const Model = DeepModel.extend({
-      initialize: function() {
-        this.initialized = true;
+      initialize() {
+        this.initialized = 1;
       }
     }, {
       foo: 1
     });
-    new Model().initialized.should.be.true;
     Model.foo.should.equal(1);
+    Model.extend.should.be.a('function');
+    new Model().initialized.should.equal(1);
+
+    const Model2 = Model.extend({
+      initialize() {
+        Model.prototype.initialize.call(this);
+        this.initialized2 = 2;
+      }
+    });
+    Model2.foo.should.equal(1);
+    Model2.extend.should.be.a('function');
+    const model = new Model2();
+    model.initialized.should.equal(1);
+    model.initialized2.should.equal(2);
   });
 
   it('extends custom class by `class` syntacs', () => {
     class Model extends DeepModel {
       initialize() {
-        this.initialized = true;
+        this.initialized = 1;
       }
     }
-    new Model().initialized.should.be.true;
+    Model.extend.should.be.a('function');
+    new Model().initialized.should.equal(1);
+
+    class Model2 extends Model {
+      initialize() {
+        super.initialize();
+        this.initialized2 = 2;
+      }
+    }
+    Model2.extend.should.be.a('function');
+    const model2 = new Model2();
+    model2.initialized.should.equal(1);
+    model2.initialized2.should.equal(2);
   });
 
   it('gets attributes', () => {
