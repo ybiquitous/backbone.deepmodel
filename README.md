@@ -42,8 +42,18 @@ console.log(p.get('name.last')); //=> 'Watson'
 
 // Array
 p.set('pets[0]', {name: 'Mi', kind: 'Cat'});
+p.set('pets.1', {name: 'Boo', kind: 'Dog'});
 console.log(p.get('pets[0].name')); //=> 'Mi'
 console.log(p.get('pets[0].kind')); //=> 'Cat'
+console.log(p.get('pets.1')); //=> {name: 'Boo', kind: 'Dog'}
+
+// key-value style
+p.set({
+  'name.first': 'Ken',
+  'pets[0].name': 'Tama',
+});
+console.log(p.get('name.first')); //=> 'Ken'
+console.log(p.get('pets[0].name')); //=> 'Tama'
 ```
 
 # Use in ES2015(ES6)
