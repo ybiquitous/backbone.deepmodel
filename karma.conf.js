@@ -3,6 +3,7 @@
 'use strict';
 var path = require('path');
 var webpackConfig = require('./webpack.config')[0];
+var isWindows = /^win/.test(process.platform);
 
 module.exports = function(config) {
   config.set({
@@ -78,6 +79,9 @@ module.exports = function(config) {
         browsers.push('Chrome');
       }
       browsers.push('Firefox');
+      if (isWindows) {
+        browsers.push('IE');
+      }
       return browsers;
     })(),
 
