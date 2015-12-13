@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/ybiquitous/backbone.deepmodel.svg?branch=master)](https://travis-ci.org/ybiquitous/backbone.deepmodel)
 [![Dependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel)
 [![DevDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/ybiquitous/backbone.deepmodel/badge.svg?branch=master&service=github)](https://coveralls.io/github/ybiquitous/backbone.deepmodel?branch=master)
 
 [Backbone](http://backbonejs.org/) Plugin for handling nested attributes of `Backbone.Model`.
 
