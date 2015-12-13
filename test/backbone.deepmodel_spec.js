@@ -69,7 +69,7 @@ describe('Backbone.DeepModel', () => {
     model.get('b.x').should.equal('*');
     model.get('b.y').should.deep.equal([true, false]);
     model.get('b.y[0]').should.equal(true);
-    model.get('b.y[1]').should.equal(false);
+    model.get('b.y.1').should.equal(false);
     should.equal(model.get('b.y[2]'), undefined);
     should.equal(model.get('c'), undefined);
     should.equal(model.get('b.z'), undefined);
@@ -142,14 +142,14 @@ describe('Backbone.DeepModel', () => {
     model.get('x.y[0]').should.equal(false);
     model.get('x').should.deep.equal({y: [false]});
 
-    model.set('x.y[1]', 0, options);
-    model.get('x.y[1]').should.equal(0);
+    model.set('x.y.1', 0, options);
+    model.get('x.y.1').should.equal(0);
     model.get('x').should.deep.equal({y: [false, 0]});
 
     model.set({
       'a.b.c': 9,
       'x.y[0]': null,
-      'x.y[1]': '-'
+      'x.y.1': '-'
     });
     model.toJSON().should.deep.equal({
       a: {b: {c: 9}},
