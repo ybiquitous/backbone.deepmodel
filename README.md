@@ -7,19 +7,24 @@
 [![DevDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
 [![Coverage Status](https://coveralls.io/repos/ybiquitous/backbone.deepmodel/badge.svg?branch=master&service=github)](https://coveralls.io/github/ybiquitous/backbone.deepmodel?branch=master)
 
-[Backbone](http://backbonejs.org/) Plugin for handling nested attributes of `Backbone.Model`.
+[Backbone.js](http://backbonejs.org/) Plugin for handling nested attributes of `Backbone.Model`.
 
 # Install
 
-Node.js:
+By `npm` (Node.js):
+
 ```sh
 $ npm install backbone.deepmodel --save
 ```
 
-HTML:
-```html
-<script src="https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js"></script>
-```
+Manually download:
+
+- [backbone.deepmodel.min.js](https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.min.js) (*1.5kb, minified and gzipped*)
+- [backbone.deepmodel.js](https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js) (for development)
+
+# Dependencies
+
+- [Backbone.js](http://backbonejs.org/) (>= 1.2)
 
 # Use
 
