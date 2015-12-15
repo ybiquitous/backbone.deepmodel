@@ -1,6 +1,5 @@
 /* eslint-env mocha */
 /* global should, sinon */
-import pkg from 'json!../package.json';
 import DeepModel from '../lib';
 
 describe('Backbone.DeepModel', () => {
@@ -14,7 +13,7 @@ describe('Backbone.DeepModel', () => {
   });
 
   it('returns version', () => {
-    DeepModel.VERSION.should.equal(pkg.version);
+    DeepModel.VERSION.should.match(/^\d+\.\d+\.\d+$/);
   });
 
   it('extends custom class by `extend` static method', () => {
