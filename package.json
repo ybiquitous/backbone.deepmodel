@@ -13,7 +13,8 @@
     "build": "webpack",
     "examples": "http-server . -o -c-1",
     "preversion": "npm test && npm run lint",
-    "version": "npm run build && git add -A dist"
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "files": [
     "README.md",
