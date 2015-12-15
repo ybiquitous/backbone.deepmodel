@@ -33,7 +33,7 @@
   "repository": "ybiquitous/backbone.deepmodel",
   "homepage": "https://github.com/ybiquitous/backbone.deepmodel",
   "dependencies": {
-    "backbone": "^1.2.3"
+    "backbone": ">=1.2.0"
   },
   "devDependencies": {
     "babel-core": "6.3.17",
