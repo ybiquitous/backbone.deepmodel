@@ -108,6 +108,6 @@ $ npm install
 $ npm run build
 ```
 
-# LICENSE
+# License
 
 [MIT](https://github.com/ybiquitous/backbone.deepmodel/blob/master/LICENSE) Copyright (c) 2015 ybiquitous
