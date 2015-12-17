@@ -65,6 +65,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -93,6 +95,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var DEFAULTS = Object.freeze({
+	  pathSeparator: '.'
+	});
+
+	var _defaults = _extends({}, DEFAULTS);
+
 	var DeepModel = (function (_Backbone$Model) {
 	  _inherits(DeepModel, _Backbone$Model);
 
@@ -105,6 +113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(DeepModel, [{
 	    key: 'get',
 	    value: function get(attr) {
+	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
 	      return _objectPath2.default.get(this.attributes, attr);
 	    }
 	  }, {
@@ -124,6 +133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        attrs = _defineProperty({}, key, value);
 	      }
 
+	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
 	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
 	        var paths = _objectPath2.default.parse(path);
 	        if (paths.length === 1) {
@@ -144,6 +154,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
 	    }
 	  }], [{
+	    key: 'defaults',
+	    value: function defaults() {
+	      var args = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	      _extends(_defaults, args === null ? DEFAULTS : args);
+	    }
+	  }, {
 	    key: 'VERSION',
 	    get: function get() {
 	      return '0.0.3';
@@ -185,9 +202,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return num >= 0 && num % 1 === 0;
 	}
 
-	var separator = '.';
-
 	exports.default = {
+
+	  pathSeparator: '.',
 
 	  /**
 	   * @param {string | string[]} path
@@ -196,12 +213,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @example
 	   * parse('a.b') //=> ['a', 'b']
 	   */
-
 	  parse: function parse(path) {
 	    if (Array.isArray(path)) {
 	      return path;
 	    }
-	    return path.replace(/\[(\w+)\]/g, separator + '$1').split(separator);
+	    var sep = this.pathSeparator;
+	    return path.replace(/\[(\w+)\]/g, sep + '$1').split(sep);
 	  },
 
 	  /**

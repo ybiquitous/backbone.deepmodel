@@ -35,7 +35,7 @@ function config(production) {
           loader: 'babel',
           query: {
             presets: ['es2015'],
-            plugins: ['add-module-exports']
+            plugins: ['add-module-exports', 'transform-object-assign']
           }
         }
       ]
