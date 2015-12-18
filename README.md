@@ -79,6 +79,26 @@ let p = new Person();
 p.set('name.first', 'Tom');
 ```
 
+# API
+
+## DeepModel.defaults(settings?: Object)
+
+```js
+DeepModel.defaults({anySetting: true});
+DeepModel.defaults(null); // reset!
+```
+
+### pathSeparator (default: '.')
+
+```js
+DeepModel.defaults({pathSeparator: '/'});
+
+var model = new DeepModel();
+model.set('a', {});
+model.set('a/b', 1);
+model.get('a/b'); //=> 1
+```
+
 # Examples
 
 To try examples, please run the following commands.

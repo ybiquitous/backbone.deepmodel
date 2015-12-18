@@ -291,4 +291,33 @@ describe('Backbone.DeepModel', () => {
     });
   });
 
+  describe('configure', () => {
+    beforeEach(() => {
+      DeepModel.defaults({pathSeparator: '/'});
+    });
+
+    it('configures path separator', () => {
+      const model = new DeepModel();
+      model.set('a', {});
+      model.toJSON().should.deep.equal({a: {}});
+      model.set('a/b', 1);
+      model.get('a/b').should.equal(1);
+      model.toJSON().should.deep.equal({a: {b: 1}});
+      model.set('a.b', 2);
+      model.get('a.b').should.equal(2);
+      model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2});
+
+      DeepModel.defaults(null); // reset
+
+      model.set('a/b', 0);
+      model.get('a/b').should.equal(0);
+      model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2, 'a/b': 0});
+      model.get('a.b').should.equal(1);
+    });
+
+    afterEach(() => {
+      DeepModel.defaults(null);
+    });
+  });
+
 });
