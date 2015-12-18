@@ -163,7 +163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'VERSION',
 	    get: function get() {
-	      return '0.0.3';
+	      return '0.1.0';
 	    }
 	  }]);
 
