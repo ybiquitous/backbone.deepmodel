@@ -84,7 +84,11 @@ p.set('name.first', 'Tom');
 ## DeepModel (extends [Backbone.Model](http://backbonejs.org/#Model))
 
 ```js
+// ES5
 var Person = DeepModel.extend({...});
+
+// ES2015(ES6)
+class Person extends DeepModel {...}
 ```
 
 ## DeepModel.prototype.get(attribute: string)
