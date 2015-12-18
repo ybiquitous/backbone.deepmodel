@@ -156,9 +156,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }], [{
 	    key: 'defaults',
 	    value: function defaults() {
-	      var args = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	      var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-	      _extends(_defaults, args === null ? DEFAULTS : args);
+	      _extends(_defaults, settings === null ? DEFAULTS : settings);
 	    }
 	  }, {
 	    key: 'VERSION',

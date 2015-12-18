@@ -81,7 +81,7 @@ p.set('name.first', 'Tom');
 
 # API
 
-## DeepModel.defaults(args: Object)
+## DeepModel.defaults(settings?: Object)
 
 ```js
 DeepModel.defaults({anySetting: true});
