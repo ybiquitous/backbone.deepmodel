@@ -3,6 +3,4 @@ set -e
 
 [ -n "${SKIP}" ] && exit
 
-npm run lint
-npm run test
-npm run build
+npm run fullbuild
