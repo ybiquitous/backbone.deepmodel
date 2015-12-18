@@ -81,6 +81,30 @@ p.set('name.first', 'Tom');
 
 # API
 
+## DeepModel (extends [Backbone.Model](http://backbonejs.org/#Model))
+
+```js
+var Person = DeepModel.extend({...});
+```
+
+## DeepModel.prototype.get(attribute: string)
+
+Override [Backbone.Model.prototype.get](http://backbonejs.org/#Model-get).
+
+```js
+model.get('a.b');
+```
+
+## DeepModel.prototype.set(attributes: Object, options?: Object)
+
+Override [Backbone.Model.prototype.set](http://backbonejs.org/#Model-set).
+Support `set('key', 'value', options)` style.
+
+```js
+model.set({'a.b': 'value'});
+model.set('a.b', 'value');
+```
+
 ## DeepModel.defaults(settings?: Object)
 
 ```js
