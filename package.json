@@ -1,6 +1,6 @@
 {
   "name": "backbone.deepmodel",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Backbone.DeepModel plugin",
   "main": "./dist/backbone.deepmodel",
   "scripts": {
