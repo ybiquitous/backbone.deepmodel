@@ -1,3 +1,5 @@
+[![NPM version][npm-version-image]][npm-url]
+
 # Backbone.DeepModel
 
 [![NPM](https://nodei.co/npm/backbone.deepmodel.png?downloads=true)](https://nodei.co/npm/backbone.deepmodel/)
