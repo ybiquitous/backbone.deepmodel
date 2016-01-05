@@ -1,13 +1,12 @@
 [![NPM version][npm-version-image]][npm-url]
+[![NPM downloads][npm-downloads-image]][npm-url]
+[![MIT License][license-image]][license-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
+[![Dependency Status][dependency-image]][dependency-url]
+[![devDependency Status][dev-dependency-image]][dev-dependency-url]
 
 # Backbone.DeepModel
-
-[![NPM](https://nodei.co/npm/backbone.deepmodel.png?downloads=true)](https://nodei.co/npm/backbone.deepmodel/)
-
-[![Build Status](https://travis-ci.org/ybiquitous/backbone.deepmodel.svg?branch=master)](https://travis-ci.org/ybiquitous/backbone.deepmodel)
-[![Dependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel)
-[![DevDependency Status](https://david-dm.org/ybiquitous/backbone.deepmodel/dev-status.svg)](https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies)
-[![Coverage Status](https://coveralls.io/repos/ybiquitous/backbone.deepmodel/badge.svg?branch=master&service=github)](https://coveralls.io/github/ybiquitous/backbone.deepmodel?branch=master)
 
 Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
@@ -160,4 +159,23 @@ $ npm run build
 
 # License
 
-[MIT](https://github.com/ybiquitous/backbone.deepmodel/blob/master/LICENSE) Copyright (c) 2015 ybiquitous
+[MIT](LICENSE) Copyright (c) 2015 ybiquitous
+
+
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/backbone.deepmodel
+[npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg
+[npm-downloads-image]: https://img.shields.io/npm/dm/backbone.deepmodel.svg
+
+[travis-url]: https://travis-ci.org/ybiquitous/backbone.deepmodel
+[travis-image]: https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg
+
+[coverage-url]: https://coveralls.io/github/ybiquitous/backbone.deepmodel
+[coverage-image]: https://img.shields.io/coveralls/ybiquitous/backbone.deepmodel.svg
+
+[dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel
+[dependency-image]: https://img.shields.io/david/ybiquitous/backbone.deepmodel.svg
+[dev-dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies
+[dev-dependency-image]: https://img.shields.io/david/dev/ybiquitous/backbone.deepmodel.svg
