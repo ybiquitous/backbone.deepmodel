@@ -85,8 +85,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -125,15 +123,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this;
 	      }
 
+	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
+
 	      var attrs = undefined;
 	      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
 	        attrs = key;
 	        options = value;
 	      } else {
-	        attrs = _defineProperty({}, key, value);
+	        if (!_objectPath2.default.hasSeparator(key)) {
+	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, key, value, options);
+	        }
+	        attrs = {};
+	        attrs[key] = value;
 	      }
 
-	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
 	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
 	        var paths = _objectPath2.default.parse(path);
 	        if (paths.length === 1) {
@@ -202,23 +205,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return num >= 0 && num % 1 === 0;
 	}
 
+	var ARRAY_PATTERN = /\[(\w+)\]/g;
+
 	exports.default = {
 
 	  pathSeparator: '.',
+
+	  /**
+	   * @param {?string} s
+	   * @returns {boolean}
+	   */
+	  hasSeparator: function hasSeparator(s) {
+	    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN.test(s));
+	  },
 
 	  /**
 	   * @param {string | string[]} path
 	   * @returns {string[]}
 	   *
 	   * @example
-	   * parse('a.b') //=> ['a', 'b']
+	   * parse('a.b')      //=> ['a', 'b']
+	   * parse('a[0]')     //=> ['a', '0']
+	   * parse(['a', 'b']) //=> ['a', 'b']
 	   */
 	  parse: function parse(path) {
 	    if (Array.isArray(path)) {
 	      return path;
 	    }
+	    if (!this.hasSeparator(path)) {
+	      return [path];
+	    }
 	    var sep = this.pathSeparator;
-	    return path.replace(/\[(\w+)\]/g, sep + '$1').split(sep);
+	    return path.replace(ARRAY_PATTERN, sep + '$1').split(sep);
 	  },
 
 	  /**
