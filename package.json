@@ -14,6 +14,7 @@
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
+    "preversion": "./scripts/check-version",
     "version": "npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags"
   },

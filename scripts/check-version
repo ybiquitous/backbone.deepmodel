@@ -1,0 +1,11 @@
+#!/bin/sh
+version=$(node -p 'process.env.npm_package_version')
+
+grep -R -q "$version" ./lib
+
+return_code=$?
+
+if [ $return_code != 0 ]; then
+  echo "Expected version '${version}' is not found in ./lib"
+  exit $return_code
+fi
