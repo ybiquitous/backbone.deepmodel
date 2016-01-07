@@ -1,9 +1,7 @@
 /* eslint-env node */
-/* jscs:disable disallowVar */
-'use strict';
-var path = require('path');
-var webpackConfig = require('./webpack.config')[0];
-var isWindows = /^win/.test(process.platform);
+const path = require('path');
+const webpackConfig = require('./webpack.config')[0];
+const isWindows = /^win/.test(process.platform);
 
 module.exports = function(config) {
   config.set({
@@ -32,7 +30,7 @@ module.exports = function(config) {
 
     webpack: {
       module: (function() {
-        var module = webpackConfig.module;
+        const module = webpackConfig.module;
         module.postLoaders = [{
           test: /\.js$/,
           exclude: /(test|node_modules)/,
@@ -75,7 +73,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: (function() {
-      var browsers = [];
+      const browsers = [];
       if (process.env.TRAVIS) {
         browsers.push('Chrome_travis_ci');
       } else {

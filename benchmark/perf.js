@@ -1,13 +1,12 @@
 /* eslint-env node */
 /* eslint no-console: 0 */
-/* jscs:disable disallowVar */
-var Benchmark = require('benchmark');
-var Backbone  = require('backbone');
-var DeepModel = require('../dist/backbone.deepmodel');
+const Benchmark = require('benchmark');
+const Backbone  = require('backbone');
+const DeepModel = require('../dist/backbone.deepmodel');
 
 module.exports = function perf(name, callback) {
-  var model = new Backbone.Model();
-  var deepModel = new DeepModel();
+  const model = new Backbone.Model();
+  const deepModel = new DeepModel();
 
   new Benchmark.Suite()
     .add('Backbone.Model#' + name, function() {
@@ -20,7 +19,7 @@ module.exports = function perf(name, callback) {
       console.log(String(event.target));
     })
     .on('complete', function(event) {
-      var suite = event.currentTarget;
+      const suite = event.currentTarget;
       console.log('Fastest is ' + suite.filter('fastest').map('name'));
     })
     .run({async: true});

@@ -1,9 +1,7 @@
 /* eslint-env node */
-/* jscs:disable disallowVar */
-'use strict';
-var util = require('util');
-var webpack = require('webpack');
-var pkg = require('./package');
+const util = require('util');
+const webpack = require('webpack');
+const pkg = require('./package');
 
 function config(production) {
   return {
@@ -42,7 +40,7 @@ function config(production) {
     },
 
     plugins: (function() {
-      var plugins = [
+      const plugins = [
         new webpack.BannerPlugin(util.format(
           '%s v%s\nCopyright 2015 %s\n%s Licensed',
           pkg.name, pkg.version, pkg.author, pkg.license
