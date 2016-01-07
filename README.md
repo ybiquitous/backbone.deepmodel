@@ -20,8 +20,8 @@ $ npm install backbone.deepmodel --save
 
 Manually download:
 
-- [backbone.deepmodel.min.js](dist/backbone.deepmodel.min.js) (*1.5kb, minified and gzipped*)
-- [backbone.deepmodel.js](dist/backbone.deepmodel.js) (*for development*)
+- [backbone.deepmodel.min.js](dist/backbone.deepmodel.min.js)
+- [backbone.deepmodel.js](dist/backbone.deepmodel.js)
 
 # Dependencies
 
