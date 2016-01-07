@@ -182,14 +182,22 @@ describe('Backbone.DeepModel', () => {
     ], 'change:x');
   });
 
-  it('cannot set non-existent nested attribute', () => {
-    (() => { new DeepModel().set('a.b', 1); }).should.throw(Error);
+  it('sets array element', () => {
+    const model = new DeepModel();
+    model.set('a', ['*']);
+    model.toJSON().should.deep.equal({a: ['*']});
+    model.set('a[0]', '?');
+    model.toJSON().should.deep.equal({a: ['?']});
+    model.set('a[1]', '/');
+    model.toJSON().should.deep.equal({a: ['?', '/']});
+    model.set('a[2]', {b: false});
+    model.toJSON().should.deep.equal({a: ['?', '/', {b: false}]});
+    model.set('a[2].b', true);
+    model.toJSON().should.deep.equal({a: ['?', '/', {b: true}]});
   });
 
-  it('cannot set non-object nested attribute', () => {
-    (() => { new DeepModel({a: 0}).set('a.b', 1); }).should.throw(Error);
-    (() => { new DeepModel({a: {b: 0}}).set('a.b.c', 1); })
-      .should.throw('"a.b.c" does not exist in {"a":{"b":0}}');
+  it('cannot set non-existent nested attribute', () => {
+    (() => { new DeepModel().set('a.b', 1); }).should.throw(Error);
   });
 
   describe('Ajax', () => {
