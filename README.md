@@ -1,3 +1,5 @@
+# Backbone.DeepModel plugin
+
 [![NPM version][npm-version-image]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
@@ -5,8 +7,6 @@
 [![Coverage Status][coverage-image]][coverage-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![devDependency Status][dev-dependency-image]][dev-dependency-url]
-
-# Backbone.DeepModel
 
 Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
@@ -20,8 +20,8 @@ $ npm install backbone.deepmodel --save
 
 Manually download:
 
-- [backbone.deepmodel.min.js](https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.min.js) (*1.5kb, minified and gzipped*)
-- [backbone.deepmodel.js](https://rawgithub.com/ybiquitous/backbone.deepmodel/master/dist/backbone.deepmodel.js) (*for development*)
+- [backbone.deepmodel.min.js](dist/backbone.deepmodel.min.js) (*1.5kb, minified and gzipped*)
+- [backbone.deepmodel.js](dist/backbone.deepmodel.js) (*for development*)
 
 # Dependencies
 
@@ -157,12 +157,8 @@ $ npm install
 $ npm run build
 ```
 
-# License
 
-[MIT](LICENSE) Copyright (c) 2015 ybiquitous
-
-
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: LICENSE
 
 [npm-url]: https://npmjs.org/package/backbone.deepmodel
