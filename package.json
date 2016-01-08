@@ -63,7 +63,7 @@
     "karma-webpack": "1.7.0",
     "mocha": "2.3.4",
     "sinon": "1.17.2",
-    "webpack": "1.12.9"
+    "webpack": "1.12.10"
   },
   "engines": {
     "node": ">=0.12"
