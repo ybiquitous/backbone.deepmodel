@@ -123,14 +123,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this;
 	      }
 
-	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
+	      var _ = _objectPath2.default;
+	      _.pathSeparator = _defaults.pathSeparator;
 
 	      var attrs = undefined;
 	      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
 	        attrs = key;
 	        options = value;
 	      } else {
-	        if (!_objectPath2.default.hasSeparator(key)) {
+	        if (!_.hasSeparator(key)) {
 	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, key, value, options);
 	        }
 	        attrs = {};
@@ -138,20 +139,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
-	        var paths = _objectPath2.default.parse(path);
+	        var paths = _.parse(path);
+
 	        if (paths.length === 1) {
 	          newObj[path] = attrs[path];
 	          return newObj;
 	        }
 
-	        var parentPath = paths.slice(0, -1);
-	        var obj = _objectPath2.default.get(newObj, parentPath) || _objectPath2.default.get(_this2.attributes, parentPath);
-	        if (!obj) {
+	        var rootPath = paths[0];
+	        var obj = newObj[rootPath];
+	        if (!_.isObject(obj)) {
+	          obj = (0, _deepCopy2.default)(_this2.attributes[rootPath]);
+	        }
+	        if (!_.isObject(obj)) {
 	          throw new Error('"' + path + '" does not exist in ' + JSON.stringify(_this2));
 	        }
-	        _objectPath2.default.set(newObj, parentPath, (0, _deepCopy2.default)(obj));
 
-	        return _objectPath2.default.set(newObj, paths, attrs[path]);
+	        newObj[rootPath] = obj;
+	        return _.set(newObj, paths, attrs[path]);
 	      }, {});
 
 	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
@@ -196,16 +201,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
-	function isObject(value) {
-	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
+	function ARRAY_PATTERN() {
+	  return (/\[(\w+)\]/g
+	  );
 	}
 
 	function isArrayIndex(value) {
 	  var num = Number(value);
 	  return num >= 0 && num % 1 === 0;
 	}
-
-	var ARRAY_PATTERN = /\[(\w+)\]/g;
 
 	exports.default = {
 
@@ -216,7 +220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @returns {boolean}
 	   */
 	  hasSeparator: function hasSeparator(s) {
-	    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN.test(s));
+	    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN().test(s));
 	  },
 
 	  /**
@@ -236,7 +240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return [path];
 	    }
 	    var sep = this.pathSeparator;
-	    return path.replace(ARRAY_PATTERN, sep + '$1').split(sep);
+	    return path.replace(ARRAY_PATTERN(), sep + '$1').split(sep);
 	  },
 
 	  /**
@@ -261,16 +265,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {Object} obj
 	   * @param {string | string[]} path
 	   * @param {*} value
-	   * @returns {Object}
+	   * @returns {Object} given `obj`
 	   */
 	  set: function set(obj, path, value) {
+	    var _this = this;
+
 	    var pathElements = this.parse(path);
 	    var lastIndex = pathElements.length - 1;
 	    pathElements.reduce(function (current, pathElement, index) {
 	      if (index < lastIndex) {
 	        var v = current[pathElement];
-	        if (!isObject(v)) {
-	          v = current[pathElement] = isArrayIndex(pathElements[index + 1]) ? [] : {};
+	        if (!_this.isObject(v)) {
+	          v = isArrayIndex(pathElements[index + 1]) ? [] : {};
+	          current[pathElement] = v;
 	        }
 	        current = v;
 	      } else {
@@ -279,6 +286,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return current;
 	    }, obj);
 	    return obj;
+	  },
+
+	  /**
+	   * @param {*} value
+	   * @returns {boolean}
+	   */
+	  isObject: function isObject(value) {
+	    return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 	  }
 	};
 	module.exports = exports['default'];
