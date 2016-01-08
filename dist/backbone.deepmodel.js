@@ -85,19 +85,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 	var DEFAULTS = Object.freeze({
 	  pathSeparator: '.'
 	});
 
 	var _defaults = _extends({}, DEFAULTS);
+
+	function isObject(value) {
+	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
+	}
 
 	var DeepModel = (function (_Backbone$Model) {
 	  _inherits(DeepModel, _Backbone$Model);
@@ -148,14 +152,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var rootPath = paths[0];
 	        var obj = newObj[rootPath];
-	        if (!_.isObject(obj)) {
+	        if (obj == null) {
 	          obj = (0, _deepCopy2.default)(_this2.attributes[rootPath]);
 	        }
-	        if (!_.isObject(obj)) {
+	        if (!isObject(obj)) {
 	          throw new Error('"' + path + '" does not exist in ' + JSON.stringify(_this2));
 	        }
-
 	        newObj[rootPath] = obj;
+
 	        return _.set(newObj, paths, attrs[path]);
 	      }, {});
 
@@ -198,9 +202,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
 	function ARRAY_PATTERN() {
 	  return (/\[(\w+)\]/g
 	  );
@@ -268,32 +269,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @returns {Object} given `obj`
 	   */
 	  set: function set(obj, path, value) {
-	    var _this = this;
-
 	    var pathElements = this.parse(path);
 	    var lastIndex = pathElements.length - 1;
 	    pathElements.reduce(function (current, pathElement, index) {
 	      if (index < lastIndex) {
-	        var v = current[pathElement];
-	        if (!_this.isObject(v)) {
-	          v = isArrayIndex(pathElements[index + 1]) ? [] : {};
-	          current[pathElement] = v;
+	        if (pathElement in current) {
+	          current = current[pathElement];
+	        } else {
+	          var newObj = isArrayIndex(pathElements[index + 1]) ? [] : {};
+	          current = current[pathElement] = newObj;
 	        }
-	        current = v;
 	      } else {
 	        current[pathElement] = value;
 	      }
 	      return current;
 	    }, obj);
 	    return obj;
-	  },
-
-	  /**
-	   * @param {*} value
-	   * @returns {boolean}
-	   */
-	  isObject: function isObject(value) {
-	    return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 	  }
 	};
 	module.exports = exports['default'];
