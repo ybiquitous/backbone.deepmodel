@@ -21,12 +21,8 @@
   "files": [
     "README.md",
     "LICENSE",
-    "index.js",
-    "package.json",
     "dist",
-    "examples",
-    "lib",
-    "test"
+    "lib"
   ],
   "keywords": [
     "backbone"
