@@ -194,6 +194,22 @@ describe('Backbone.DeepModel', () => {
     model.toJSON().should.deep.equal({a: ['?', '/', {b: false}]});
     model.set('a[2].b', true);
     model.toJSON().should.deep.equal({a: ['?', '/', {b: true}]});
+    model.set({
+      'a[0]': '-',
+      'a[1]': 10,
+      'a[2].b': null,
+      'a[3].c': [],
+      'a[4]': {d: 0.1},
+      'a[5][0]': false
+    });
+    model.toJSON().should.deep.equal({a: [
+      '-',
+      10,
+      {b: null},
+      {c: []},
+      {d: 0.1},
+      [false]
+    ]});
   });
 
   it('cannot set non-existent nested attribute', () => {
