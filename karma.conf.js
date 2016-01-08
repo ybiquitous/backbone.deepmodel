@@ -31,11 +31,13 @@ module.exports = function(config) {
     webpack: {
       module: (function() {
         const module = webpackConfig.module;
-        module.postLoaders = [{
-          test: /\.js$/,
-          exclude: /(test|node_modules)/,
-          loader: 'istanbul-instrumenter'
-        }];
+        if (process.argv.indexOf('--auto-watch') === -1) {
+          module.postLoaders = [{
+            test: /\.js$/,
+            exclude: /(test|node_modules)/,
+            loader: 'istanbul-instrumenter'
+          }];
+        }
         return module;
       })()
     },
