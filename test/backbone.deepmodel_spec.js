@@ -316,11 +316,9 @@ describe('Backbone.DeepModel', () => {
   });
 
   describe('configure', () => {
-    beforeEach(() => {
-      DeepModel.defaults({pathSeparator: '/'});
-    });
-
     it('configures path separator', () => {
+      DeepModel.defaults({pathSeparator: '/'});
+
       const model = new DeepModel();
       model.set('a', {});
       model.toJSON().should.deep.equal({a: {}});
@@ -336,6 +334,38 @@ describe('Backbone.DeepModel', () => {
       model.set('a/b', 0);
       model.get('a/b').should.equal(0);
       model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2, 'a/b': 0});
+      model.get('a.b').should.equal(1);
+    });
+
+    it('configures path parser', () => {
+      DeepModel.defaults({
+        pathParser(path) {
+          const sep = '_';
+          if (path.indexOf(sep) === -1) {
+            return [path];
+          }
+          if (path.charAt(0) !== sep) {
+            throw new Error(`Invalid path: ${path}`);
+          }
+          return path.substring(1).split(sep);
+        }
+      });
+
+      const model = new DeepModel();
+      model.set('_a', {});
+      model.toJSON().should.deep.equal({a: {}});
+      model.set('_a_b', 1);
+      model.get('_a_b').should.equal(1);
+      model.toJSON().should.deep.equal({a: {b: 1}});
+      model.set('a.b', 2);
+      model.get('a.b').should.equal(2);
+      model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2});
+
+      DeepModel.defaults(null); // reset
+
+      model.set('_a_b', 0);
+      model.get('_a_b').should.equal(0);
+      model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2, '_a_b': 0});
       model.get('a.b').should.equal(1);
     });
 

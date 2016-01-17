@@ -1,0 +1,12 @@
+.output {
+  background-color: black;
+  color: white;
+  font-size: 1.2em;
+}
+
+.output pre {
+  border-bottom: 2px solid gray;
+  padding: 1em;
+  margin: 0;
+  overflow: auto;
+}

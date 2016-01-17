@@ -94,10 +94,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var DEFAULTS = Object.freeze({
-	  pathSeparator: '.'
+	  pathSeparator: '.',
+	  pathParser: null
 	});
 
 	var _defaults = _extends({}, DEFAULTS);
+
+	function updateObjectPath() {
+	  _objectPath2.default.pathSeparator = _defaults.pathSeparator;
+
+	  var pathParser = _defaults.pathParser;
+	  if (typeof pathParser === 'function' || pathParser === null) {
+	    _objectPath2.default.pathParser = pathParser;
+	  }
+
+	  return _objectPath2.default;
+	}
 
 	function isObject(value) {
 	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
@@ -115,8 +127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(DeepModel, [{
 	    key: 'get',
 	    value: function get(attr) {
-	      _objectPath2.default.pathSeparator = _defaults.pathSeparator;
-	      return _objectPath2.default.get(this.attributes, attr);
+	      return updateObjectPath().get(this.attributes, attr);
 	    }
 	  }, {
 	    key: 'set',
@@ -127,15 +138,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this;
 	      }
 
-	      var _ = _objectPath2.default;
-	      _.pathSeparator = _defaults.pathSeparator;
+	      var _ = updateObjectPath();
 
 	      var attrs = undefined;
 	      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
 	        attrs = key;
 	        options = value;
 	      } else {
-	        if (!_.hasSeparator(key)) {
+	        if (!_.pathParser && !_.hasSeparator(key)) {
 	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, key, value, options);
 	        }
 	        attrs = {};
@@ -145,8 +155,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
 	        var paths = _.parse(path);
 
+	        if (paths.length === 0) {
+	          return newObj;
+	        }
 	        if (paths.length === 1) {
-	          newObj[path] = attrs[path];
+	          newObj[paths[0]] = attrs[path];
 	          return newObj;
 	        }
 
@@ -236,6 +249,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  parse: function parse(path) {
 	    if (Array.isArray(path)) {
 	      return path;
+	    }
+	    if (typeof this.pathParser === 'function') {
+	      return this.pathParser(path);
 	    }
 	    if (!this.hasSeparator(path)) {
 	      return [path];
