@@ -11,7 +11,8 @@
     "restParams": true,
     "templateStrings": true,
     "objectLiteralComputedProperties": true,
-    "objectLiteralShorthandMethods": true
+    "objectLiteralShorthandMethods": true,
+    "forOf": true
   },
   "rules": {
     "no-shadow": 2,
