@@ -2,29 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Backbone.DeepModel Examples</title>
-    <style>
-      #output {
-        background-color: black;
-        color: white;
-        font-size: 1.2em;
-        padding: 0.5em;
-      }
-    </style>
+    <title>Backbone.DeepModel Simple Example</title>
+    <link href="./style.css" rel="stylesheet">
   </head>
   <body>
-    <div id="output"></div>
+    <div class="output"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
     <script src="../dist/backbone.deepmodel.js"></script>
+    <script src="./util.js"></script>
     <script>
-      var output = document.getElementById('output');
-      console.log = function(arg) {
-        console.info(arg);
-        output.innerHTML += '<pre><code>' + JSON.stringify(arg) + '</code></pre><hr>';
-      };
-
       var Person = Backbone.DeepModel.extend({
         defaults: {
           name: {first: '', last: ''},

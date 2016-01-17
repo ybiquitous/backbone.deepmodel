@@ -117,7 +117,7 @@ DeepModel.defaults({anySetting: true});
 DeepModel.defaults(null); // reset!
 ```
 
-### pathSeparator (default: '.')
+### _pathSeparator: string_ (default: '.')
 
 ```js
 DeepModel.defaults({pathSeparator: '/'});
@@ -126,6 +126,21 @@ var model = new DeepModel();
 model.set('a', {});
 model.set('a/b', 1);
 model.get('a/b'); //=> 1
+```
+
+### _pathParser: (string) => string[]_ (default: null)
+
+```js
+DeepModel.defaults({
+  pathParser: function(path) {
+    return path.split('_');
+  }
+});
+
+var model = new DeepModel();
+model.set('a', {});
+model.set('a_b', 1);
+model.get('a_b'); //=> 1
 ```
 
 # Examples

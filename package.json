@@ -12,7 +12,7 @@
     "lint": "npm run eslint && npm run jscs",
     "build": "webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
-    "examples": "http-server . -o -c-1",
+    "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
     "check-version": "./scripts/check-version",
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
