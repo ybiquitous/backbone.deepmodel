@@ -263,19 +263,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * @param {Object} obj
 	   * @param {string | string[]} path
-	   * @returns {?Object}
+	   * @returns {?*}
 	   */
 	  get: function get(obj, path) {
 	    var pathElements = this.parse(path);
+	    if (pathElements.length === 0) {
+	      return;
+	    }
+
+	    var value = obj;
 	    for (var i = 0, len = pathElements.length; i < len; i++) {
 	      var pathElement = pathElements[i];
-	      if (pathElement in obj) {
-	        obj = obj[pathElement];
+	      if (pathElement in value) {
+	        value = value[pathElement];
 	      } else {
 	        return;
 	      }
 	    }
-	    return obj;
+	    return value;
 	  },
 
 	  /**

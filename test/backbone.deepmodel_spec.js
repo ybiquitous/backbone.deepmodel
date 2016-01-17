@@ -340,6 +340,10 @@ describe('Backbone.DeepModel', () => {
     it('configures path parser', () => {
       DeepModel.defaults({
         pathParser(path) {
+          if (path === '*') {
+            return []; // ignore
+          }
+
           const sep = '_';
           if (path.indexOf(sep) === -1) {
             return [path];
@@ -360,6 +364,8 @@ describe('Backbone.DeepModel', () => {
       model.set('a.b', 2);
       model.get('a.b').should.equal(2);
       model.toJSON().should.deep.equal({a: {b: 1}, 'a.b': 2});
+      model.set('*', 3);
+      should.equal(model.get('*'), undefined);
 
       DeepModel.defaults(null); // reset
 

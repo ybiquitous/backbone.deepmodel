@@ -133,6 +133,9 @@ model.get('a/b'); //=> 1
 ```js
 DeepModel.defaults({
   pathParser: function(path) {
+    if (path === '*') {
+      return []; // returns empty array if ignore
+    }
     return path.split('_');
   }
 });
@@ -141,6 +144,8 @@ var model = new DeepModel();
 model.set('a', {});
 model.set('a_b', 1);
 model.get('a_b'); //=> 1
+model.set('*', 2);
+model.get('*'); //=> undefined
 ```
 
 # Examples
