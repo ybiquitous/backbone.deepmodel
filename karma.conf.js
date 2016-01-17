@@ -49,7 +49,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'coverage', 'threshold'],
 
     coverageReporter: {
       dir: path.join(__dirname, 'coverage'),
@@ -57,6 +57,13 @@ module.exports = function(config) {
         {type: 'html', subdir: 'report-html'},
         {type: 'lcov', subdir: 'report-lcov'}
       ]
+    },
+
+    thresholdReporter: {
+      statements: 87,
+      branches: 70,
+      functions: 90,
+      lines: 100
     },
 
     // web server port
