@@ -271,36 +271,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
+	    // TODO: Because of "Symbol is not defined", cannot use `for..of`
 	    var value = obj;
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
-	    try {
-	      for (var _iterator = pathElements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var pathElement = _step.value;
-
-	        if (pathElement in value) {
-	          value = value[pathElement];
-	        } else {
-	          return;
-	        }
-	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
+	    for (var i = 0, len = pathElements.length; i < len; i++) {
+	      var pathElement = pathElements[i];
+	      if (pathElement in value) {
+	        value = value[pathElement];
+	      } else {
+	        return;
 	      }
 	    }
-
 	    return value;
 	  },
 
