@@ -61,6 +61,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -68,10 +72,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 
 	var _backbone = __webpack_require__(1);
 
@@ -197,6 +197,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = DeepModel;
 
+
 	DeepModel.extend = _backbone2.default.Model.extend;
 	module.exports = exports['default'];
 
@@ -237,6 +238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN().test(s));
 	  },
 
+
 	  /**
 	   * @param {string | string[]} path
 	   * @returns {string[]}
@@ -259,6 +261,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var sep = this.pathSeparator;
 	    return path.replace(ARRAY_PATTERN(), sep + '$1').split(sep);
 	  },
+
 
 	  /**
 	   * @param {Object} obj
@@ -283,6 +286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return value;
 	  },
+
 
 	  /**
 	   * @param {Object} obj
@@ -317,11 +321,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	exports.default = deepCopy;
 	function deepCopy(source) {
 	  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source === null) {
