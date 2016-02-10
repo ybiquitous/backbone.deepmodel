@@ -1,12 +1,10 @@
 # Backbone.DeepModel plugin
 
 [![NPM version][npm-version-image]][npm-url]
-[![NPM downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coverage-image]][coverage-url]
 [![Dependency Status][dependency-image]][dependency-url]
-[![devDependency Status][dev-dependency-image]][dev-dependency-url]
 
 Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
