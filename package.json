@@ -7,7 +7,7 @@
     "test": "karma start --single-run",
     "test-watch": "karma start --auto-watch",
     "coveralls": "cat coverage/report-lcov/lcov.info | coveralls",
-    "eslint": "eslint --ignore-path .gitignore --ignore-pattern dist,coverage .",
+    "eslint": "eslint .",
     "jscs": "jscs .",
     "lint": "npm run eslint && npm run jscs",
     "build": "webpack",

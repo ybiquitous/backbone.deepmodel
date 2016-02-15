@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-shadow": 2,
+    "eqeqeq": [2, "smart"]
+  },
+  "extends": "eslint:recommended"
+}
