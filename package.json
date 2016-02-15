@@ -47,7 +47,7 @@
     "http-server": "^0.8.5",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jquery": "latest",
-    "jscs": "^2.9.0",
+    "jscs": "^2.10.0",
     "karma": "^0.13.19",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.2",
