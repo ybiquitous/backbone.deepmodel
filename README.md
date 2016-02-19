@@ -159,23 +159,6 @@ $ npm install
 $ npm run examples
 ```
 
-# Test
-
-```sh
-$ npm install
-$ npm test
-# or watch mode "npm run test-watch"
-```
-
-# Build
-
-By [babel](https://babeljs.io/) and [webpack](https://webpack.github.io/).
-
-```sh
-$ npm install
-$ npm run build
-```
-
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: LICENSE
