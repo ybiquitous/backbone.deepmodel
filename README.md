@@ -5,7 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coverage-image]][coverage-url]
 [![Dependency Status][dependency-image]][dependency-url]
-[![Commitizen friendly](commitizen-image)](commitizen-url)
+[![Commitizen friendly][commitizen-image]][commitizen-url]
 
 Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
