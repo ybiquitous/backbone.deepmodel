@@ -64,7 +64,6 @@
     "mocha": "^2.4.5",
     "pre-git": "^3.3.0",
     "sinon": "^1.17.3",
-    "validate-commit-msg": "^2.0.0",
     "webpack": "^1.12.13"
   },
   "engines": {
