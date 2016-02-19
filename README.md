@@ -9,7 +9,7 @@
 
 Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
-# Install
+## Install
 
 By `npm` (Node.js):
 
@@ -22,11 +22,11 @@ Manually download:
 - [backbone.deepmodel.min.js](dist/backbone.deepmodel.min.js)
 - [backbone.deepmodel.js](dist/backbone.deepmodel.js)
 
-# Dependencies
+## Dependencies
 
 - [Backbone.js](http://backbonejs.org/) (>= 1.2.0)
 
-# Use
+## Use
 
 ```js
 var Person = Backbone.DeepModel.extend({
@@ -61,7 +61,7 @@ console.log(p.get('name.first')); //=> 'Ken'
 console.log(p.get('pets[0].name')); //=> 'Tama'
 ```
 
-# Use in ES2015(ES6)
+## Use in ES6
 
 ```js
 import DeepModel from 'backbone.deepmodel/lib'
@@ -79,9 +79,9 @@ let p = new Person();
 p.set('name.first', 'Tom');
 ```
 
-# API
+## API
 
-## DeepModel (extends [Backbone.Model](http://backbonejs.org/#Model))
+### DeepModel (extends [Backbone.Model](http://backbonejs.org/#Model))
 
 ```js
 // ES5
@@ -91,7 +91,7 @@ var Person = DeepModel.extend({...});
 class Person extends DeepModel {...}
 ```
 
-## DeepModel.prototype.get(attribute: string)
+### DeepModel.prototype.get(attribute: string)
 
 Override [Backbone.Model.prototype.get](http://backbonejs.org/#Model-get).
 
@@ -99,7 +99,7 @@ Override [Backbone.Model.prototype.get](http://backbonejs.org/#Model-get).
 model.get('a.b');
 ```
 
-## DeepModel.prototype.set(attributes: Object, options?: Object)
+### DeepModel.prototype.set(attributes: Object, options?: Object)
 
 Override [Backbone.Model.prototype.set](http://backbonejs.org/#Model-set).
 Support `set('key', 'value', options)` style.
@@ -109,14 +109,14 @@ model.set({'a.b': 'value'});
 model.set('a.b', 'value');
 ```
 
-## DeepModel.defaults(settings?: Object)
+### DeepModel.defaults(settings?: Object)
 
 ```js
 DeepModel.defaults({anySetting: true});
 DeepModel.defaults(null); // reset!
 ```
 
-### _pathSeparator: string_ (default: '.')
+#### _pathSeparator: string_ (default: '.')
 
 ```js
 DeepModel.defaults({pathSeparator: '/'});
@@ -127,7 +127,7 @@ model.set('a/b', 1);
 model.get('a/b'); //=> 1
 ```
 
-### _pathParser: (string) => string[]_ (default: null)
+#### _pathParser: (string) => string[]_ (default: null)
 
 ```js
 DeepModel.defaults({
@@ -147,7 +147,7 @@ model.set('*', 2);
 model.get('*'); //=> undefined
 ```
 
-# Examples
+## Examples
 
 To try examples, please run the following commands.
 When the web server is started on localhost, then go to `/examples` directory.
