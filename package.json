@@ -75,7 +75,9 @@
     },
     "pre-git": {
       "commit-msg": "conventional",
-      "pre-commit": [],
+      "pre-commit": [
+        "npm run lint"
+      ],
       "pre-push": [],
       "post-commit": [],
       "post-merge": []
