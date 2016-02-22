@@ -1,5 +1,5 @@
 /*!
- * backbone.deepmodel v0.2.0
+ * backbone.deepmodel v0.2.1
  * Copyright 2015 ybiquitous <10koba01@gmail.com>
  * MIT Licensed
  */
