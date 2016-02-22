@@ -46,7 +46,7 @@
     "commitizen": "^2.5.0",
     "coveralls": "^2.11.6",
     "cz-conventional-changelog": "^1.1.5",
-    "eslint": "^2.0.0",
+    "eslint": "^2.2.0",
     "http-server": "^0.9.0",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jquery": "latest",
