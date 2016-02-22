@@ -4,8 +4,9 @@
   "description": "Backbone.DeepModel plugin",
   "main": "./dist/backbone.deepmodel",
   "scripts": {
-    "test": "karma start --single-run",
-    "test-watch": "karma start --auto-watch",
+    "test": "karma start --single-run --browsers PhantomJS",
+    "test:all": "karma start --single-run",
+    "test:watch": "karma start --auto-watch --browsers PhantomJS",
     "coveralls": "cat coverage/report-lcov/lcov.info | coveralls",
     "eslint": "eslint .",
     "jscs": "jscs .",
@@ -58,10 +59,12 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-ie-launcher": "^0.2.0",
     "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
     "karma-threshold-reporter": "^0.1.15",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.4",
     "pre-git": "^3.4.0",
     "sinon": "^1.17.3",
     "webpack": "^1.12.13"
@@ -76,7 +79,8 @@
     "pre-git": {
       "commit-msg": "conventional",
       "pre-commit": [
-        "npm run lint"
+        "npm run lint",
+        "npm test"
       ],
       "pre-push": [],
       "post-commit": [],

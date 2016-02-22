@@ -12,13 +12,31 @@ $ npm install
 
 ## Test
 
+Test runner used in this project is [Karma](https://karma-runner.github.io/).
+
+By default, run tests on *PhantomJS*:
 ```sh
 $ npm test
 ```
 
-Watching file changes:
+In case of *Google Chrome* and *Firefox*:
 ```sh
-$ npm run test-watch
+$ npm test -- --browsers Chrome,Firefix
+```
+
+Watching file changes (by default on *PhantomJS*):
+```sh
+$ npm run test:watch
+```
+
+In case of *Google Chrome*:
+```sh
+$ npm run test:watch -- --browsers Chrome
+```
+
+Run tests on all browsers(also *Internet Explorer* if current OS is *Windows*):
+```sh
+$ npm run test:all
 ```
 
 ## Lint
