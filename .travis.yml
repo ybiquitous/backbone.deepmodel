@@ -8,6 +8,7 @@ node_js:
 script:
   - "npm run lint"
   - "npm run test:all"
+  - "npm run test:backbone1.2"
   - "npm run benchmark"
 
 before_script:
