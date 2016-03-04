@@ -248,10 +248,10 @@ describe('Backbone.DeepModel', () => {
       const request = server.requests[0];
       request.should.have.property('method', method);
       request.should.have.property('url', url);
-      request.should.have.property(
-        'requestBody',
-        requestBody ? JSON.stringify(requestBody) : requestBody
-      );
+
+      if (requestBody) {
+        JSON.parse(request.requestBody).should.deep.equal(requestBody);
+      }
     };
 
     it('fetches from server', () => {
@@ -265,7 +265,7 @@ describe('Backbone.DeepModel', () => {
         id: 1, name: {first: 'John', last: 'Lennon'}
       });
 
-      expectRequest('GET', '/users/1', null);
+      expectRequest('GET', '/users/1');
     });
 
     it('saves new model to server', () => {
