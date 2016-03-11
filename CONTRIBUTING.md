@@ -63,3 +63,9 @@ $ npm run fullbuild
 Required *Commitizen friendly* commit message. See [details](https://github.com/commitizen/cz-cli).
 
 **RECOMMENDED** command is `npm run commit`, instead of `git commit`.
+
+## Release
+
+1. Update `get VERSION() {...}` in `lib/index.js`.
+2. Run `npm version <new_version>`. See [npm-version](https://docs.npmjs.com/cli/version).
+3. Run `npm publish`. See [npm-publish](https://docs.npmjs.com/cli/publish).
