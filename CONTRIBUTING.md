@@ -66,6 +66,7 @@ Required *Commitizen friendly* commit message. See [details](https://github.com/
 
 ## Release
 
-1. Update `get VERSION() {...}` in `lib/index.js`.
-2. Run `npm version <new_version>`. See [npm-version](https://docs.npmjs.com/cli/version).
-3. Run `npm publish`. See [npm-publish](https://docs.npmjs.com/cli/publish).
+1. Update `get VERSION() { return '<new_version>'; }` in `lib/index.js`.
+2. Commit `lib/index.js` in message `chore: prepare to release <new_version>`.
+3. Run `npm version <new_version> -m "chore: release %s"`. See [npm-version](https://docs.npmjs.com/cli/version).
+4. Run `npm publish`. See [npm-publish](https://docs.npmjs.com/cli/publish).
