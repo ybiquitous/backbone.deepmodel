@@ -21,7 +21,7 @@ $ npm test
 
 In case of *Google Chrome* and *Firefox*:
 ```sh
-$ npm test -- --browsers Chrome,Firefix
+$ npm test -- --browsers Chrome,Firefox
 ```
 
 Watching file changes (by default on *PhantomJS*):
