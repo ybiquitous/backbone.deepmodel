@@ -20,13 +20,11 @@
 
 ## Install
 
-By `npm` (Node.js):
-
 ```sh
-$ npm install backbone.deepmodel --save
+npm install backbone.deepmodel --save
 ```
 
-Manually download:
+Or download manually:
 
 - [backbone.deepmodel.min.js](dist/backbone.deepmodel.min.js)
 - [backbone.deepmodel.js](dist/backbone.deepmodel.js)
