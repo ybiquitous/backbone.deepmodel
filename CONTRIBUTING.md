@@ -1,6 +1,15 @@
 # Contributing to Backbone.DeepModel plugin
 
-You can work on Either Linux or Windows OS.
+You can work on either *Linux* or *Windows*.
+
+## Index
+
+- [Setup](#setup)
+- [Test](#test)
+- [Lint](#lint)
+- [Build](#build)
+- [Commit](#commit)
+- [Release](#release)
 
 ## Setup
 
