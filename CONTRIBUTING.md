@@ -62,8 +62,4 @@ $ npm run fullbuild
 
 Required *Commitizen friendly* commit message. See [details](https://github.com/commitizen/cz-cli).
 
-**DO NOT USE** `git commit`. Please use:
-
-```sh
-$ npm run commit
-```
+**RECOMMENDED** command is `npm run commit`, instead of `git commit`.
