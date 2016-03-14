@@ -1,7 +1,7 @@
 /* eslint-env node */
 /* eslint no-console: 0 */
 const Benchmark = require('benchmark');
-const Backbone  = require('backbone');
+const Backbone = require('backbone');
 const DeepModel = require('../dist/backbone.deepmodel');
 
 module.exports = function perf(name, callback) {

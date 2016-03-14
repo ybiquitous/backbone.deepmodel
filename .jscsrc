@@ -1,8 +1,0 @@
-{
-  "preset": "google",
-  "excludeFiles": [
-    "dist/**",
-    "coverage/**"
-  ],
-  "disallowVar": true
-}

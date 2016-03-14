@@ -3,11 +3,12 @@
 import DeepModel from '../lib';
 
 describe('Backbone.DeepModel', () => {
-
   let sandbox;
+
   beforeEach(() => {
     sandbox = sinon.sandbox.create();
   });
+
   afterEach(() => {
     sandbox.restore();
   });
@@ -379,5 +380,4 @@ describe('Backbone.DeepModel', () => {
       DeepModel.defaults(null);
     });
   });
-
 });

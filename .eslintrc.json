@@ -1,14 +1,7 @@
 {
-  "env": {
-    "browser": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
-  },
+  "extends": "standard",
   "rules": {
-    "no-shadow": 2,
-    "eqeqeq": [2, "smart"]
-  },
-  "extends": "eslint:recommended"
+    "semi": [2, "always"],
+    "space-before-function-paren": [2, "never"]
+  }
 }
