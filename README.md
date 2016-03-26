@@ -4,6 +4,7 @@
 [![Coverage Status][coverage-image]][coverage-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
+[![semantic-release][semantic-release-image]][semantic-release-url]
 
 # Backbone.DeepModel plugin
 
@@ -190,5 +191,8 @@ See [here](CONTRIBUTING.md).
 [dev-dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies
 [dev-dependency-image]: https://img.shields.io/david/dev/ybiquitous/backbone.deepmodel.svg
 
-[commitizen-url]: http://commitizen.github.io/cz-cli/
+[commitizen-url]: http://commitizen.github.io/cz-cli
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
+[semantic-release-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
