@@ -17,6 +17,7 @@
 - [Use in ES6](#use-in-es6)
 - [API](#api)
 - [Examples](#examples)
+- [Contribute](#contribute)
 
 ## Install
 
@@ -165,6 +166,10 @@ $ cd backbone.deepmodel
 $ npm install
 $ npm run examples
 ```
+
+## Contribute
+
+See [here](CONTRIBUTING.md).
 
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
