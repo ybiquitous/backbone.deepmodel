@@ -13,7 +13,7 @@
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
-    "check-version": "./scripts/check-version",
+    "check-version": "node ./scripts/check-version",
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags",
     "commit": "commit-wizard",
