@@ -3,10 +3,10 @@
   "description": "Backbone.DeepModel plugin",
   "main": "./dist/backbone.deepmodel",
   "scripts": {
-    "test": "karma start --single-run --browsers PhantomJS",
-    "test:all": "karma start --single-run",
+    "test": "karma start --single-run",
+    "test:quick": "karma start --single-run --browsers PhantomJS",
     "test:watch": "karma start --auto-watch --browsers PhantomJS",
-    "test:backbone1.2": "npm install backbone@1.2 && npm run test:all && npm install backbone",
+    "test:backbone1.2": "npm install backbone@1.2 && npm run test && npm install backbone",
     "coveralls": "cat coverage/report-lcov/lcov.info | coveralls",
     "lint": "eslint .",
     "build": "webpack",
@@ -80,7 +80,7 @@
       "commit-msg": "conventional",
       "pre-commit": [
         "npm run lint",
-        "npm test"
+        "npm run test:quick"
       ],
       "pre-push": [],
       "post-commit": [],

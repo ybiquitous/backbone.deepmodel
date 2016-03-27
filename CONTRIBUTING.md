@@ -45,7 +45,7 @@ $ npm run test:watch -- --browsers Chrome
 
 Run tests on all browsers(also *Internet Explorer* if current OS is *Windows*):
 ```sh
-$ npm run test:all
+$ npm test
 ```
 
 ## Lint
