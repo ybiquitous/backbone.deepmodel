@@ -1,7 +1,6 @@
 /* eslint-env node */
 const util = require('util');
 const webpack = require('webpack');
-const pkg = require('./package');
 
 function config(production) {
   return {
@@ -43,7 +42,10 @@ function config(production) {
       const plugins = [
         new webpack.BannerPlugin(util.format(
           '%s v%s\nCopyright 2015 %s\n%s Licensed',
-          pkg.name, pkg.version, pkg.author, pkg.license
+          process.env.npm_package_name,
+          process.env.npm_package_version,
+          process.env.npm_package_author_name,
+          process.env.npm_package_license
         ))
       ];
       if (production) {
