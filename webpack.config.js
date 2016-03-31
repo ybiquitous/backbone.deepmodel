@@ -41,10 +41,11 @@ function config(production) {
     plugins: (function() {
       const plugins = [
         new webpack.BannerPlugin(util.format(
-          '%s v%s\nCopyright 2015 %s\n%s Licensed',
+          '%s v%s\nCopyright 2015 %s <%s>\n%s Licensed',
           process.env.npm_package_name,
           process.env.npm_package_version,
           process.env.npm_package_author_name,
+          process.env.npm_package_author_email,
           process.env.npm_package_license
         ))
       ];
