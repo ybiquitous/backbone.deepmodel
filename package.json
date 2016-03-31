@@ -1,5 +1,6 @@
 {
   "name": "backbone.deepmodel",
+  "version": "0.2.3",
   "description": "Backbone.DeepModel plugin",
   "main": "./dist/backbone.deepmodel",
   "scripts": {
@@ -16,8 +17,7 @@
     "check-version": "node ./scripts/check-version",
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags",
-    "commit": "commit-wizard",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "commit": "commit-wizard"
   },
   "files": [
     "README.md",
@@ -69,8 +69,7 @@
     "phantomjs-prebuilt": "^2.1.7",
     "pre-git": "^3.6.1",
     "sinon": "^1.17.3",
-    "webpack": "^1.12.14",
-    "semantic-release": "^4.3.5"
+    "webpack": "^1.12.14"
   },
   "engines": {
     "node": ">=0.12"
