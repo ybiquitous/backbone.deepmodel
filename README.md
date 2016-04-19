@@ -4,6 +4,7 @@
 [![Coverage Status][coverage-image]][coverage-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
+[![Documentation][documentation-image]][documentation-url]
 
 # Backbone.DeepModel plugin
 
@@ -128,3 +129,6 @@ See [here](CONTRIBUTING.md).
 
 [commitizen-url]: http://commitizen.github.io/cz-cli
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+
+[documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
+[documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
