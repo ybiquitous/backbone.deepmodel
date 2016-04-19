@@ -9,7 +9,7 @@
 
 > Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
 
-## Index
+## Table of Contents
 
 - [Install](#install)
 - [Dependencies](#dependencies)
