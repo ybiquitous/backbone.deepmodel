@@ -19,7 +19,8 @@
     "postversion": "git push && git push --tags && npm run github-release",
     "commit": "commit-wizard",
     "upgrade": "npm-check-updates --upgrade --dev",
-    "github-release": "conventional-github-releaser -p angular"
+    "github-release": "conventional-github-releaser -p angular",
+    "doc": "esdoc -c esdoc.json"
   },
   "files": [
     "README.md",
@@ -50,6 +51,7 @@
     "chai": "^3.5.0",
     "conventional-github-releaser": "^1.1.1",
     "coveralls": "^2.11.9",
+    "esdoc": "^0.4.6",
     "eslint": "^2.7.0",
     "eslint-config-standard": "^5.1.0",
     "eslint-plugin-promise": "^1.1.0",
