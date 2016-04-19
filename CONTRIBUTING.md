@@ -2,7 +2,7 @@
 
 You can work on either *Linux* or *Windows*.
 
-## Index
+## Table of Contents
 
 - [Setup](#setup)
 - [Test](#test)
@@ -14,64 +14,72 @@ You can work on either *Linux* or *Windows*.
 ## Setup
 
 ```sh
-$ git clone https://github.com/ybiquitous/backbone.deepmodel.git
-$ cd backbone.deepmodel
-$ npm install
+git clone https://github.com/ybiquitous/backbone.deepmodel.git
+cd backbone.deepmodel
+npm install
 ```
 
 ## Test
 
 Test runner used in this project is [Karma](https://karma-runner.github.io/).
-
 By default, run tests on *PhantomJS*:
+
 ```sh
-$ npm test
+npm test
 ```
 
-In case of *Google Chrome* and *Firefox*:
+In case of *Chrome* and *Firefox*:
+
 ```sh
-$ npm test -- --browsers Chrome,Firefox
+npm test -- --browsers Chrome,Firefox
 ```
 
 Watching file changes (by default on *PhantomJS*):
+
 ```sh
-$ npm run test:watch
+npm run test:watch
 ```
 
-In case of *Google Chrome*:
+In case of *Chrome*:
+
 ```sh
-$ npm run test:watch -- --browsers Chrome
+npm run test:watch -- --browsers Chrome
 ```
 
 Run tests on all browsers(also *Internet Explorer* if current OS is *Windows*):
+
 ```sh
-$ npm test
+npm test
 ```
 
 ## Lint
 
 ```sh
-$ npm run lint
+npm run lint
 ```
 
 ## Build
 
-Source code is written in *ECMAScript 6*. Build by [Babel](https://babeljs.io/) and [Webpack](https://webpack.github.io/).
+Source code is written in *ECMAScript 6*. Build by
+
+- [Babel](https://babeljs.io/)
+- [Webpack](https://webpack.github.io/).
 
 ```sh
-$ npm run build
+npm run build
 ```
 
 Full-build includes test and lint:
+
 ```sh
-$ npm run fullbuild
+npm run fullbuild
 ```
 
 ## Commit
 
 Required *Commitizen friendly* commit message. See [details](https://github.com/commitizen/cz-cli).
 
-**RECOMMENDED** command is `npm run commit`, instead of `git commit`.
+**RECOMMENDED** command is `npm run commit` instead of `git commit`.
 
 ## Release
 
@@ -79,3 +87,4 @@ Required *Commitizen friendly* commit message. See [details](https://github.com/
 2. Commit `lib/index.js` in message `chore: prepare to release <new_version>`.
 3. Run `npm version <new_version> -m "chore: release %s"`. See [npm-version](https://docs.npmjs.com/cli/version).
 4. Run `npm publish`. See [npm-publish](https://docs.npmjs.com/cli/publish).
+5. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
