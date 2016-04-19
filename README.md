@@ -89,71 +89,7 @@ p.set('name.first', 'Tom');
 
 ## API
 
-### DeepModel (extends [Backbone.Model](http://backbonejs.org/#Model))
-
-```js
-// ES5
-var Person = DeepModel.extend({...});
-
-// ES2015(ES6)
-class Person extends DeepModel {...}
-```
-
-### DeepModel.prototype.get(attribute: string)
-
-Override [Backbone.Model.prototype.get](http://backbonejs.org/#Model-get).
-
-```js
-model.get('a.b');
-```
-
-### DeepModel.prototype.set(attributes: Object, options?: Object)
-
-Override [Backbone.Model.prototype.set](http://backbonejs.org/#Model-set).
-Support `set('key', 'value', options)` style.
-
-```js
-model.set({'a.b': 'value'});
-model.set('a.b', 'value');
-```
-
-### DeepModel.defaults(settings?: Object)
-
-```js
-DeepModel.defaults({anySetting: true});
-DeepModel.defaults(null); // reset!
-```
-
-#### _pathSeparator: string_ (default: '.')
-
-```js
-DeepModel.defaults({pathSeparator: '/'});
-
-var model = new DeepModel();
-model.set('a', {});
-model.set('a/b', 1);
-model.get('a/b'); //=> 1
-```
-
-#### _pathParser: (string) => string[]_ (default: null)
-
-```js
-DeepModel.defaults({
-  pathParser: function(path) {
-    if (path === '*') {
-      return []; // returns empty array if ignore
-    }
-    return path.split('_');
-  }
-});
-
-var model = new DeepModel();
-model.set('a', {});
-model.set('a_b', 1);
-model.get('a_b'); //=> 1
-model.set('*', 2);
-model.get('*'); //=> undefined
-```
+See [API Documentation](https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/identifiers.html).
 
 ## Examples
 
