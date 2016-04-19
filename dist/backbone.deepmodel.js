@@ -1,5 +1,5 @@
 /*!
- * backbone.deepmodel v0.2.4
+ * backbone.deepmodel v0.3.0
  * Copyright 2015 ybiquitous <10koba01@gmail.com>
  * MIT Licensed
  */
@@ -115,6 +115,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 	}
 
+	/**
+	 * @class
+	 * @see http://backbonejs.org/#Model
+	 *
+	 * @example
+	 * // ES5
+	 * var Person = DeepModel.extend({...});
+	 *
+	 * // ES2015(ES6)
+	 * class Person extends DeepModel {...}
+	 */
+
 	var DeepModel = function (_Backbone$Model) {
 	  _inherits(DeepModel, _Backbone$Model);
 
@@ -126,30 +138,55 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  _createClass(DeepModel, [{
 	    key: 'get',
-	    value: function get(attr) {
-	      return updateObjectPath().get(this.attributes, attr);
+
+
+	    /**
+	     * @see http://backbonejs.org/#Model-get
+	     * @override
+	     * @param {string} attribute
+	     * @returns {*}
+	     *
+	     * @example
+	     * model.get('a.b');
+	     */
+	    value: function get(attribute) {
+	      return updateObjectPath().get(this.attributes, attribute);
 	    }
+
+	    /**
+	     * @see http://backbonejs.org/#Model-set
+	     * @override
+	     * @param {string} attribute
+	     * @param {*}      value
+	     * @param {Object} [options]
+	     * @returns {DeepModel}
+	     *
+	     * @example
+	     * model.set({'a.b': 'value'});
+	     * model.set('a.b', 'value');
+	     */
+
 	  }, {
 	    key: 'set',
-	    value: function set(key, value, options) {
+	    value: function set(attribute, value, options) {
 	      var _this2 = this;
 
-	      if (key == null) {
+	      if (attribute == null) {
 	        return this;
 	      }
 
 	      var _ = updateObjectPath();
 
 	      var attrs = void 0;
-	      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
-	        attrs = key;
+	      if ((typeof attribute === 'undefined' ? 'undefined' : _typeof(attribute)) === 'object') {
+	        attrs = attribute;
 	        options = value;
 	      } else {
-	        if (!_.pathParser && !_.hasSeparator(key)) {
-	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, key, value, options);
+	        if (!_.pathParser && !_.hasSeparator(attribute)) {
+	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, attribute, value, options);
 	        }
 	        attrs = {};
-	        attrs[key] = value;
+	        attrs[attribute] = value;
 	      }
 
 	      var newAttrs = Object.keys(attrs).reduce(function (newObj, path) {
@@ -180,15 +217,57 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }], [{
 	    key: 'defaults',
+
+
+	    /**
+	     * Update default settings.
+	     *
+	     * @param {Object} [settings={}] reset if `null`
+	     * @param {string} [settings.pathSeparator='/']
+	     * @param {function(path: string): Array.<string>} [settings.pathParser] ignore if returns `[]`
+	     * @returns {Object}
+	     *
+	     * @example
+	     * DeepModel.defaults({anySetting: true});
+	     * DeepModel.defaults(null); // reset!
+	     *
+	     * @example
+	     * DeepModel.defaults({pathSeparator: '/'});
+	     *
+	     * let model = new DeepModel();
+	     * model.set('a', {});
+	     * model.set('a/b', 1);
+	     * model.get('a/b'); //=> 1
+	     *
+	     * @example
+	     * DeepModel.defaults({
+	     *   pathParser(path) {
+	     *     if (path === '*') { return []; } // ignore!
+	     *     return path.split('_');
+	     *   }
+	     * });
+	     *
+	     * let model = new DeepModel();
+	     * model.set('a', {});
+	     * model.set('a_b', 1);
+	     * model.get('a_b'); //=> 1
+	     * model.set('*', 2);
+	     * model.get('*'); //=> undefined
+	     */
 	    value: function defaults() {
 	      var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-	      _extends(_defaults, settings === null ? DEFAULTS : settings);
+	      return _extends(_defaults, settings === null ? DEFAULTS : settings);
 	    }
 	  }, {
 	    key: 'VERSION',
+
+
+	    /**
+	     * this module's version.
+	     */
 	    get: function get() {
-	      return '0.2.4';
+	      return '0.3.0';
 	    }
 	  }]);
 
@@ -328,6 +407,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	exports.default = deepCopy;
+	/**
+	 * @private
+	 * @param {Object|Array} [source]
+	 * @returns {Object|Array}
+	 */
 	function deepCopy(source) {
 	  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source === null) {
 	    return source;
