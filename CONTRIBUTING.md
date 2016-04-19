@@ -63,7 +63,7 @@ npm run lint
 Source code is written in *ECMAScript 6*. Build by
 
 - [Babel](https://babeljs.io/)
-- [Webpack](https://webpack.github.io/).
+- [Webpack](https://webpack.github.io/)
 
 ```sh
 npm run build
