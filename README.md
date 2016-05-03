@@ -5,6 +5,7 @@
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
 [![Documentation][documentation-image]][documentation-url]
+[![js-standard-style][js-standard-image]][js-standard-url]
 
 # Backbone.DeepModel plugin
 
@@ -132,3 +133,6 @@ See [here](CONTRIBUTING.md).
 
 [documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
 [documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
+
+[js-standard-url]: http://standardjs.com/
+[js-standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg

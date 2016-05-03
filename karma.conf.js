@@ -1,11 +1,10 @@
 /* eslint-env node */
-const path = require('path');
-const webpackConfig = require('./webpack.config')[0];
-const isWindows = /^win/.test(process.platform);
+const path = require('path')
+const webpackConfig = require('./webpack.config')[0]
+const isWindows = /^win/.test(process.platform)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: 'test',
 
@@ -19,8 +18,7 @@ module.exports = function(config) {
     ],
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -29,16 +27,16 @@ module.exports = function(config) {
     },
 
     webpack: {
-      module: (function() {
-        const module = webpackConfig.module;
+      module: (function () {
+        const module = webpackConfig.module
         if (process.argv.indexOf('--auto-watch') === -1) {
           module.postLoaders = [{
             test: /\.js$/,
             exclude: /(test|node_modules)/,
             loader: 'istanbul-instrumenter'
-          }];
+          }]
         }
-        return module;
+        return module
       })()
     },
 
@@ -81,16 +79,16 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: (function() {
+    browsers: (function () {
       const browsers = [
         'PhantomJS',
         process.env.TRAVIS ? 'Chrome_travis_ci' : 'Chrome',
         'Firefox'
-      ];
+      ]
       if (isWindows) {
-        browsers.push('IE');
+        browsers.push('IE')
       }
-      return browsers;
+      return browsers
     })(),
 
     customLaunchers: {
@@ -107,5 +105,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultanous
     concurrency: Infinity
-  });
-};
+  })
+}

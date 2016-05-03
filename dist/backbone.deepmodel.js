@@ -121,7 +121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * @example
 	 * // ES5
-	 * var Person = DeepModel.extend({...});
+	 * var Person = DeepModel.extend({...})
 	 *
 	 * // ES2015(ES6)
 	 * class Person extends DeepModel {...}
@@ -147,7 +147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @returns {*}
 	     *
 	     * @example
-	     * model.get('a.b');
+	     * model.get('a.b')
 	     */
 	    value: function get(attribute) {
 	      return updateObjectPath().get(this.attributes, attribute);
@@ -162,8 +162,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @returns {DeepModel}
 	     *
 	     * @example
-	     * model.set({'a.b': 'value'});
-	     * model.set('a.b', 'value');
+	     * model.set({'a.b': 'value'})
+	     * model.set('a.b', 'value')
 	     */
 
 	  }, {
@@ -228,30 +228,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @returns {Object}
 	     *
 	     * @example
-	     * DeepModel.defaults({anySetting: true});
+	     * DeepModel.defaults({anySetting: true})
 	     * DeepModel.defaults(null); // reset!
 	     *
 	     * @example
-	     * DeepModel.defaults({pathSeparator: '/'});
+	     * DeepModel.defaults({pathSeparator: '/'})
 	     *
-	     * let model = new DeepModel();
-	     * model.set('a', {});
-	     * model.set('a/b', 1);
+	     * let model = new DeepModel()
+	     * model.set('a', {})
+	     * model.set('a/b', 1)
 	     * model.get('a/b'); //=> 1
 	     *
 	     * @example
 	     * DeepModel.defaults({
 	     *   pathParser(path) {
 	     *     if (path === '*') { return []; } // ignore!
-	     *     return path.split('_');
+	     *     return path.split('_')
 	     *   }
-	     * });
+	     * })
 	     *
-	     * let model = new DeepModel();
-	     * model.set('a', {});
-	     * model.set('a_b', 1);
+	     * let model = new DeepModel()
+	     * model.set('a', {})
+	     * model.set('a_b', 1)
 	     * model.get('a_b'); //=> 1
-	     * model.set('*', 2);
+	     * model.set('*', 2)
 	     * model.get('*'); //=> undefined
 	     */
 	    value: function defaults() {
@@ -306,7 +306,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	exports.default = {
-
 	  pathSeparator: '.',
 
 	  /**
