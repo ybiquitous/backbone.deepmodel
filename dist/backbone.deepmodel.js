@@ -229,7 +229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *
 	     * @example
 	     * DeepModel.defaults({anySetting: true})
-	     * DeepModel.defaults(null); // reset!
+	     * DeepModel.defaults(null) // reset!
 	     *
 	     * @example
 	     * DeepModel.defaults({pathSeparator: '/'})
@@ -237,12 +237,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * let model = new DeepModel()
 	     * model.set('a', {})
 	     * model.set('a/b', 1)
-	     * model.get('a/b'); //=> 1
+	     * model.get('a/b') //=> 1
 	     *
 	     * @example
 	     * DeepModel.defaults({
 	     *   pathParser(path) {
-	     *     if (path === '*') { return []; } // ignore!
+	     *     if (path === '*') { return [] } // ignore!
 	     *     return path.split('_')
 	     *   }
 	     * })
@@ -250,9 +250,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * let model = new DeepModel()
 	     * model.set('a', {})
 	     * model.set('a_b', 1)
-	     * model.get('a_b'); //=> 1
+	     * model.get('a_b') //=> 1
 	     * model.set('*', 2)
-	     * model.get('*'); //=> undefined
+	     * model.get('*') //=> undefined
 	     */
 	    value: function defaults() {
 	      var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
