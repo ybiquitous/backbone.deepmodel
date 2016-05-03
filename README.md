@@ -5,6 +5,7 @@
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
 [![Documentation][documentation-image]][documentation-url]
+[![js-standard-style][js-standard-image]][js-standard-url]
 
 # Backbone.DeepModel plugin
 
@@ -43,31 +44,31 @@ var Person = Backbone.DeepModel.extend({
     name: {first: '', last: ''},
     pets: []
   }
-});
+})
 
-var p = new Person();
+var p = new Person()
 
 // Object
-p.set('name.first', 'Tom');
-p.set('name.last', 'Watson');
-console.log(p.get('name')); //=> {first: 'Tom', last: 'Watson'}
-console.log(p.get('name.first')); //=> 'Tom'
-console.log(p.get('name.last')); //=> 'Watson'
+p.set('name.first', 'Tom')
+p.set('name.last', 'Watson')
+console.log(p.get('name')) //=> {first: 'Tom', last: 'Watson'}
+console.log(p.get('name.first')) //=> 'Tom'
+console.log(p.get('name.last')) //=> 'Watson'
 
 // Array
-p.set('pets[0]', {name: 'Mi', kind: 'Cat'});
-p.set('pets.1', {name: 'Boo', kind: 'Dog'});
-console.log(p.get('pets[0].name')); //=> 'Mi'
-console.log(p.get('pets[0].kind')); //=> 'Cat'
-console.log(p.get('pets.1')); //=> {name: 'Boo', kind: 'Dog'}
+p.set('pets[0]', {name: 'Mi', kind: 'Cat'})
+p.set('pets.1', {name: 'Boo', kind: 'Dog'})
+console.log(p.get('pets[0].name')) //=> 'Mi'
+console.log(p.get('pets[0].kind')) //=> 'Cat'
+console.log(p.get('pets.1')) //=> {name: 'Boo', kind: 'Dog'}
 
 // key-value style
 p.set({
   'name.first': 'Ken',
-  'pets[0].name': 'Tama',
-});
-console.log(p.get('name.first')); //=> 'Ken'
-console.log(p.get('pets[0].name')); //=> 'Tama'
+  'pets[0].name': 'Tama'
+})
+console.log(p.get('name.first')) //=> 'Ken'
+console.log(p.get('pets[0].name')) //=> 'Tama'
 ```
 
 ## Use in ES6
@@ -80,12 +81,12 @@ class Person extends DeepModel {
     return {
       name: {first: '', last: ''},
       pets: []
-    };
+    }
   }
 }
 
-let p = new Person();
-p.set('name.first', 'Tom');
+let p = new Person()
+p.set('name.first', 'Tom')
 ```
 
 ## API
@@ -132,3 +133,6 @@ See [here](CONTRIBUTING.md).
 
 [documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
 [documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
+
+[js-standard-url]: http://standardjs.com/
+[js-standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg

@@ -1,8 +1,8 @@
 /* eslint-env node */
-const util = require('util');
-const webpack = require('webpack');
+const util = require('util')
+const webpack = require('webpack')
 
-function config(production) {
+function config (production) {
   return {
     entry: './lib/index.js',
 
@@ -38,7 +38,7 @@ function config(production) {
       ]
     },
 
-    plugins: (function() {
+    plugins: (function () {
       const plugins = [
         new webpack.BannerPlugin(util.format(
           '%s v%s\nCopyright 2015 %s <%s>\n%s Licensed',
@@ -48,13 +48,13 @@ function config(production) {
           process.env.npm_package_author_email,
           process.env.npm_package_license
         ))
-      ];
+      ]
       if (production) {
-        plugins.push(new webpack.optimize.UglifyJsPlugin());
+        plugins.push(new webpack.optimize.UglifyJsPlugin())
       }
-      return plugins;
+      return plugins
     })()
-  };
+  }
 }
 
-module.exports = [config(false), config(true)];
+module.exports = [config(false), config(true)]
