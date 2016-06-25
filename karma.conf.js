@@ -2,6 +2,7 @@
 const path = require('path')
 const webpackConfig = require('./webpack.config')[0]
 const isWindows = /^win/.test(process.platform)
+const isTravis = Boolean(process.env.TRAVIS)
 
 module.exports = function (config) {
   config.set({
@@ -47,7 +48,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage', 'threshold'],
+    reporters: ['dots', 'coverage', 'threshold'],
 
     coverageReporter: {
       dir: path.join(__dirname, 'coverage'),
@@ -79,17 +80,11 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: (function () {
-      const browsers = [
-        'PhantomJS',
-        process.env.TRAVIS ? 'Chrome_travis_ci' : 'Chrome',
-        'Firefox'
-      ]
-      if (isWindows) {
-        browsers.push('IE')
-      }
-      return browsers
-    })(),
+    browsers: [
+      'PhantomJS',
+      isTravis ? 'Chrome_travis_ci' : 'Chrome',
+      'Firefox'
+    ].concat(isWindows ? ['IE'] : []),
 
     customLaunchers: {
       'Chrome_travis_ci': {
