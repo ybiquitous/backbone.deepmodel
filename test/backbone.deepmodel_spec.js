@@ -1,6 +1,6 @@
 /* eslint-env mocha */
-/* global sinon */
 import { expect } from 'chai'
+import sinon from 'sinon'
 import DeepModel from '../lib'
 
 describe('Backbone.DeepModel', () => {
