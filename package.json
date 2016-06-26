@@ -60,7 +60,7 @@
     "karma-coverage": "^1.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-ie-launcher": "^1.0.0",
-    "karma-mocha": "^1.0.1",
+    "karma-mocha": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-threshold-reporter": "^0.1.15",
     "karma-webpack": "^1.7.0",
