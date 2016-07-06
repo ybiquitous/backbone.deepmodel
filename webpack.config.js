@@ -1,5 +1,5 @@
 /* eslint-env node */
-const util = require('util');
+const util = require('util')
 const webpack = require('webpack')
 
 function config (production) {
