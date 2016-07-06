@@ -5,7 +5,8 @@
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
 [![Documentation][documentation-image]][documentation-url]
-[![js-standard-style][js-standard-image]][js-standard-url]
+[![JS Standard Style][js-standard-image]][js-standard-url]
+[![Code Climate][code-climate-image]][code-climate-url]
 
 # Backbone.DeepModel plugin
 
@@ -136,3 +137,6 @@ See [here](CONTRIBUTING.md).
 
 [js-standard-url]: http://standardjs.com/
 [js-standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
+
+[code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
+[code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
