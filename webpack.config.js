@@ -29,11 +29,7 @@ function config (production) {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: 'babel',
-          query: {
-            presets: ['es2015'],
-            plugins: ['add-module-exports', 'transform-object-assign']
-          }
+          loader: 'babel'
         }
       ]
     },
