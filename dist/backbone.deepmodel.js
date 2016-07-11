@@ -104,7 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _objectPath2.default.pathSeparator = _defaults.pathSeparator;
 
 	  var pathParser = _defaults.pathParser;
-	  if (typeof pathParser === 'function' || pathParser === null) {
+	  if (typeof pathParser === 'function' || pathParser == null) {
 	    _objectPath2.default.pathParser = pathParser;
 	  }
 
@@ -112,7 +112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function isObject(value) {
-	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
+	  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 	}
 
 	/**
@@ -257,7 +257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function defaults() {
 	      var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-	      return _extends(_defaults, settings === null ? DEFAULTS : settings);
+	      return _extends(_defaults, settings == null ? DEFAULTS : settings);
 	    }
 	  }, {
 	    key: 'VERSION',
@@ -412,7 +412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @returns {Object|Array}
 	 */
 	function deepCopy(source) {
-	  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source === null) {
+	  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source == null) {
 	    return source;
 	  }
 
