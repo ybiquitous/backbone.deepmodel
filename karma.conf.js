@@ -5,6 +5,7 @@ const isWindows = /^win/.test(process.platform)
 const isTravis = Boolean(process.env.TRAVIS)
 
 module.exports = function (config) {
+  const autoWatch = config.autoWatch
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: 'test',
@@ -32,9 +33,10 @@ module.exports = function (config) {
     },
 
     webpack: {
+      devtool: autoWatch ? 'cheap-module-inline-source-map' : null,
       module: (function () {
         const module = webpackConfig.module
-        if (process.argv.indexOf('--auto-watch') === -1) {
+        if (!autoWatch) {
           module.postLoaders = [{
             test: /\.js$/,
             exclude: /(test|node_modules)/,
