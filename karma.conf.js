@@ -4,6 +4,8 @@ const webpackConfig = require('./webpack.config')[0]
 const isWindows = /^win/.test(process.platform)
 const isTravis = Boolean(process.env.TRAVIS)
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'test'
+
 module.exports = function (config) {
   const autoWatch = (process.argv.indexOf('--auto-watch') >= 0)
   config.set({
@@ -34,17 +36,7 @@ module.exports = function (config) {
 
     webpack: {
       devtool: autoWatch ? 'cheap-module-inline-source-map' : null,
-      module: (function () {
-        const module = webpackConfig.module
-        if (!autoWatch) {
-          module.postLoaders = [{
-            test: /\.js$/,
-            exclude: /(test|node_modules)/,
-            loader: 'istanbul-instrumenter'
-          }]
-        }
-        return module
-      })()
+      module: webpackConfig.module
     },
 
     webpackMiddleware: {
@@ -65,10 +57,10 @@ module.exports = function (config) {
     },
 
     thresholdReporter: {
-      statements: 87,
-      branches: 70,
-      functions: 90,
-      lines: 100
+      statements: 98,
+      branches: 98,
+      functions: 100,
+      lines: 98
     },
 
     // web server port
