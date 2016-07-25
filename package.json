@@ -50,7 +50,7 @@
     "benchmark": "^2.1.0",
     "chai": "^3.5.0",
     "conventional-github-releaser": "^1.1.2",
-    "coveralls": "^2.11.9",
+    "coveralls": "^2.11.10",
     "esdoc": "^0.4.6",
     "http-server": "^0.9.0",
     "istanbul-instrumenter-loader": "^0.2.0",
