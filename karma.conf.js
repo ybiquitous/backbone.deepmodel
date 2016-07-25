@@ -5,7 +5,7 @@ const isWindows = /^win/.test(process.platform)
 const isTravis = Boolean(process.env.TRAVIS)
 
 module.exports = function (config) {
-  const autoWatch = config.autoWatch
+  const autoWatch = (process.argv.indexOf('--auto-watch') >= 0)
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: 'test',
@@ -54,7 +54,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'coverage', 'threshold'],
+    reporters: ['dots'].concat(autoWatch ? [] : ['coverage', 'threshold']),
 
     coverageReporter: {
       dir: path.join(__dirname, 'coverage'),
