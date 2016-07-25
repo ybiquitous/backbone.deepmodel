@@ -1,4 +1,9 @@
 {
   "presets": ["es2015"],
-  "plugins": ["add-module-exports", "transform-object-assign"]
+  "plugins": ["add-module-exports", "transform-object-assign"],
+  "env": {
+    "test": {
+      "plugins": [[ "__coverage__", { "ignore": "test/" } ]]
+    }
+  }
 }
