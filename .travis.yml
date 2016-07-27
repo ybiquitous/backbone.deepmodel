@@ -17,6 +17,5 @@ script:
   - npm run benchmark
 
 after_success:
-  - npm run coveralls
   - bash <(curl -s https://codecov.io/bash)
   - rm -rf coverage

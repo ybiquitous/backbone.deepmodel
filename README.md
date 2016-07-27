@@ -1,7 +1,6 @@
 [![NPM version][npm-version-image]][npm-url]
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
-[![Coverage Status][coverage-image]][coverage-url]
 [![Codecov Status][codecov-image]][codecov-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
@@ -123,9 +122,6 @@ See [here](CONTRIBUTING.md).
 
 [travis-url]: https://travis-ci.org/ybiquitous/backbone.deepmodel
 [travis-image]: https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg
-
-[coverage-url]: https://coveralls.io/github/ybiquitous/backbone.deepmodel
-[coverage-image]: https://img.shields.io/coveralls/ybiquitous/backbone.deepmodel.svg
 
 [codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel
 [codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg
