@@ -17,7 +17,7 @@
     "postversion": "git push && git push --tags && npm run github-release",
     "commit": "commit-wizard",
     "upgrade": "npm-check-updates --upgrade --dev",
-    "github-release": "conventional-github-releaser -p angular",
+    "github-release": "node -r dotenv/config node_modules/conventional-github-releaser/cli.js -p angular",
     "doc": "esdoc -c esdoc.json"
   },
   "files": [
@@ -49,6 +49,7 @@
     "benchmark": "^2.1.0",
     "chai": "^3.5.0",
     "conventional-github-releaser": "^1.1.2",
+    "dotenv": "^2.0.0",
     "esdoc": "^0.4.6",
     "http-server": "^0.9.0",
     "jquery": "^3.0.0",

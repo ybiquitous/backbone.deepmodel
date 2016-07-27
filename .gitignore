@@ -34,3 +34,6 @@ node_modules
 
 # Documents
 docs
+
+# dotenv
+.env
