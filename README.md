@@ -9,9 +9,12 @@
 [![JS Standard Style][js-standard-image]][js-standard-url]
 [![Code Climate][code-climate-image]][code-climate-url]
 
+[![Sauce Test Status][saucelabs-image]][saucelabs-url]
+
 # Backbone.DeepModel plugin
 
-> Simple and light [Backbone.js](http://backbonejs.org/) plugin for handling nested attributes of `Backbone.Model`.
+> Simple and light [Backbone.js](http://backbonejs.org/) plugin
+> for handling nested attributes of `Backbone.Model`.
 
 ## Table of Contents
 
@@ -101,16 +104,15 @@ To try examples, please run the following commands.
 When the web server is started on localhost, then go to `/examples` directory.
 
 ```sh
-$ git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
-$ cd backbone.deepmodel
-$ npm install
-$ npm run examples
+git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
+cd backbone.deepmodel
+npm install
+npm run examples
 ```
 
 ## Contribute
 
 See [here](CONTRIBUTING.md).
-
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: LICENSE
@@ -144,3 +146,6 @@ See [here](CONTRIBUTING.md).
 
 [code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
+
+[saucelabs-url]: https://saucelabs.com/u/ybiquitous
+[saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg
