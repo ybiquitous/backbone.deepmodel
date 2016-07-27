@@ -56,10 +56,10 @@ module.exports = function (config) {
     },
 
     thresholdReporter: {
-      statements: 98,
+      statements: 100,
       branches: 98,
       functions: 100,
-      lines: 98
+      lines: 100
     },
 
     // web server port

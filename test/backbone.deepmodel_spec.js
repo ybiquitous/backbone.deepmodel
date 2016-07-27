@@ -386,6 +386,11 @@ describe('Backbone.DeepModel', () => {
       expect(model.get('a.b')).to.equal(1)
     })
 
+    it('does nothing when passing no arguments', () => {
+      const { pathParser } = DeepModel.defaults({ pathSeparator: '_' })
+      expect(DeepModel.defaults()).to.deep.equal({ pathSeparator: '_', pathParser })
+    })
+
     afterEach(() => {
       DeepModel.defaults(null)
     })
