@@ -91,8 +91,6 @@ module.exports = function (config) {
   }
 
   // https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
-  // eslint-disable-next-line no-console
-  console.log('TRAVIS_NODE_VERSION:', process.env.TRAVIS_NODE_VERSION)
   if (process.env.SAUCELABS === 'true' &&
       process.env.TRAVIS === 'true' &&
       process.env.TRAVIS_PULL_REQUEST === 'false' &&
