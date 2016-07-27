@@ -3,28 +3,41 @@ const webpackConfig = require('./webpack.config')[0]
 
 module.exports = function (config) {
   const customLaunchers = {
-    sl_chrome: {
+    ie8: {
       base: 'SauceLabs',
-      browserName: 'chrome',
+      browserName: 'internet explorer',
       platform: 'Windows 7',
-      version: '35'
+      version: '8.0'
     },
-    sl_firefox: {
-      base: 'SauceLabs',
-      browserName: 'firefox',
-      version: '30'
-    },
-    sl_ios_safari: {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      platform: 'OS X 10.9',
-      version: '7.1'
-    },
-    sl_ie_11: {
+    ie11: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       platform: 'Windows 8.1',
       version: '11'
+    },
+    edge: {
+      base: 'SauceLabs',
+      browserName: 'MicrosoftEdge',
+      platform: 'Windows 10',
+      version: 'latest'
+    },
+    chrome: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      platform: 'Windows 8.1',
+      version: 'latest'
+    },
+    firefox: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      platform: 'Windows 8.1',
+      version: 'latest'
+    },
+    safari: {
+      base: 'SauceLabs',
+      browserName: 'safari',
+      platform: 'OS X 10.11',
+      version: 'latest'
     }
   }
 
