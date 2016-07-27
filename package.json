@@ -8,7 +8,6 @@
     "test:quick": "karma start --single-run --browsers PhantomJS",
     "test:watch": "karma start --auto-watch --browsers PhantomJS",
     "test:backbone1.2": "npm install backbone@1.2 && npm run test && npm install backbone",
-    "test:saucelabs": "karma start karma.conf.saucelabs.js",
     "coveralls": "cat coverage/report-lcov/lcov.info | coveralls",
     "lint": "standard",
     "build": "webpack",
