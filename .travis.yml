@@ -11,10 +11,9 @@ cache:
 
 script:
   - npm run lint
-  - npm test
+  - SAUCELABS=true npm test
   - npm run test:backbone1.2
   - npm run benchmark
-  - npm run test:saucelabs
 
 before_script:
   - export CHROME_BIN=chromium-browser

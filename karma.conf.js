@@ -1,14 +1,13 @@
 /* eslint-env node */
 const path = require('path')
 const webpackConfig = require('./webpack.config')[0]
-const isWindows = /^win/.test(process.platform)
-const isTravis = Boolean(process.env.TRAVIS)
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'test'
 
 module.exports = function (config) {
   const autoWatch = (process.argv.indexOf('--auto-watch') >= 0)
-  config.set({
+
+  const settings = {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: 'test',
 
@@ -79,17 +78,8 @@ module.exports = function (config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      'PhantomJS',
-      isTravis ? 'Chrome_travis_ci' : 'Chrome',
-      'Firefox'
-    ].concat(isWindows ? ['IE'] : []),
-
-    customLaunchers: {
-      'Chrome_travis_ci': {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
+      'PhantomJS'
+    ],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -98,5 +88,52 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultanous
     concurrency: Infinity
-  })
+  }
+
+  // https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
+  if (process.env.SAUCELABS === 'true' &&
+      process.env.TRAVIS === 'true' &&
+      process.env.TRAVIS_PULL_REQUEST === 'false') {
+    settings.sauceLabs = {
+      testName: 'backbone.deepmodel unit tests'
+    }
+    settings.customLaunchers = {
+      ie11: {
+        base: 'SauceLabs',
+        browserName: 'internet explorer',
+        platform: 'Windows 8.1',
+        version: '11'
+      },
+      edge: {
+        base: 'SauceLabs',
+        browserName: 'MicrosoftEdge',
+        platform: 'Windows 10',
+        version: 'latest'
+      },
+      chrome: {
+        base: 'SauceLabs',
+        browserName: 'chrome',
+        platform: 'Windows 8.1',
+        version: 'latest'
+      },
+      firefox: {
+        base: 'SauceLabs',
+        browserName: 'firefox',
+        platform: 'Windows 8.1',
+        version: 'latest'
+      },
+      safari: {
+        base: 'SauceLabs',
+        browserName: 'safari',
+        platform: 'OS X 10.11',
+        version: 'latest'
+      }
+    }
+    settings.browsers = Object.keys(settings.customLaunchers)
+    settings.reporters = ['dots', 'saucelabs']
+    settings.singleRun = true
+    settings.colors = false
+  }
+
+  config.set(settings)
 }
