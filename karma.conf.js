@@ -94,7 +94,7 @@ module.exports = function (config) {
   if (process.env.SAUCELABS === 'true' &&
       process.env.TRAVIS === 'true' &&
       process.env.TRAVIS_PULL_REQUEST === 'false' &&
-      process.env.TRAVIS_NODE_VERSION.charAt(0) === '6') {
+      process.env.TRAVIS_NODE_VERSION === 'stable') {
     settings.sauceLabs = {
       testName: 'backbone.deepmodel unit tests'
     }
