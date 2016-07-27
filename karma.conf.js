@@ -93,7 +93,8 @@ module.exports = function (config) {
   // https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
   if (process.env.SAUCELABS === 'true' &&
       process.env.TRAVIS === 'true' &&
-      process.env.TRAVIS_PULL_REQUEST === 'false') {
+      process.env.TRAVIS_PULL_REQUEST === 'false' &&
+      process.env.TRAVIS_NODE_VERSION.charAt(0) === '6') {
     settings.sauceLabs = {
       testName: 'backbone.deepmodel unit tests'
     }
@@ -131,8 +132,6 @@ module.exports = function (config) {
     }
     settings.browsers = Object.keys(settings.customLaunchers)
     settings.reporters = ['dots', 'saucelabs']
-    settings.singleRun = true
-    settings.colors = false
   }
 
   config.set(settings)

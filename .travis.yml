@@ -11,8 +11,9 @@ cache:
 
 script:
   - npm run lint
-  - SAUCELABS=true npm test
+  - npm test
   - npm run test:backbone1.2
+  - SAUCELABS=true npm test
   - npm run benchmark
 
 before_script:
