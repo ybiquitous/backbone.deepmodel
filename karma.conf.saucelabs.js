@@ -3,12 +3,6 @@ const webpackConfig = require('./webpack.config')[0]
 
 module.exports = function (config) {
   const customLaunchers = {
-    ie8: {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      platform: 'Windows 7',
-      version: '8.0'
-    },
     ie11: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
