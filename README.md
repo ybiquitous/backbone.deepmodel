@@ -147,5 +147,5 @@ See [here](CONTRIBUTING.md).
 [code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
 
-[saucelabs-url]: https://saucelabs.com/u/ybiquitous
-[saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg
+[saucelabs-url]: https://saucelabs.com/u/ybiquitous?auth=3df70cf907ba3ce5a1eb6dcee3ce9f59
+[saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg?auth=3df70cf907ba3ce5a1eb6dcee3ce9f59
