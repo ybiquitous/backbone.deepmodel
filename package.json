@@ -60,7 +60,7 @@
     "karma-sauce-launcher": "^1.0.0",
     "karma-threshold-reporter": "^0.1.15",
     "karma-webpack": "^1.7.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.0",
     "npm-check-updates": "^2.7.2",
     "pre-git": "^3.8.3",
     "sinon": "^2.0.0-pre.2",
