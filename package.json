@@ -8,7 +8,7 @@
     "test:watch": "karma start --auto-watch",
     "test:backbone1.2": "npm install backbone@1.2 && npm test && npm install backbone",
     "lint": "standard",
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
@@ -49,7 +49,6 @@
     "benchmark": "^2.1.0",
     "chai": "^3.5.0",
     "conventional-github-releaser": "^1.1.2",
-    "cross-env": "^2.0.0",
     "dotenv": "^2.0.0",
     "esdoc": "^0.4.6",
     "http-server": "^0.9.0",
@@ -66,7 +65,7 @@
     "pre-git": "^3.8.3",
     "sinon": "^2.0.0-pre.2",
     "standard": "^7.0.0",
-    "webpack": "^2.1.0-beta.21"
+    "webpack": "^1.13.2"
   },
   "engines": {
     "node": ">=0.12"
