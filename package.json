@@ -8,7 +8,7 @@
     "test:watch": "karma start --auto-watch",
     "test:backbone1.2": "npm install backbone@1.2 && npm test && npm install backbone",
     "lint": "standard",
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
@@ -44,11 +44,12 @@
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.0",
     "babel-plugin-istanbul": "^2.0.0",
-    "babel-plugin-transform-object-assign": "^6.5.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "^6.13.0",
     "benchmark": "^2.1.0",
     "chai": "^3.5.0",
     "conventional-github-releaser": "^1.1.2",
+    "cross-env": "^2.0.0",
     "dotenv": "^2.0.0",
     "esdoc": "^0.4.6",
     "http-server": "^0.9.0",
@@ -65,7 +66,7 @@
     "pre-git": "^3.8.3",
     "sinon": "^2.0.0-pre.2",
     "standard": "^7.0.0",
-    "webpack": "^1.13.0"
+    "webpack": "^2.1.0-beta.21"
   },
   "engines": {
     "node": ">=0.12"
