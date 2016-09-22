@@ -133,7 +133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function DeepModel() {
 	    _classCallCheck(this, DeepModel);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(DeepModel).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (DeepModel.__proto__ || Object.getPrototypeOf(DeepModel)).apply(this, arguments));
 	  }
 
 	  _createClass(DeepModel, [{
@@ -183,7 +183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        options = value;
 	      } else {
 	        if (!_.pathParser && !_.hasSeparator(attribute)) {
-	          return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, attribute, value, options);
+	          return _get(DeepModel.prototype.__proto__ || Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, attribute, value, options);
 	        }
 	        attrs = {};
 	        attrs[attribute] = value;
@@ -213,7 +213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _.set(newObj, paths, attrs[path]);
 	      }, {});
 
-	      return _get(Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
+	      return _get(DeepModel.prototype.__proto__ || Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, newAttrs, options);
 	    }
 	  }], [{
 	    key: 'extend',
