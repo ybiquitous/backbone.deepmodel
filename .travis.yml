@@ -1,7 +1,8 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - "7"
+  - "6"
   - "4"
 
 cache:
@@ -9,16 +10,15 @@ cache:
     - node_modules
 
 install:
-  - npm install
-  - npm update
-  - npm prune
+  - npm install -g yarn
+  - yarn
 
 script:
-  - npm run lint
-  - npm test
-  - npm run test:backbone1.2
-  - SAUCELABS=true npm test
-  - npm run benchmark
+  - yarn lint
+  - yarn test
+  - yarn test:backbone1.2
+  - SAUCELABS=true yarn test
+  - yarn benchmark
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
