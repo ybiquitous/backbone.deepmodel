@@ -16,7 +16,6 @@
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags && npm run github-release",
     "commit": "commit-wizard",
-    "upgrade": "npm-check-updates --upgrade --dev",
     "github-release": "node -r dotenv/config node_modules/conventional-github-releaser/cli.js -p angular",
     "doc": "esdoc -c esdoc.json"
   },
@@ -61,7 +60,6 @@
     "karma-threshold-reporter": "^0.1.15",
     "karma-webpack": "^1.7.0",
     "mocha": "^3.0.0",
-    "npm-check-updates": "^2.7.2",
     "pre-git": "^3.8.3",
     "sinon": "^2.0.0-pre.2",
     "standard": "^8.1.0",
