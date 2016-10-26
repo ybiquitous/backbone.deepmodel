@@ -3,4 +3,4 @@ set -e
 
 [ -n "${SKIP}" ] && exit
 
-npm run fullbuild
+yarn fullbuild

@@ -105,8 +105,8 @@ When the web server is started on localhost, then go to `/examples` directory.
 ```sh
 git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
 cd backbone.deepmodel
-npm install
-npm run examples
+yarn
+yarn examples
 ```
 
 ## Contribute
