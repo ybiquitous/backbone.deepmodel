@@ -92,7 +92,7 @@ module.exports = function (config) {
   if (process.env.SAUCELABS === 'true' &&
       process.env.TRAVIS === 'true' &&
       process.env.TRAVIS_PULL_REQUEST === 'false' &&
-      process.env.TRAVIS_NODE_VERSION === 'stable') {
+      process.env.TRAVIS_NODE_VERSION === '7') {
     settings.sauceLabs = {
       testName: 'backbone.deepmodel unit tests'
     }
@@ -100,8 +100,8 @@ module.exports = function (config) {
       ie11: {
         base: 'SauceLabs',
         browserName: 'internet explorer',
-        platform: 'Windows 8.1',
-        version: '11'
+        platform: 'Windows 10',
+        version: 'latest'
       },
       edge: {
         base: 'SauceLabs',
@@ -112,13 +112,13 @@ module.exports = function (config) {
       chrome: {
         base: 'SauceLabs',
         browserName: 'chrome',
-        platform: 'Windows 8.1',
+        platform: 'Windows 10',
         version: 'latest'
       },
       firefox: {
         base: 'SauceLabs',
         browserName: 'firefox',
-        platform: 'Windows 8.1',
+        platform: 'Windows 10',
         version: 'latest'
       },
       safari: {
