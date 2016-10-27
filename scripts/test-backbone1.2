@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+DIR=tmp
+
+npm install --prefix=${DIR} backbone@1.2
+
+export NODE_PATH="$(npm root --prefix=${DIR})"
+
+npm test
+
+rm -rf ${DIR}
