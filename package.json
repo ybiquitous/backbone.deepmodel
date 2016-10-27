@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "test:watch": "karma start --auto-watch",
-    "test:backbone1.2": "npm install backbone@1.2 && npm test && npm install backbone",
+    "test:backbone1.2": "./script/test-backbone1.2",
     "lint": "eslint --max-warnings=0 .",
     "build": "webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
