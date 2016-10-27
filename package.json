@@ -84,10 +84,5 @@
       "post-commit": [],
       "post-merge": []
     }
-  },
-  "standard": {
-    "ignore": [
-      "dist/**"
-    ]
   }
 }
