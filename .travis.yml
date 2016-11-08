@@ -10,7 +10,7 @@ cache:
     - $HOME/.yarn-cache
 
 install:
-  - npm install -g --cache-min=99999999 yarn
+  - npm install -g yarn
   - yarn
 
 script:
