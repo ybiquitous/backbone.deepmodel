@@ -67,5 +67,4 @@ Required *Commitizen friendly* commit message. See [details](https://github.com/
 1. Update `get VERSION() { return '<new_version>' }` in [lib/index.js](lib/index.js).
 2. Commit `lib/index.js` in message `chore: prepare to release <new_version>`.
 3. Run `npm version <new_version> -m "chore: release %s"`. See [npm-version](https://docs.npmjs.com/cli/version).
-4. Run `npm publish`. See [npm-publish](https://docs.npmjs.com/cli/publish).
-5. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
+4. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
