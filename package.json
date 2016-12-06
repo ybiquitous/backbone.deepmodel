@@ -57,6 +57,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "http-server": "^0.9.0",
     "jquery": "^3.0.0",
+    "jsdom": "^9.8.3",
     "karma": "^1.0.0",
     "karma-coverage": "^1.1.1",
     "karma-jsdom-launcher": "^5.0.0",
