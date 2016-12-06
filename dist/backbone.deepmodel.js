@@ -1,5 +1,5 @@
 /*!
- * backbone.deepmodel v0.3.3
+ * backbone.deepmodel v0.4.0
  * Copyright 2015 ybiquitous <10koba01@gmail.com>
  * MIT Licensed
  */
@@ -274,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'VERSION',
 	    get: function get() {
-	      return '0.3.3';
+	      return '0.4.0';
 	    }
 	  }]);
 
@@ -300,7 +300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	function ARRAY_PATTERN() {
-	  return (/\[(\w+)\]/g
+	  return (/\[(\w+)]/g
 	  );
 	}
 
