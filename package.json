@@ -59,7 +59,7 @@
     "jquery": "^3.0.0",
     "karma": "^1.0.0",
     "karma-coverage": "^1.1.1",
-    "karma-jsdom-launcher": "^4.0.0",
+    "karma-jsdom-launcher": "^5.0.0",
     "karma-mocha": "^1.1.0",
     "karma-sauce-launcher": "^1.0.0",
     "karma-threshold-reporter": "^0.1.15",
