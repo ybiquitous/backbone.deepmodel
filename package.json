@@ -16,7 +16,7 @@
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags && npm run github-release",
     "commit": "commit-wizard",
-    "github-release": "node -r dotenv/config node_modules/conventional-github-releaser/cli.js -p angular",
+    "github-release": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json"
   },
   "files": [
