@@ -49,7 +49,7 @@
     "chai": "*",
     "conventional-github-releaser": "*",
     "dotenv": "*",
-    "esdoc": "*",
+    "esdoc": "0.5.1",
     "eslint": "*",
     "eslint-config-standard": "*",
     "eslint-plugin-import": "*",
