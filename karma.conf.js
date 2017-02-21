@@ -34,7 +34,7 @@ module.exports = function (config) {
     },
 
     webpack: {
-      devtool: autoWatch ? 'cheap-module-inline-source-map' : null,
+      devtool: autoWatch ? 'cheap-module-inline-source-map' : false,
       module: webpackConfig.module
     },
 

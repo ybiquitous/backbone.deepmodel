@@ -13,7 +13,7 @@ function config (production) {
       libraryTarget: 'umd'
     },
 
-    devtool: (production ? undefined : 'cheap-module-source-map'),
+    devtool: (production ? false : 'cheap-module-source-map'),
 
     externals: {
       'backbone': {
@@ -25,11 +25,11 @@ function config (production) {
     },
 
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: 'babel'
+          loader: 'babel-loader'
         }
       ]
     },
