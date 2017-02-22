@@ -1,9 +1,7 @@
 language: node_js
 
 node_js:
-  # TODO: Test failed in Node.js v7.3
-  # See https://github.com/karma-runner/karma/issues/2511
-  - "7.2"
+  - "7"
   - "6"
   - "4"
 
