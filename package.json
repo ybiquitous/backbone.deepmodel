@@ -65,7 +65,7 @@
     "karma-webpack": "*",
     "mocha": "*",
     "pre-git": "*",
-    "sinon": "^2.0.0-pre.4",
+    "sinon": "*",
     "webpack": "*"
   },
   "engines": {
