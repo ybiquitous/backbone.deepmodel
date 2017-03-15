@@ -1,5 +1,4 @@
 [![NPM version][npm-version-image]][npm-url]
-[![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
 [![Dependency Status][dependency-image]][dependency-url]
@@ -24,11 +23,16 @@
 - [API](#api)
 - [Examples](#examples)
 - [Contribute](#contribute)
+- [License](#license)
 
 ## Install
 
 ```sh
 npm install backbone.deepmodel --save
+```
+
+```sh
+yarn add backbone.deepmodel
 ```
 
 Or download manually:
@@ -38,47 +42,12 @@ Or download manually:
 
 ## Dependencies
 
-- [Backbone.js](http://backbonejs.org/) (>= 1.2.0)
+- [Backbone.js](http://backbonejs.org/) 1.2+
 
 ## Use
 
 ```js
-var Person = Backbone.DeepModel.extend({
-  defaults: {
-    name: {first: '', last: ''},
-    pets: []
-  }
-})
-
-var p = new Person()
-
-// Object
-p.set('name.first', 'Tom')
-p.set('name.last', 'Watson')
-console.log(p.get('name')) //=> {first: 'Tom', last: 'Watson'}
-console.log(p.get('name.first')) //=> 'Tom'
-console.log(p.get('name.last')) //=> 'Watson'
-
-// Array
-p.set('pets[0]', {name: 'Mi', kind: 'Cat'})
-p.set('pets.1', {name: 'Boo', kind: 'Dog'})
-console.log(p.get('pets[0].name')) //=> 'Mi'
-console.log(p.get('pets[0].kind')) //=> 'Cat'
-console.log(p.get('pets.1')) //=> {name: 'Boo', kind: 'Dog'}
-
-// key-value style
-p.set({
-  'name.first': 'Ken',
-  'pets[0].name': 'Tama'
-})
-console.log(p.get('name.first')) //=> 'Ken'
-console.log(p.get('pets[0].name')) //=> 'Tama'
-```
-
-## Use in ES6
-
-```js
-import DeepModel from 'backbone.deepmodel/lib'
+import DeepModel from 'backbone.deepmodel'
 
 class Person extends DeepModel {
   defaults() {
@@ -89,8 +58,16 @@ class Person extends DeepModel {
   }
 }
 
-let p = new Person()
+const p = new Person()
 p.set('name.first', 'Tom')
+```
+
+in browser:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+<script src="node_modules/dist/backbone.deepmodel.min.js"></script>
 ```
 
 ## API
@@ -113,8 +90,9 @@ yarn examples
 
 See [here](CONTRIBUTING.md).
 
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
-[license-url]: LICENSE
+## License
+
+MIT License. See [here](LICENSE).
 
 [npm-url]: https://npmjs.org/package/backbone.deepmodel
 [npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg

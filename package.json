@@ -2,7 +2,7 @@
   "name": "backbone.deepmodel",
   "version": "0.4.0",
   "description": "Backbone.DeepModel plugin",
-  "main": "./dist/backbone.deepmodel",
+  "main": "lib/index.js",
   "scripts": {
     "test": "karma start --single-run",
     "test:watch": "karma start --auto-watch",
