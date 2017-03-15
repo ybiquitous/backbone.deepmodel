@@ -19,7 +19,6 @@
 - [Install](#install)
 - [Dependencies](#dependencies)
 - [Use](#use)
-- [Use in ES6](#use-in-es6)
 - [API](#api)
 - [Examples](#examples)
 - [Contribute](#contribute)
