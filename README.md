@@ -121,5 +121,5 @@ MIT License. See [here](LICENSE).
 [code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
 
-[saucelabs-url]: https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64)
+[saucelabs-url]: https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64
 [saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg
