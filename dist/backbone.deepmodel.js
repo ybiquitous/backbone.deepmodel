@@ -1,5 +1,5 @@
 /*!
- * backbone.deepmodel v1.0.0
+ * backbone.deepmodel v1.0.1
  * Copyright 2015 ybiquitous <10koba01@gmail.com>
  * MIT Licensed
  */
@@ -295,7 +295,7 @@ function isObject(value) {
  * @example
  * class Person extends DeepModel {...}
  *
- * // or (in ECMAScript 5)
+ * // or
  * const Person = DeepModel.extend({...})
  */
 
@@ -446,7 +446,7 @@ var DeepModel = function (_Backbone$Model) {
   }, {
     key: 'VERSION',
     get: function get() {
-      return '1.0.0';
+      return '1.0.1';
     }
   }]);
 
