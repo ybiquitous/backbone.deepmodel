@@ -14,7 +14,7 @@
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
     "check-version": "node ./scripts/check-version.js",
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
-    "postversion": "git push && git push --tags && npm run github-release",
+    "postversion": "git push && git push --tags",
     "commit": "commit-wizard",
     "github-release": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json"

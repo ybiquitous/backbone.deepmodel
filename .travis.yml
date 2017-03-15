@@ -27,4 +27,4 @@ deploy:
     tags: true
 
 after_deploy:
-  - yarn conventional-github-releaser
+  - yarn github-release
