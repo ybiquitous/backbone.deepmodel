@@ -1,5 +1,4 @@
 [![NPM version][npm-version-image]][npm-url]
-[![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
 [![Dependency Status][dependency-image]][dependency-url]
@@ -24,6 +23,7 @@
 - [API](#api)
 - [Examples](#examples)
 - [Contribute](#contribute)
+- [License](#license)
 
 ## Install
 
@@ -42,7 +42,7 @@ Or download manually:
 
 ## Dependencies
 
-- [Backbone.js](http://backbonejs.org/) (>= 1.2.0)
+- [Backbone.js](http://backbonejs.org/) 1.2+
 
 ## Use
 
@@ -90,8 +90,9 @@ yarn examples
 
 See [here](CONTRIBUTING.md).
 
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
-[license-url]: LICENSE
+## License
+
+MIT License. See [here](LICENSE).
 
 [npm-url]: https://npmjs.org/package/backbone.deepmodel
 [npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg
