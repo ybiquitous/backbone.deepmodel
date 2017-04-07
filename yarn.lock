@@ -1954,8 +1954,8 @@ esdoc@0.4:
     taffydb "2.7.2"
 
 eslint-config-standard@*:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-10.0.0.tgz#29f3625eafc490b89592506d25e3f4477770b973"
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-10.2.0.tgz#9e5a495c32aae8aa8aeb580b703ef645a1765e9b"
 
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
@@ -2002,8 +2002,8 @@ eslint-plugin-promise@*:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.5.0.tgz#78fbb6ffe047201627569e85a6c5373af2a68fca"
 
 eslint-plugin-standard@*:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-2.2.0.tgz#61273ddbab958ccc88d94d6bb5b2db63ffbd368e"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-3.0.1.tgz#34d0c915b45edc6f010393c7eef3823b08565cf2"
 
 eslint@*:
   version "3.19.0"
@@ -3604,8 +3604,8 @@ mute-stream@0.0.5:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
 nan@^2.3.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.0.tgz#b9b0a907d796d0d336fd73afce24f5e1aa929934"
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.1.tgz#8c84f7b14c96b89f57fbc838012180ec8ca39a01"
 
 native-promise-only@^0.8.1:
   version "0.8.1"
