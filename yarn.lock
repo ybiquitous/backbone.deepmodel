@@ -2817,8 +2817,8 @@ inquirer@0.8.2:
     through "^2.3.6"
 
 interpret@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.2.tgz#f4f623f0bb7122f15f5717c8e254b8161b5c5b2d"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
 invariant@^2.2.0:
   version "2.2.2"
@@ -4933,8 +4933,8 @@ type-detect@^1.0.0:
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-1.0.0.tgz#762217cc06db258ec48908a1298e8b95121e8ea2"
 
 type-detect@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.0.tgz#62053883542a321f2f7b25746dc696478b18ff6b"
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.1.tgz#c2473c08dc6f975232ca7e3317570f187bf7f3e2"
 
 type-is@~1.6.14:
   version "1.6.15"
