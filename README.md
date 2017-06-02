@@ -11,6 +11,8 @@
 
 # Backbone.DeepModel plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ybiquitous/backbone.deepmodel.svg)](https://greenkeeper.io/)
+
 > Simple and light [Backbone.js](http://backbonejs.org/) plugin
 > for handling nested attributes of `Backbone.Model`.
 
