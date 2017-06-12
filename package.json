@@ -70,7 +70,7 @@
     "webpack": "*"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "config": {
     "pre-git": {
