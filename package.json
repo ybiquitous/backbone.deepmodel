@@ -48,7 +48,7 @@
     "conventional-github-releaser": "*",
     "dotenv": "*",
     "esdoc": "0.4",
-    "eslint": "*",
+    "eslint": "3",
     "eslint-config-standard": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-node": "*",
