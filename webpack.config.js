@@ -1,6 +1,5 @@
 /* eslint-env node */
 const path = require('path')
-const util = require('util')
 const webpack = require('webpack')
 
 function config (production) {
@@ -35,16 +34,15 @@ function config (production) {
       ]
     },
 
-    plugins: (function () {
+    plugins: (() => {
+      const env = process.env
+      const year = new Date().getFullYear()
       const plugins = [
-        new webpack.BannerPlugin(util.format(
-          '%s v%s\nCopyright 2015 %s <%s>\n%s Licensed',
-          process.env.npm_package_name,
-          process.env.npm_package_version,
-          process.env.npm_package_author_name,
-          process.env.npm_package_author_email,
-          process.env.npm_package_license
-        ))
+        new webpack.BannerPlugin(`
+${env.npm_package_name} v${env.npm_package_version}
+Copyright ${year} ${env.npm_package_author_name} <${env.npm_package_author_email}>
+${env.npm_package_license} Licensed
+        `.trim())
       ]
       if (production) {
         plugins.push(new webpack.optimize.UglifyJsPlugin())

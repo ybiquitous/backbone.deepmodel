@@ -1,6 +1,6 @@
 /*!
  * backbone.deepmodel v1.0.1
- * Copyright 2015 ybiquitous <ybiquitous@gmail.com>
+ * Copyright 2017 ybiquitous <ybiquitous@gmail.com>
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
