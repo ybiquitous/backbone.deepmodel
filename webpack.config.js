@@ -1,4 +1,5 @@
 /* eslint-env node */
+const path = require('path')
 const util = require('util')
 const webpack = require('webpack')
 
@@ -7,7 +8,7 @@ function config (production) {
     entry: './lib/index.js',
 
     output: {
-      path: './dist',
+      path: path.join(__dirname, 'dist'),
       filename: 'backbone.deepmodel' + (production ? '.min' : '') + '.js',
       library: ['Backbone', 'DeepModel'],
       libraryTarget: 'umd'

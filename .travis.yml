@@ -13,6 +13,7 @@ script:
   - yarn test:backbone1.2
   - SAUCELABS=true yarn test
   - yarn benchmark
+  - yarn build
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
