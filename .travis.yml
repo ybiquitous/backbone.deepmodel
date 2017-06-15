@@ -17,8 +17,6 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - rm -rf coverage
-  - echo $TRAVIS_NODE_VERSION
-  - if [[ $TRAVIS_NODE_VERSION == 8.* ]]; then echo 111; fi
 
 deploy:
   provider: npm
@@ -29,5 +27,4 @@ deploy:
     node: "8"
 
 after_deploy:
-  - echo $TRAVIS_NODE_VERSION
-  - if [[ $TRAVIS_NODE_VERSION == 8.* ]]; then yarn release:github; fi
+  - if [ "$TRAVIS_NODE_VERSION" == "8" ]; then yarn release:github; fi
