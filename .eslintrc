@@ -1,7 +1,18 @@
 {
   "extends": [
-    "standard",
-    "plugin:import/errors",
-    "plugin:import/warnings"
-  ]
+    "ybiquitous"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": [
+        "benchmark/*.js",
+        "*webpack*.js",
+        "test/**/*.js"
+      ]
+    }]
+  }
 }

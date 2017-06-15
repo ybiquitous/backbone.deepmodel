@@ -1,10 +1,9 @@
-/* eslint-env node */
 const path = require('path')
 const webpackConfig = require('./webpack.config')[0]
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'test'
 
-module.exports = function (config) {
+module.exports = (config) => {
   const autoWatch = (process.argv.indexOf('--auto-watch') >= 0)
 
   const settings = {
@@ -17,29 +16,29 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '**/*_spec.js'
+      '**/*_spec.js',
     ],
 
     // list of files to exclude
     exclude: [],
 
     client: {
-      mocha: {}
+      mocha: {},
     },
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*_spec.js': ['webpack']
+      '**/*_spec.js': ['webpack'],
     },
 
     webpack: {
       devtool: autoWatch ? 'cheap-module-inline-source-map' : false,
-      module: webpackConfig.module
+      module: webpackConfig.module,
     },
 
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
     },
 
     // test results reporter to use
@@ -50,16 +49,16 @@ module.exports = function (config) {
     coverageReporter: {
       dir: path.join(__dirname, 'coverage'),
       reporters: [
-        {type: 'html', subdir: 'report-html'},
-        {type: 'lcov', subdir: 'report-lcov'}
-      ]
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
+      ],
     },
 
     thresholdReporter: {
       statements: 100,
       branches: 98,
       functions: 100,
-      lines: 100
+      lines: 100,
     },
 
     // web server port
@@ -69,7 +68,8 @@ module.exports = function (config) {
     colors: true,
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
+    //                  config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -85,7 +85,7 @@ module.exports = function (config) {
 
     // Concurrency level
     // how many browser should be started simultanous
-    concurrency: Infinity
+    concurrency: Infinity,
   }
 
   // https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
@@ -94,39 +94,39 @@ module.exports = function (config) {
       process.env.TRAVIS_PULL_REQUEST === 'false' &&
       process.env.TRAVIS_NODE_VERSION === '7') {
     settings.sauceLabs = {
-      testName: 'backbone.deepmodel unit tests'
+      testName: 'backbone.deepmodel unit tests',
     }
     settings.customLaunchers = {
       ie11: {
         base: 'SauceLabs',
         browserName: 'internet explorer',
         platform: 'Windows 10',
-        version: 'latest'
+        version: 'latest',
       },
       edge: {
         base: 'SauceLabs',
         browserName: 'MicrosoftEdge',
         platform: 'Windows 10',
-        version: 'latest'
+        version: 'latest',
       },
       chrome: {
         base: 'SauceLabs',
         browserName: 'chrome',
         platform: 'Windows 10',
-        version: 'latest'
+        version: 'latest',
       },
       firefox: {
         base: 'SauceLabs',
         browserName: 'firefox',
         platform: 'Windows 10',
-        version: 'latest'
+        version: 'latest',
       },
       safari: {
         base: 'SauceLabs',
         browserName: 'safari',
         platform: 'OS X 10.11',
-        version: 'latest'
-      }
+        version: 'latest',
+      },
     }
     settings.browsers = Object.keys(settings.customLaunchers)
     settings.reporters = ['dots', 'saucelabs']
