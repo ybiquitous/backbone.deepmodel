@@ -14,7 +14,7 @@ describe('Backbone.DeepModel', () => {
   })
 
   it('returns version', () => {
-    assert(/^\d+\.\d+\.\d+$/.test(DeepModel.VERSION))
+    assert(/^(\d+\.\d+\.\d+).*$/.test(DeepModel.VERSION))
   })
 
   it('extends custom class by `extend` static method', () => {
