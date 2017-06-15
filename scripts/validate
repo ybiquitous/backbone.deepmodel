@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-
-[ -n "${SKIP}" ] && exit
-
-yarn fullbuild
