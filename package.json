@@ -80,13 +80,16 @@
   "config": {
     "validate-commit-msg": {
       "types": "conventional-commit-types"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "node ./scripts/update-version.js",
+      "precommit": "npm run build && git add -A dist",
+      "posttag": "node ./scripts/update-version.js --revert"
     },
-    "standard-version": {
-      "scripts": {
-        "postbump": "node ./scripts/update-version.js",
-        "precommit": "npm run build && git add -A dist",
-        "posttag": "node ./scripts/update-version.js --revert"
-      }
+    "skip": {
+      "changelog": true
     }
   }
 }
