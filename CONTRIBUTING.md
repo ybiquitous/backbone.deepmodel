@@ -8,7 +8,6 @@ You can work on either *Linux* or *Windows*.
 - [Test](#test)
 - [Lint](#lint)
 - [Build](#build)
-- [Commit](#commit)
 - [Release](#release)
 
 ## Setup
@@ -55,12 +54,6 @@ Full-build includes test and lint:
 ```sh
 yarn fullbuild
 ```
-
-## Commit
-
-Required *Commitizen friendly* commit message. See [details](https://github.com/commitizen/cz-cli).
-
-**RECOMMENDED** command is `yarn commit` instead of `git commit`.
 
 ## Release
 

@@ -15,9 +15,11 @@
     "check-version": "node ./scripts/check-version.js",
     "version": "npm run check-version && npm run fullbuild && git add -A dist",
     "postversion": "git push && git push --tags",
-    "commit": "commit-wizard",
     "github-release": "conventional-github-releaser -p angular",
-    "doc": "esdoc -c esdoc.json"
+    "doc": "esdoc -c esdoc.json",
+    "precommit": "lint-staged",
+    "commitmsg": "validate-commit-msg",
+    "commit": "commit-wizard"
   },
   "files": [
     "dist",
@@ -49,6 +51,7 @@
     "eslint": "3",
     "eslint-config-ybiquitous": "*",
     "http-server": "*",
+    "husky": "*",
     "jquery": "*",
     "jsdom": "*",
     "karma": "*",
@@ -59,24 +62,32 @@
     "karma-sourcemap-loader": "*",
     "karma-threshold-reporter": "*",
     "karma-webpack": "*",
+    "lint-staged": "*",
     "mocha": "*",
     "power-assert": "*",
-    "pre-git": "*",
     "sinon": "*",
+    "validate-commit-msg": "*",
     "webpack": "*"
   },
   "engines": {
     "node": ">=6"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --max-warnings=0",
+      "git add"
+    ]
+  },
   "config": {
+    "validate-commit-msg": {
+      "types": "conventional-commit-types"
+    },
     "pre-git": {
-      "commit-msg": "conventional",
-      "pre-commit": [
-        "npm run lint",
-        "npm test"
-      ],
+      "commit-msg": "simple",
+      "pre-commit": [],
       "pre-push": [],
       "post-commit": [],
+      "post-checkout": [],
       "post-merge": []
     }
   }
