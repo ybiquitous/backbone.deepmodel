@@ -12,9 +12,8 @@
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
-    "check-version": "node ./scripts/check-version.js",
-    "prerelease": "npm run check-version && npm run fullbuild && git add -A dist",
-    "release": "standard-version",
+    "prerelease": "npm run fullbuild && git add -A dist",
+    "release": "standard-version --commit-all",
     "release:github": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json",
     "precommit": "lint-staged",
@@ -81,6 +80,12 @@
   "config": {
     "validate-commit-msg": {
       "types": "conventional-commit-types"
+    },
+    "standard-version": {
+      "scripts": {
+        "postbump": "node ./scripts/update-version.js",
+        "posttag": "node ./scripts/update-version.js --revert"
+      }
     }
   }
 }
