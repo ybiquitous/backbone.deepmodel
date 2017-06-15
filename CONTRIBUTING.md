@@ -57,7 +57,5 @@ yarn fullbuild
 
 ## Release
 
-1. Update `get VERSION() { return '<new_version>' }` in [lib/index.js](lib/index.js).
-2. Commit `lib/index.js` in message `chore: prepare to release <new_version>`.
-3. Run `yarn release`.
-4. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
+1. Run `yarn release`.
+2. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
