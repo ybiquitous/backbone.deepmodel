@@ -13,9 +13,9 @@
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
     "check-version": "node ./scripts/check-version.js",
-    "version": "npm run check-version && npm run fullbuild && git add -A dist",
-    "postversion": "git push && git push --tags",
-    "github-release": "conventional-github-releaser -p angular",
+    "prerelease": "npm run check-version && npm run fullbuild && git add -A dist",
+    "release": "standard-version",
+    "release:github": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json",
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg"
@@ -65,6 +65,7 @@
     "mocha": "*",
     "power-assert": "*",
     "sinon": "*",
+    "standard-version": "*",
     "validate-commit-msg": "*",
     "webpack": "*"
   },
