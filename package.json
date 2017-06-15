@@ -55,6 +55,7 @@
     "karma-jsdom-launcher": "*",
     "karma-mocha": "*",
     "karma-sauce-launcher": "*",
+    "karma-sourcemap-loader": "*",
     "karma-threshold-reporter": "*",
     "karma-webpack": "*",
     "mocha": "*",
