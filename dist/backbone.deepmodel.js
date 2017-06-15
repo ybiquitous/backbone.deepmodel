@@ -1,5 +1,5 @@
 /*!
- * backbone.deepmodel v1.1.0-alpha.0
+ * backbone.deepmodel v1.1.0
  * Copyright 2017 ybiquitous <ybiquitous@gmail.com>
  * MIT Licensed
  */
@@ -453,7 +453,7 @@ var DeepModel = function (_Backbone$Model) {
   }, {
     key: 'VERSION',
     get: function get() {
-      return '1.1.0-alpha.0';
+      return '1.1.0';
     }
   }]);
 
