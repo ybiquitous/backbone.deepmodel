@@ -1,11 +1,11 @@
-/* eslint-env mocha */
 import chai, { expect } from 'chai'
 import sinon from 'sinon'
 import DeepModel from '../lib'
 
-chai.use(chai => {
+chai.use(() => {
   const Assertion = chai.Assertion
-  Assertion.addMethod('asJSON', function (expected) {
+  Assertion.addMethod('asJSON', function (expected) { // eslint-disable-line func-names
+    // eslint-disable-next-line no-underscore-dangle
     new Assertion(this._obj.toJSON()).to.deep.equal(expected)
   })
 })
@@ -27,21 +27,21 @@ describe('Backbone.DeepModel', () => {
 
   it('extends custom class by `extend` static method', () => {
     const Model = DeepModel.extend({
-      initialize () {
+      initialize() {
         this.initialized = 1
-      }
+      },
     }, {
-      foo: 1
+      foo: 1,
     })
     expect(Model.foo).to.equal(1)
     expect(Model.extend).to.be.a('function')
     expect(new Model().initialized).to.equal(1)
 
     const Model2 = Model.extend({
-      initialize () {
+      initialize() {
         Model.prototype.initialize.call(this)
         this.initialized2 = 2
-      }
+      },
     })
     expect(Model2.foo).to.equal(1)
     expect(Model2.extend).to.be.a('function')
@@ -53,7 +53,7 @@ describe('Backbone.DeepModel', () => {
 
   it('extends custom class by `class` syntacs', () => {
     class Model extends DeepModel {
-      initialize () {
+      initialize() {
         this.initialized = 1
       }
     }
@@ -61,7 +61,7 @@ describe('Backbone.DeepModel', () => {
     expect(new Model().initialized).to.equal(1)
 
     class Model2 extends Model {
-      initialize () {
+      initialize() {
         super.initialize()
         this.initialized2 = 2
       }
@@ -74,9 +74,9 @@ describe('Backbone.DeepModel', () => {
   })
 
   it('gets attributes', () => {
-    const model = new DeepModel({a: 1, b: {x: '*', y: [true, false]}})
+    const model = new DeepModel({ a: 1, b: { x: '*', y: [true, false] } })
     expect(model.get('a')).to.equal(1)
-    expect(model.get('b')).to.deep.equal({x: '*', y: [true, false]})
+    expect(model.get('b')).to.deep.equal({ x: '*', y: [true, false] })
     expect(model.get('b.x')).to.equal('*')
     expect(model.get('b.y')).to.deep.equal([true, false])
     expect(model.get('b.y[0]')).to.equal(true)
@@ -87,7 +87,7 @@ describe('Backbone.DeepModel', () => {
   })
 
   it('sets no arguments', () => {
-    const model = new DeepModel({a: 1})
+    const model = new DeepModel({ a: 1 })
     expect(model.get('a')).to.equal(1)
     expect(model.set()).to.equal(model)
   })
@@ -101,36 +101,36 @@ describe('Backbone.DeepModel', () => {
     model.on('change:a', changeA)
     model.on('change:b', changeB)
 
-    const options = {dummy: true}
+    const options = { dummy: true }
     model.set('a', 1)
     expect(model.get('a')).to.equal(1)
 
-    model.set({'a': 2, 'b': '*'}, options)
+    model.set({ a: 2, b: '*' }, options)
     expect(model.get('a')).to.equal(2)
     expect(model.get('b')).to.equal('*')
 
     expect(change.callCount).to.equal(2, 'change')
     expect(change.args).to.deep.equal([
       [model, {}],
-      [model, options]
+      [model, options],
     ], 'change')
 
     expect(changeA.callCount).to.equal(2, 'change:a')
     expect(changeA.args).to.deep.equal([
       [model, 1, {}],
-      [model, 2, options]
+      [model, 2, options],
     ], 'change:a')
 
     expect(changeB.callCount).to.equal(1, 'change:b')
     expect(changeB.args).to.deep.equal([
-      [model, '*', options]
+      [model, '*', options],
     ], 'change:b')
   })
 
   it('sets nested attribute', () => {
     const model = new DeepModel({
-      a: {b: {c: null}},
-      x: {y: [true]}
+      a: { b: { c: null } },
+      x: { y: [true] },
     })
     const change = sandbox.spy()
     const changeA = sandbox.spy()
@@ -139,32 +139,32 @@ describe('Backbone.DeepModel', () => {
     model.on('change:a', changeA)
     model.on('change:x', changeX)
 
-    const options = {dummy: true}
+    const options = { dummy: true }
     model.set('a.b.c', 1, options)
     expect(model.get('a.b.c')).to.equal(1)
 
-    model.set({'a.b.c': 2}, options)
+    model.set({ 'a.b.c': 2 }, options)
     expect(model.get('a.b.c')).to.equal(2)
 
-    model.set('a.b', {c: 3})
+    model.set('a.b', { c: 3 })
     expect(model.get('a.b.c')).to.equal(3)
 
     model.set('x.y[0]', false, options)
     expect(model.get('x.y[0]')).to.equal(false)
-    expect(model.get('x')).to.deep.equal({y: [false]})
+    expect(model.get('x')).to.deep.equal({ y: [false] })
 
     model.set('x.y.1', 0, options)
     expect(model.get('x.y.1')).to.equal(0)
-    expect(model.get('x')).to.deep.equal({y: [false, 0]})
+    expect(model.get('x')).to.deep.equal({ y: [false, 0] })
 
     model.set({
       'a.b.c': 9,
       'x.y[0]': null,
-      'x.y.1': '-'
+      'x.y.1': '-',
     })
     expect(model).to.be.asJSON({
-      a: {b: {c: 9}},
-      x: {y: [null, '-']}
+      a: { b: { c: 9 } },
+      x: { y: [null, '-'] },
     })
 
     expect(change.callCount).to.equal(6, 'change')
@@ -174,53 +174,53 @@ describe('Backbone.DeepModel', () => {
       [model, {}],
       [model, options],
       [model, options],
-      [model, {}]
+      [model, {}],
     ], 'change')
 
     expect(changeA.callCount).to.equal(4, 'change:a')
     expect(changeA.args).to.deep.equal([
-      [model, {b: {c: 1}}, options],
-      [model, {b: {c: 2}}, options],
-      [model, {b: {c: 3}}, {}],
-      [model, {b: {c: 9}}, {}]
+      [model, { b: { c: 1 } }, options],
+      [model, { b: { c: 2 } }, options],
+      [model, { b: { c: 3 } }, {}],
+      [model, { b: { c: 9 } }, {}],
     ], 'change:a')
 
     expect(changeX.callCount).to.equal(3, 'change:x')
     expect(changeX.args).to.deep.equal([
-      [model, {y: [false]}, options],
-      [model, {y: [false, 0]}, options],
-      [model, {y: [null, '-']}, {}]
+      [model, { y: [false] }, options],
+      [model, { y: [false, 0] }, options],
+      [model, { y: [null, '-'] }, {}],
     ], 'change:x')
   })
 
   it('sets array element', () => {
     const model = new DeepModel()
     model.set('a', ['*'])
-    expect(model).to.be.asJSON({a: ['*']})
+    expect(model).to.be.asJSON({ a: ['*'] })
     model.set('a[0]', '?')
-    expect(model).to.be.asJSON({a: ['?']})
+    expect(model).to.be.asJSON({ a: ['?'] })
     model.set('a[1]', '/')
-    expect(model).to.be.asJSON({a: ['?', '/']})
-    model.set('a[2]', {b: false})
-    expect(model).to.be.asJSON({a: ['?', '/', {b: false}]})
+    expect(model).to.be.asJSON({ a: ['?', '/'] })
+    model.set('a[2]', { b: false })
+    expect(model).to.be.asJSON({ a: ['?', '/', { b: false }] })
     model.set('a[2].b', true)
-    expect(model).to.be.asJSON({a: ['?', '/', {b: true}]})
+    expect(model).to.be.asJSON({ a: ['?', '/', { b: true }] })
     model.set({
       'a[0]': '-',
       'a[1]': 10,
       'a[2].b': null,
       'a[3].c': [],
-      'a[4]': {d: 0.1},
-      'a[5][0]': false
+      'a[4]': { d: 0.1 },
+      'a[5][0]': false,
     })
-    expect(model).to.be.asJSON({a: [
+    expect(model).to.be.asJSON({ a: [
       '-',
       10,
-      {b: null},
-      {c: []},
-      {d: 0.1},
-      [false]
-    ]})
+      { b: null },
+      { c: [] },
+      { d: 0.1 },
+      [false],
+    ] })
   })
 
   it('cannot set non-existent nested attribute', () => {
@@ -229,12 +229,12 @@ describe('Backbone.DeepModel', () => {
 
   describe('Ajax', () => {
     class User extends DeepModel {
-      urlRoot () {
+      urlRoot() { // eslint-disable-line class-methods-use-this
         return '/users'
       }
-      defaults () {
+      defaults() { // eslint-disable-line class-methods-use-this
         return {
-          name: {first: '', last: ''}
+          name: { first: '', last: '' },
         }
       }
     }
@@ -245,15 +245,15 @@ describe('Backbone.DeepModel', () => {
       server.respondImmediately = true
     })
 
-    function respondWith (method, url, responseBody) {
+    function respondWith(method, url, responseBody) {
       server.respondWith(method, url, [
         200,
-        {'Content-Type': 'application/json'},
-        JSON.stringify(responseBody)
+        { 'Content-Type': 'application/json' },
+        JSON.stringify(responseBody),
       ])
     }
 
-    function expectRequest (method, url, requestBody) {
+    function expectRequest(method, url, requestBody) {
       expect(server.requests).to.have.length(1)
 
       const request = server.requests[0]
@@ -267,13 +267,13 @@ describe('Backbone.DeepModel', () => {
 
     it('fetches from server', () => {
       respondWith('GET', '/users/1', {
-        id: 1, name: {first: 'John', last: 'Lennon'}
+        id: 1, name: { first: 'John', last: 'Lennon' },
       })
 
-      const user = new User({id: 1})
+      const user = new User({ id: 1 })
       user.fetch()
       expect(user).to.be.asJSON({
-        id: 1, name: {first: 'John', last: 'Lennon'}
+        id: 1, name: { first: 'John', last: 'Lennon' },
       })
 
       expectRequest('GET', '/users/1')
@@ -282,75 +282,75 @@ describe('Backbone.DeepModel', () => {
     it('saves new model to server', () => {
       respondWith('POST', '/users', {
         id: 1,
-        name: {first: 'Paul', last: 'McCartney'},
-        updatedAt: '2012-05-09 03:45:21'
+        name: { first: 'Paul', last: 'McCartney' },
+        updatedAt: '2012-05-09 03:45:21',
       })
 
       const user = new User()
       user.save({
         'name.first': 'John',
-        'name.last': 'Lennon'
+        'name.last': 'Lennon',
       })
       expect(user).to.be.asJSON({
         id: 1,
-        name: {first: 'Paul', last: 'McCartney'},
-        updatedAt: '2012-05-09 03:45:21'
+        name: { first: 'Paul', last: 'McCartney' },
+        updatedAt: '2012-05-09 03:45:21',
       })
 
       expectRequest('POST', '/users', {
-        name: {first: 'John', last: 'Lennon'}
+        name: { first: 'John', last: 'Lennon' },
       })
     })
 
     it('saves updated model to server', () => {
       respondWith('PUT', '/users/1', {
         id: 1,
-        name: {first: 'Paul', last: 'McCartney'},
-        updatedAt: '2012-05-09 03:45:21'
+        name: { first: 'Paul', last: 'McCartney' },
+        updatedAt: '2012-05-09 03:45:21',
       })
 
-      const user = new User({id: 1})
+      const user = new User({ id: 1 })
       user.save({
         'name.first': 'John',
-        'name.last': 'Lennon'
+        'name.last': 'Lennon',
       })
       expect(user).to.be.asJSON({
         id: 1,
-        name: {first: 'Paul', last: 'McCartney'},
-        updatedAt: '2012-05-09 03:45:21'
+        name: { first: 'Paul', last: 'McCartney' },
+        updatedAt: '2012-05-09 03:45:21',
       })
 
       expectRequest('PUT', '/users/1', {
-        id: 1, name: {first: 'John', last: 'Lennon'}
+        id: 1, name: { first: 'John', last: 'Lennon' },
       })
     })
   })
 
   describe('configure', () => {
     it('configures path separator', () => {
-      DeepModel.defaults({pathSeparator: '/'})
+      DeepModel.defaults({ pathSeparator: '/' })
 
       const model = new DeepModel()
       model.set('a', {})
-      expect(model).to.be.asJSON({a: {}})
+      expect(model).to.be.asJSON({ a: {} })
       model.set('a/b', 1)
       expect(model.get('a/b')).to.equal(1)
-      expect(model).to.be.asJSON({a: {b: 1}})
+      expect(model).to.be.asJSON({ a: { b: 1 } })
       model.set('a.b', 2)
       expect(model.get('a.b')).to.equal(2)
-      expect(model).to.be.asJSON({a: {b: 1}, 'a.b': 2})
+      expect(model).to.be.asJSON({ a: { b: 1 }, 'a.b': 2 })
 
       DeepModel.defaults(null) // reset
 
       model.set('a/b', 0)
       expect(model.get('a/b')).to.equal(0)
-      expect(model).to.be.asJSON({a: {b: 1}, 'a.b': 2, 'a/b': 0})
+      expect(model).to.be.asJSON({ a: { b: 1 }, 'a.b': 2, 'a/b': 0 })
       expect(model.get('a.b')).to.equal(1)
     })
 
     it('configures path parser', () => {
       DeepModel.defaults({
-        pathParser (path) {
+        pathParser(path) {
           if (path === '*') {
             return [] // ignore
           }
@@ -363,18 +363,18 @@ describe('Backbone.DeepModel', () => {
             throw new Error(`Invalid path: ${path}`)
           }
           return path.substring(1).split(sep)
-        }
+        },
       })
 
       const model = new DeepModel()
       model.set('_a', {})
-      expect(model).to.be.asJSON({a: {}})
+      expect(model).to.be.asJSON({ a: {} })
       model.set('_a_b', 1)
       expect(model.get('_a_b')).to.equal(1)
-      expect(model).to.be.asJSON({a: {b: 1}})
+      expect(model).to.be.asJSON({ a: { b: 1 } })
       model.set('a.b', 2)
       expect(model.get('a.b')).to.equal(2)
-      expect(model).to.be.asJSON({a: {b: 1}, 'a.b': 2})
+      expect(model).to.be.asJSON({ a: { b: 1 }, 'a.b': 2 })
       model.set('*', 3)
       expect(model.get('*')).to.equal(undefined)
 
@@ -382,7 +382,7 @@ describe('Backbone.DeepModel', () => {
 
       model.set('_a_b', 0)
       expect(model.get('_a_b')).to.equal(0)
-      expect(model).to.be.asJSON({a: {b: 1}, 'a.b': 2, '_a_b': 0})
+      expect(model).to.be.asJSON({ a: { b: 1 }, 'a.b': 2, _a_b: 0 })
       expect(model.get('a.b')).to.equal(1)
     })
 

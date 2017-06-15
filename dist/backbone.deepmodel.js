@@ -92,9 +92,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 exports.default = deepCopy;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * @private
  * @param {Object|Array} [source]
@@ -107,8 +112,7 @@ function deepCopy(source) {
 
   var initial = Array.isArray(source) ? [] : {};
   return Object.keys(source).reduce(function (copy, key) {
-    copy[key] = deepCopy(source[key]);
-    return copy;
+    return _extends(copy, _defineProperty({}, key, deepCopy(source[key])));
   }, initial);
 }
 module.exports = exports['default'];
@@ -177,17 +181,17 @@ exports.default = {
   get: function get(obj, path) {
     var pathElements = this.parse(path);
     if (pathElements.length === 0) {
-      return;
+      return undefined;
     }
 
     // TODO: Because of "Symbol is not defined", cannot use `for..of`
     var value = obj;
-    for (var i = 0, len = pathElements.length; i < len; i++) {
+    for (var i = 0, len = pathElements.length; i < len; i += 1) {
       var pathElement = pathElements[i];
       if (pathElement in value) {
         value = value[pathElement];
       } else {
-        return;
+        return undefined;
       }
     }
     return value;
@@ -204,17 +208,20 @@ exports.default = {
     var pathElements = this.parse(path);
     var lastIndex = pathElements.length - 1;
     pathElements.reduce(function (current, pathElement, index) {
+      /* eslint-disable no-param-reassign */
       if (index < lastIndex) {
         if (pathElement in current) {
           current = current[pathElement];
         } else {
           var newObj = isArrayIndex(pathElements[index + 1]) ? [] : {};
-          current = current[pathElement] = newObj;
+          current[pathElement] = newObj;
+          current = newObj;
         }
       } else {
         current[pathElement] = value;
       }
       return current;
+      /* eslint-enable no-param-reassign */
     }, obj);
     return obj;
   }
@@ -352,7 +359,7 @@ var DeepModel = function (_Backbone$Model) {
       var attrs = void 0;
       if ((typeof attribute === 'undefined' ? 'undefined' : _typeof(attribute)) === 'object') {
         attrs = attribute;
-        options = value;
+        options = value; // eslint-disable-line no-param-reassign
       } else {
         if (!_.pathParser && !_.hasSeparator(attribute)) {
           return _get(DeepModel.prototype.__proto__ || Object.getPrototypeOf(DeepModel.prototype), 'set', this).call(this, attribute, value, options);
@@ -368,7 +375,7 @@ var DeepModel = function (_Backbone$Model) {
           return newObj;
         }
         if (paths.length === 1) {
-          newObj[paths[0]] = attrs[path];
+          newObj[paths[0]] = attrs[path]; // eslint-disable-line no-param-reassign
           return newObj;
         }
 
@@ -380,7 +387,7 @@ var DeepModel = function (_Backbone$Model) {
         if (!isObject(obj)) {
           throw new Error('"' + path + '" does not exist in ' + JSON.stringify(_this2));
         }
-        newObj[rootPath] = obj;
+        newObj[rootPath] = obj; // eslint-disable-line no-param-reassign
 
         return _.set(newObj, paths, attrs[path]);
       }, {});
