@@ -2,7 +2,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
 [![Dependency Status][dependency-image]][dependency-url]
-[![Commitizen friendly][commitizen-image]][commitizen-url]
 [![Documentation][documentation-image]][documentation-url]
 [![Code Climate][code-climate-image]][code-climate-url]
 
@@ -106,9 +105,6 @@ MIT License. See [here](LICENSE).
 [dependency-image]: https://img.shields.io/david/ybiquitous/backbone.deepmodel.svg
 [dev-dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies
 [dev-dependency-image]: https://img.shields.io/david/dev/ybiquitous/backbone.deepmodel.svg
-
-[commitizen-url]: http://commitizen.github.io/cz-cli
-[commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
 
 [documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
 [documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
