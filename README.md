@@ -4,7 +4,6 @@
 [![Dependency Status][dependency-image]][dependency-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
 [![Documentation][documentation-image]][documentation-url]
-[![JS Standard Style][js-standard-image]][js-standard-url]
 [![Code Climate][code-climate-image]][code-climate-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
@@ -113,9 +112,6 @@ MIT License. See [here](LICENSE).
 
 [documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
 [documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
-
-[js-standard-url]: http://standardjs.com/
-[js-standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 
 [code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
