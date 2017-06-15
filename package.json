@@ -18,8 +18,7 @@
     "github-release": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json",
     "precommit": "lint-staged",
-    "commitmsg": "validate-commit-msg",
-    "commit": "commit-wizard"
+    "commitmsg": "validate-commit-msg"
   },
   "files": [
     "dist",
