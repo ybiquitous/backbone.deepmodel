@@ -453,7 +453,7 @@ var DeepModel = function (_Backbone$Model) {
   }, {
     key: 'VERSION',
     get: function get() {
-      return '1.0.1';
+      return '0.0.0';
     }
   }]);
 
