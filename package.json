@@ -13,7 +13,7 @@
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
     "prerelease": "npm run lint && npm test",
-    "release": "standard-version --commit-all",
+    "release": "standard-version",
     "release:github": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json",
     "precommit": "lint-staged",
