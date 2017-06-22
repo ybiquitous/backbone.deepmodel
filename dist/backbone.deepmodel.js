@@ -12,7 +12,7 @@
 		exports["DeepModel"] = factory(require("backbone"));
 	else
 		root["Backbone"] = root["Backbone"] || {}, root["Backbone"]["DeepModel"] = factory(root["Backbone"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -48,9 +48,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -78,164 +75,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-exports.default = deepCopy;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/**
- * @private
- * @param {Object|Array} [source]
- * @returns {Object|Array}
- */
-function deepCopy(source) {
-  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source == null) {
-    return source;
-  }
-
-  var initial = Array.isArray(source) ? [] : {};
-  return Object.keys(source).reduce(function (copy, key) {
-    return _extends(copy, _defineProperty({}, key, deepCopy(source[key])));
-  }, initial);
-}
-module.exports = exports['default'];
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function ARRAY_PATTERN() {
-  return (/\[(\w+)]/g
-  );
-}
-
-function isArrayIndex(value) {
-  var num = Number(value);
-  return num >= 0 && num % 1 === 0;
-}
-
-exports.default = {
-  pathSeparator: '.',
-
-  /**
-   * @param {?string} s
-   * @returns {boolean}
-   */
-  hasSeparator: function hasSeparator(s) {
-    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN().test(s));
-  },
-
-
-  /**
-   * @param {string | string[]} path
-   * @returns {string[]}
-   *
-   * @example
-   * parse('a.b')      //=> ['a', 'b']
-   * parse('a[0]')     //=> ['a', '0']
-   * parse(['a', 'b']) //=> ['a', 'b']
-   */
-  parse: function parse(path) {
-    if (Array.isArray(path)) {
-      return path;
-    }
-    if (typeof this.pathParser === 'function') {
-      return this.pathParser(path);
-    }
-    if (!this.hasSeparator(path)) {
-      return [path];
-    }
-    var sep = this.pathSeparator;
-    return path.replace(ARRAY_PATTERN(), sep + '$1').split(sep);
-  },
-
-
-  /**
-   * @param {Object} obj
-   * @param {string | string[]} path
-   * @returns {?*}
-   */
-  get: function get(obj, path) {
-    var pathElements = this.parse(path);
-    if (pathElements.length === 0) {
-      return undefined;
-    }
-
-    // TODO: Because of "Symbol is not defined", cannot use `for..of`
-    var value = obj;
-    for (var i = 0, len = pathElements.length; i < len; i += 1) {
-      var pathElement = pathElements[i];
-      if (pathElement in value) {
-        value = value[pathElement];
-      } else {
-        return undefined;
-      }
-    }
-    return value;
-  },
-
-
-  /**
-   * @param {Object} obj
-   * @param {string | string[]} path
-   * @param {*} value
-   * @returns {Object} given `obj`
-   */
-  set: function set(obj, path, value) {
-    var pathElements = this.parse(path);
-    var lastIndex = pathElements.length - 1;
-    pathElements.reduce(function (current, pathElement, index) {
-      /* eslint-disable no-param-reassign */
-      if (index < lastIndex) {
-        if (pathElement in current) {
-          current = current[pathElement];
-        } else {
-          var newObj = isArrayIndex(pathElements[index + 1]) ? [] : {};
-          current[pathElement] = newObj;
-          current = newObj;
-        }
-      } else {
-        current[pathElement] = value;
-      }
-      return current;
-      /* eslint-enable no-param-reassign */
-    }, obj);
-    return obj;
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -253,15 +97,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _backbone = __webpack_require__(2);
+var _backbone = __webpack_require__(1);
 
 var _backbone2 = _interopRequireDefault(_backbone);
 
-var _objectPath = __webpack_require__(1);
+var _objectPath = __webpack_require__(2);
 
 var _objectPath2 = _interopRequireDefault(_objectPath);
 
-var _deepCopy = __webpack_require__(0);
+var _deepCopy = __webpack_require__(3);
 
 var _deepCopy2 = _interopRequireDefault(_deepCopy);
 
@@ -453,7 +297,7 @@ var DeepModel = function (_Backbone$Model) {
   }, {
     key: 'VERSION',
     get: function get() {
-      return '1.1.0';
+      return '0.0.0';
     }
   }]);
 
@@ -461,6 +305,159 @@ var DeepModel = function (_Backbone$Model) {
 }(_backbone2.default.Model);
 
 exports.default = DeepModel;
+module.exports = exports['default'];
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function ARRAY_PATTERN() {
+  return (/\[(\w+)]/g
+  );
+}
+
+function isArrayIndex(value) {
+  var num = Number(value);
+  return num >= 0 && num % 1 === 0;
+}
+
+exports.default = {
+  pathSeparator: '.',
+
+  /**
+   * @param {?string} s
+   * @returns {boolean}
+   */
+  hasSeparator: function hasSeparator(s) {
+    return typeof s === 'string' && (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN().test(s));
+  },
+
+
+  /**
+   * @param {string | string[]} path
+   * @returns {string[]}
+   *
+   * @example
+   * parse('a.b')      //=> ['a', 'b']
+   * parse('a[0]')     //=> ['a', '0']
+   * parse(['a', 'b']) //=> ['a', 'b']
+   */
+  parse: function parse(path) {
+    if (Array.isArray(path)) {
+      return path;
+    }
+    if (typeof this.pathParser === 'function') {
+      return this.pathParser(path);
+    }
+    if (!this.hasSeparator(path)) {
+      return [path];
+    }
+    var sep = this.pathSeparator;
+    return path.replace(ARRAY_PATTERN(), sep + '$1').split(sep);
+  },
+
+
+  /**
+   * @param {Object} obj
+   * @param {string | string[]} path
+   * @returns {?*}
+   */
+  get: function get(obj, path) {
+    var pathElements = this.parse(path);
+    if (pathElements.length === 0) {
+      return undefined;
+    }
+
+    // TODO: Because of "Symbol is not defined", cannot use `for..of`
+    var value = obj;
+    for (var i = 0, len = pathElements.length; i < len; i += 1) {
+      var pathElement = pathElements[i];
+      if (pathElement in value) {
+        value = value[pathElement];
+      } else {
+        return undefined;
+      }
+    }
+    return value;
+  },
+
+
+  /**
+   * @param {Object} obj
+   * @param {string | string[]} path
+   * @param {*} value
+   * @returns {Object} given `obj`
+   */
+  set: function set(obj, path, value) {
+    var pathElements = this.parse(path);
+    var lastIndex = pathElements.length - 1;
+    pathElements.reduce(function (current, pathElement, index) {
+      /* eslint-disable no-param-reassign */
+      if (index < lastIndex) {
+        if (pathElement in current) {
+          current = current[pathElement];
+        } else {
+          var newObj = isArrayIndex(pathElements[index + 1]) ? [] : {};
+          current[pathElement] = newObj;
+          current = newObj;
+        }
+      } else {
+        current[pathElement] = value;
+      }
+      return current;
+      /* eslint-enable no-param-reassign */
+    }, obj);
+    return obj;
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.default = deepCopy;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * @private
+ * @param {Object|Array} [source]
+ * @returns {Object|Array}
+ */
+function deepCopy(source) {
+  if ((typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object' || source == null) {
+    return source;
+  }
+
+  var initial = Array.isArray(source) ? [] : {};
+  return Object.keys(source).reduce(function (copy, key) {
+    return _extends(copy, _defineProperty({}, key, deepCopy(source[key])));
+  }, initial);
+}
 module.exports = exports['default'];
 
 /***/ })
