@@ -2115,7 +2115,7 @@ escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
-escodegen@1.7.0, escodegen@1.7.x, escodegen@^1.6.1:
+escodegen@1.7.0, escodegen@1.7.x:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.7.0.tgz#4e299d8cc33087b7f29c19e2b9e84362abe35453"
   dependencies:
@@ -2126,7 +2126,7 @@ escodegen@1.7.0, escodegen@1.7.x, escodegen@^1.6.1:
   optionalDependencies:
     source-map "~0.2.0"
 
-escodegen@1.8.x:
+escodegen@1.8.x, escodegen@^1.6.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.8.1.tgz#5a5b53af4693110bebb0867aa3430dd3b70a1018"
   dependencies:
@@ -2174,11 +2174,12 @@ eslint-config-airbnb@^15.0.0:
     eslint-config-airbnb-base "^11.2.0"
 
 eslint-config-ybiquitous@*:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-ybiquitous/-/eslint-config-ybiquitous-1.4.4.tgz#f3326b468466b438eb1241a3ad332779c050849f"
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-ybiquitous/-/eslint-config-ybiquitous-1.5.1.tgz#834b2ff66fd6a289bf2a68a1a2cb64fa1a9180c9"
   dependencies:
     eslint-config-airbnb "^15.0.0"
     eslint-plugin-compat "^1.0.2"
+    eslint-plugin-eslint-comments "^1.0.2"
     eslint-plugin-import "^2.2.0"
     eslint-plugin-jsx-a11y "^5.0.1"
     eslint-plugin-react "^7.0.1"
@@ -2206,6 +2207,12 @@ eslint-plugin-compat@^1.0.2:
     browserslist "2.1.4"
     caniuse-db "1.0.30000671"
     requireindex "^1.1.0"
+
+eslint-plugin-eslint-comments@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-1.0.2.tgz#365a65ee3fd87f9958badb1a7eb13a40bac6c0b3"
+  dependencies:
+    escape-string-regexp "^1.0.5"
 
 eslint-plugin-import@^2.2.0:
   version "2.6.0"
@@ -5179,11 +5186,7 @@ split@^1.0.0:
   dependencies:
     through "2"
 
-sprintf-js@^1.0.3:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.1.tgz#36be78320afe5801f6cea3ee78b6e5aab940ea0c"
-
-sprintf-js@~1.0.2:
+sprintf-js@^1.0.3, sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 

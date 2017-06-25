@@ -15,4 +15,5 @@ module.exports = function perf(name, callback) {
       console.log(`Fastest is ${event.currentTarget.filter('fastest').map('name')}`)
     ))
     .run({ async: true })
+  /* eslint-enable no-console */
 }
