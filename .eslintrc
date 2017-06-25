@@ -3,7 +3,6 @@
     "ybiquitous"
   ],
   "env": {
-    "node": true,
     "mocha": true
   },
   "rules": {
