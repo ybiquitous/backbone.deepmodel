@@ -1127,8 +1127,8 @@ caniuse-db@1.0.30000671:
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000671.tgz#9f071bbc7b96994638ccbaf47829d58a1577a8ed"
 
 caniuse-lite@^1.0.30000670, caniuse-lite@^1.0.30000701:
-  version "1.0.30000702"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000702.tgz#bd66e40345528fe0c001917d1d3f55454df634f1"
+  version "1.0.30000704"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000704.tgz#adb6ea01134515663682db93abab291d4c02946b"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -5428,8 +5428,8 @@ taffydb@2.7.2:
   resolved "https://registry.yarnpkg.com/taffydb/-/taffydb-2.7.2.tgz#7bf8106a5c1a48251b3e3bc0a0e1732489fd0dc8"
 
 tapable@^0.2.5, tapable@~0.2.5:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.6.tgz#206be8e188860b514425375e6f1ae89bfb01fd8d"
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.7.tgz#e46c0daacbb2b8a98b9b0cea0f4052105817ed5c"
 
 tar-pack@^3.4.0:
   version "3.4.0"
@@ -5696,8 +5696,8 @@ uuid@^3.0.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 validate-commit-msg@*:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/validate-commit-msg/-/validate-commit-msg-2.12.2.tgz#6d5015331bf196c22afb880d3f33bcef1deafea6"
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/validate-commit-msg/-/validate-commit-msg-2.13.0.tgz#284032acbeaf4fb59a490c1cae69889e60abde59"
   dependencies:
     conventional-commit-types "^2.0.0"
     find-parent-dir "^0.3.0"
