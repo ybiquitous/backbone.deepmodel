@@ -42,7 +42,6 @@
     "babel-preset-env": "*",
     "babel-preset-power-assert": "*",
     "benchmark": "*",
-    "chai": "*",
     "conventional-github-releaser": "*",
     "dotenv": "*",
     "esdoc": "0.4",
