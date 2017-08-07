@@ -45,7 +45,7 @@
     "conventional-github-releaser": "*",
     "dotenv": "*",
     "esdoc": "0.4",
-    "eslint": "3",
+    "eslint": "*",
     "eslint-config-ybiquitous": "*",
     "http-server": "*",
     "husky": "*",
