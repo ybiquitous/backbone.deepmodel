@@ -28,3 +28,6 @@ deploy:
 
 after_deploy:
   - if [ "$TRAVIS_NODE_VERSION" == "8" ]; then yarn release:github; fi
+
+notifications:
+  email: false
