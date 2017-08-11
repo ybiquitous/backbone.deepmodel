@@ -10,7 +10,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': ['error', {
       devDependencies: [
-        'benchmark/*.js',
+        'benchmark.js',
         '*webpack*.js',
         'test/**/*.js',
       ],

@@ -11,7 +11,7 @@
     "build": "webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
     "examples": "http-server . -o -c-1 -i false",
-    "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
+    "benchmark": "node benchmark.js get ; echo ; node benchmark.js set",
     "prerelease": "npm run lint && npm test",
     "release": "standard-version --no-verify --commit-all",
     "release:dryrun": "npm run release -- --dry-run",
