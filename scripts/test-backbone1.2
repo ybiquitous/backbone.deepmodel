@@ -1,12 +1,12 @@
 #!/bin/sh
-set -e
+set -eu
 
-DIR=tmp
+yarn add --no-progress --no-lockfile backbone@1.2
 
-npm install --prefix=${DIR} backbone@1.2
+finally() {
+  git checkout package.json
+  yarn --no-progress
+}
+trap finally EXIT
 
-export NODE_PATH="$(npm root --prefix=${DIR})"
-
-npm test
-
-rm -rf ${DIR}
+yarn test
