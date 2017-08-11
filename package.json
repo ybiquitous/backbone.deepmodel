@@ -14,6 +14,7 @@
     "benchmark": "ls benchmark/*.js | xargs -I {} node {}",
     "prerelease": "npm run lint && npm test",
     "release": "standard-version --no-verify --commit-all",
+    "release:dryrun": "npm run release -- --dry-run",
     "release:github": "conventional-github-releaser -p angular",
     "doc": "esdoc -c esdoc.json",
     "precommit": "lint-staged",
