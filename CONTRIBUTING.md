@@ -40,7 +40,7 @@ yarn lint
 
 ## Build
 
-Source code is written in *ECMAScript 6*. Build by
+Source code is written in *ECMAScript 2015+*. Build by
 
 - [Babel](https://babeljs.io/)
 - [Webpack](https://webpack.github.io/)
