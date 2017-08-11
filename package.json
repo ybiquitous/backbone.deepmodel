@@ -42,7 +42,7 @@
     "babel-plugin-transform-object-assign": "*",
     "babel-preset-env": "*",
     "babel-preset-power-assert": "*",
-    "backbone": ">=1.2.0",
+    "backbone": "*",
     "benchmark": "*",
     "conventional-github-releaser": "*",
     "dotenv": "*",
