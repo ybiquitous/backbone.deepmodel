@@ -24,12 +24,16 @@
 
 ## Install
 
-```sh
-npm install backbone.deepmodel --save
-```
+via NPM:
 
 ```sh
-yarn add backbone.deepmodel
+npm install backbone backbone.deepmodel
+```
+
+via Yarn:
+
+```sh
+yarn add backbone backbone.deepmodel
 ```
 
 Or download manually:
