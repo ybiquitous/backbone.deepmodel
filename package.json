@@ -16,7 +16,7 @@
     "release": "standard-version --no-verify --commit-all",
     "release:dryrun": "npm run release -- --dry-run",
     "release:github": "conventional-github-releaser -p angular",
-    "doc": "esdoc -c esdoc.json",
+    "doc": "esdoc",
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg"
   },
