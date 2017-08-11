@@ -1,9 +1,10 @@
 [![NPM version][npm-version-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
 [![Dependency Status][dependency-image]][dependency-url]
 [![Documentation][documentation-image]][documentation-url]
-[![Code Climate][code-climate-image]][code-climate-url]
+[![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
 
@@ -113,8 +114,11 @@ MIT License. See [here](LICENSE).
 [documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
 [documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
 
-[code-climate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
-[code-climate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
+[codeclimate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
+
+[conventionalcommits-url]: https://conventionalcommits.org
+[conventionalcommits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 
 [saucelabs-url]: https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64
 [saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg
