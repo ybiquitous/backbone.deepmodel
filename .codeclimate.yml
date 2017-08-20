@@ -4,9 +4,11 @@ engines:
     enabled: true
     config:
       languages:
-      - javascript
+        - javascript
   fixme:
     enabled: true
 ratings:
   paths:
-  - "**.js"
+    - "**.js"
+exclude_paths:
+  - docs/**/*
