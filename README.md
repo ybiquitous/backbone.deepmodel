@@ -37,7 +37,7 @@ via `yarn`:
 yarn add backbone backbone.deepmodel
 ```
 
-Or download manually:
+or download manually:
 
 - [backbone.deepmodel.min.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js)
 - [backbone.deepmodel.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.js)
