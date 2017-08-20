@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Backbone.DeepModel Demo</title>
+  </head>
+  <body>
+    <h1>Backbone.DeepModel Demo</h1>
+
+    <script src="https://unpkg.com/underscore/underscore-min.js"></script>
+    <script src="https://unpkg.com/backbone/backbone-min.js"></script>
+    <script src="https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js"></script>
+    <script>
+      let output
+      console.log = (arg) => {
+        console.info(arg)
+        output.innerHTML += `<pre><code>${JSON.stringify(arg)}</code></pre>`
+      }
+    </script>
+
+    <h2>Normal case</h2>
+    <h3>Code</h3>
+    <pre id="normal-case-code"><code>
+class Person extends Backbone.DeepModel {}
+
+const p = new Person({
+  name: { first: '', last: '' },
+  pets: []
+})
+
+// Object
+p.set('name.first', 'Tom')
+p.set('name.last', 'Watson')
+console.log(p.get('name')) //=> {first: 'Tom', last: 'Watson'}
+console.log(p.get('name.first')) //=> 'Tom'
+console.log(p.get('name.last')) //=> 'Watson'
+
+// Array
+p.set('pets[0]', {name: 'Mi', kind: 'Cat'})
+p.set('pets.1', {name: 'Boo', kind: 'Dog'})
+console.log(p.get('pets[0].name')) //=> 'Mi'
+console.log(p.get('pets[0].kind')) //=> 'Cat'
+console.log(p.get('pets.1')) //=> {name: 'Boo', kind: 'Dog'}
+
+// key-value style
+p.set({
+  'name.first': 'Ken',
+  'pets[0].name': 'Tama'
+})
+console.log(p.get('name.first')) //=> 'Ken'
+console.log(p.get('pets[0].name')) //=> 'Tama'
+    </code></pre>
+    <h3>Output</h3>
+    <div id="normal-case-output"></div>
+
+    <script>
+      output = document.getElementById('normal-case-output')
+      eval(document.getElementById('normal-case-code'))
+    </script>
+
+    <h2>Custom Parser</h2>
+    <h3>Code</h3>
+    <pre id="custom-parser-code"><code>
+Backbone.DeepModel.defaults({
+  // JSON Pointer parser (https://tools.ietf.org/html/rfc6901)
+  pathParser(path) {
+    if (path.indexOf('/') === -1) {
+      return [path]
+    }
+    if (path.charAt(0) !== '/') {
+      throw new Error('Invalid JSON pointer: ' + path)
+    }
+    return path.substring(1).split('/').map(str =>
+      str.replace(/~1/g, '/').replace(/~0/g, '~')
+    )
+  }
+})
+
+const model = new Backbone.DeepModel()
+model.set({
+  '/foo':  ['bar', 'baz'],
+  '/':     0,
+  '/a~1b': 1,
+  '/c%d':  2,
+  '/e^f':  3,
+  '/g|h':  4,
+  '/i\\j': 5,
+  '/k\"l': 6,
+  '/ ':    7,
+  '/m~0n': 8
+})
+console.log(model.toJSON())
+    </code></pre>
+    <h3>Output</h3>
+    <div id="custom-parser-output"></div>
+    <script>
+      output = document.getElementById('custom-parser-output')
+      eval(document.getElementById('custom-parser-code').textContent)
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dark.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
