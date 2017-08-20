@@ -88,11 +88,7 @@ module.exports = (config) => {
     concurrency: Infinity,
   }
 
-  // https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
-  if (process.env.SAUCELABS === 'true' &&
-      process.env.TRAVIS === 'true' &&
-      process.env.TRAVIS_PULL_REQUEST === 'false' &&
-      process.env.TRAVIS_NODE_VERSION === '7') {
+  if (process.env.SAUCELABS === 'true') {
     settings.sauceLabs = {
       testName: 'backbone.deepmodel unit tests',
     }
