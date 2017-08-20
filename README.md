@@ -13,13 +13,14 @@
 Simple and light [Backbone.js](http://backbonejs.org/) plugin
 for handling nested attributes of `Backbone.Model`.
 
+Please see [DEMO](https://ybiquitous.github.io/backbone.deepmodel/demo).
+
 ## Table of Contents
 
 - [Install](#install)
 - [Dependencies](#dependencies)
 - [Use](#use)
 - [API](#api)
-- [Examples](#examples)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -75,18 +76,6 @@ in browser:
 ## API
 
 See [API Documentation](https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/identifiers.html).
-
-## Examples
-
-To try examples, please run the following commands.
-When the web server is started on localhost, then go to `/examples` directory.
-
-```sh
-git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
-cd backbone.deepmodel
-yarn
-yarn examples
-```
 
 ## Contribute
 
