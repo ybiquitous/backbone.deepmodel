@@ -39,8 +39,8 @@ yarn add backbone backbone.deepmodel
 
 Or download manually:
 
-- [backbone.deepmodel.min.js](https://unpkg.com/backbone.deepmodel@1.1.0/dist/backbone.deepmodel.min.js)
-- [backbone.deepmodel.js](https://unpkg.com/backbone.deepmodel@1.1.0/dist/backbone.deepmodel.js)
+- [backbone.deepmodel.min.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js)
+- [backbone.deepmodel.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.js)
 
 ## Dependencies
 
@@ -67,9 +67,9 @@ p.set('name.first', 'Tom')
 in browser:
 
 ```html
-<script src="https://unpkg.com/underscore@1.8.3/underscore-min.js"></script>
-<script src="https://unpkg.com/backbone@1.3.3/backbone-min.js"></script>
-<script src="https://unpkg.com/backbone.deepmodel@1.1.0/dist/backbone.deepmodel.min.js"></script>
+<script src="//unpkg.com/underscore/underscore-min.js"></script>
+<script src="//unpkg.com/backbone/backbone-min.js"></script>
+<script src="//unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js"></script>
 ```
 
 ## API
