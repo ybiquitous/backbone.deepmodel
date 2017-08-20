@@ -10,7 +10,7 @@ script:
   - yarn lint
   - yarn test
   - yarn test:backbone1.2
-  - if [[ $TRAVIS_NODE_VERSION = '8' ]] && [[ $TRAVIS_PULL_REQUEST = 'true' ]]; then SAUCELABS=true yarn test; fi
+  - if [[ $TRAVIS_NODE_VERSION = '8' ]] && [[ ! $TRAVIS_PULL_REQUEST = 'false' ]]; then SAUCELABS=true yarn test; fi
   - yarn benchmark
   - yarn build
 
