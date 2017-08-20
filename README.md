@@ -25,13 +25,13 @@ for handling nested attributes of `Backbone.Model`.
 
 ## Install
 
-via NPM:
+via `npm`:
 
 ```sh
 npm install backbone backbone.deepmodel
 ```
 
-via Yarn:
+via `yarn`:
 
 ```sh
 yarn add backbone backbone.deepmodel
