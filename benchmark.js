@@ -1,6 +1,6 @@
-const Benchmark = require('benchmark')
-const Backbone = require('backbone')
-const DeepModel = require('./dist/backbone.deepmodel')
+import Benchmark from 'benchmark'
+import Backbone from 'backbone'
+import DeepModel from './lib'
 
 function log(msg) {
   process.stdout.write(`${msg}\n`)
