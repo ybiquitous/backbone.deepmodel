@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | backbone.deepmodel</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Backbone.DeepModel plugin"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backbone.deepmodel"><meta property="twitter:description" content="Backbone.DeepModel plugin"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/index.js~DeepModel.html">DeepModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deepCopy">deepCopy</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><a href="https://npmjs.org/package/backbone.deepmodel"><img src="https://img.shields.io/npm/v/backbone.deepmodel.svg" alt="NPM version"></a>
+<a href="https://travis-ci.org/ybiquitous/backbone.deepmodel"><img src="https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/ybiquitous/backbone.deepmodel"><img src="https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg" alt="Codecov Status"></a>
+<a href="https://codeclimate.com/github/ybiquitous/backbone.deepmodel"><img src="https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://david-dm.org/ybiquitous/backbone.deepmodel"><img src="https://img.shields.io/david/ybiquitous/backbone.deepmodel.svg" alt="Dependency Status"></a>
+<a href="https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/"><img src="https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg" alt="Documentation"></a>
+<a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits"></a></p>
+<p><a href="https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64"><img src="https://saucelabs.com/browser-matrix/ybiquitous.svg" alt="Sauce Test Status"></a></p>
+<h1 id="backbone-deepmodel-plugin">Backbone.DeepModel plugin</h1><p>Simple and light <a href="http://backbonejs.org/">Backbone.js</a> plugin
+for handling nested attributes of <code>Backbone.Model</code>.</p>
+<h2 id="table-of-contents">Table of Contents</h2><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#use">Use</a></li>
+<li><a href="#api">API</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#contribute">Contribute</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id="install">Install</h2><p>via NPM:</p>
+<pre><code class="lang-sh"><code class="source-code prettyprint">npm install backbone backbone.deepmodel</code>
+</code></pre>
+<p>via Yarn:</p>
+<pre><code class="lang-sh"><code class="source-code prettyprint">yarn add backbone backbone.deepmodel</code>
+</code></pre>
+<p>Or download manually:</p>
+<ul>
+<li><a href="https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js">backbone.deepmodel.min.js</a></li>
+<li><a href="https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.js">backbone.deepmodel.js</a></li>
+</ul>
+<h2 id="dependencies">Dependencies</h2><ul>
+<li><a href="http://backbonejs.org/">Backbone.js</a> 1.2+</li>
+</ul>
+<h2 id="use">Use</h2><pre><code class="lang-js"><code class="source-code prettyprint">import DeepModel from &apos;backbone.deepmodel&apos;
+
+class Person extends DeepModel {
+  defaults() {
+    return {
+      name: {first: &apos;&apos;, last: &apos;&apos;},
+      pets: []
+    }
+  }
+}
+
+const p = new Person()
+p.set(&apos;name.first&apos;, &apos;Tom&apos;)</code>
+</code></pre>
+<p>in browser:</p>
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;script src=&quot;//unpkg.com/underscore/underscore-min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//unpkg.com/backbone/backbone-min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js&quot;&gt;&lt;/script&gt;</code>
+</code></pre>
+<h2 id="api">API</h2><p>See <a href="https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/identifiers.html">API Documentation</a>.</p>
+<h2 id="examples">Examples</h2><p>To try examples, please run the following commands.
+When the web server is started on localhost, then go to <code>/examples</code> directory.</p>
+<pre><code class="lang-sh"><code class="source-code prettyprint">git clone git://github.com/ybiquitous/backbone.deepmodel.git --depth 1
+cd backbone.deepmodel
+yarn
+yarn examples</code>
+</code></pre>
+<h2 id="contribute">Contribute</h2><p>See <a href="CONTRIBUTING.md">here</a>.</p>
+<h2 id="license">License</h2><p>MIT License. See <a href="LICENSE">here</a>.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.1)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

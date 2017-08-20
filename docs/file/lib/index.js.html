@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/index.js | backbone.deepmodel</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Backbone.DeepModel plugin"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backbone.deepmodel"><meta property="twitter:description" content="Backbone.DeepModel plugin"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/index.js~DeepModel.html">DeepModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deepCopy">deepCopy</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Backbone from &apos;backbone&apos;
+import objectPath from &apos;./object-path&apos;
+import deepCopy from &apos;./deep-copy&apos;
+
+const DEFAULTS = Object.freeze({
+  pathSeparator: &apos;.&apos;,
+  pathParser: null,
+})
+
+const defaults = Object.assign({}, DEFAULTS)
+
+function updateObjectPath() {
+  objectPath.pathSeparator = defaults.pathSeparator
+
+  const pathParser = defaults.pathParser
+  if (typeof pathParser === &apos;function&apos; || pathParser == null) {
+    objectPath.pathParser = pathParser
+  }
+
+  return objectPath
+}
+
+function isObject(value) {
+  return value != null &amp;&amp; typeof value === &apos;object&apos;
+}
+
+/**
+ * @class
+ * @see http://backbonejs.org/#Model
+ *
+ * @example
+ * class Person extends DeepModel {...}
+ *
+ * // or
+ * const Person = DeepModel.extend({...})
+ */
+export default class DeepModel extends Backbone.Model {
+  static extend(...args) {
+    return Backbone.Model.extend(...args)
+  }
+
+  /**
+   * this module&apos;s version.
+   */
+  static get VERSION() { return &apos;0.0.0&apos; }
+
+  /**
+   * Update default settings.
+   *
+   * @param {Object} [settings={}] reset if `null`
+   * @param {string} [settings.pathSeparator=&apos;/&apos;]
+   * @param {function(path: string): Array.&lt;string&gt;} [settings.pathParser] ignore if returns `[]`
+   * @returns {Object}
+   *
+   * @example
+   * DeepModel.defaults({anySetting: true})
+   * DeepModel.defaults(null) // reset!
+   *
+   * @example
+   * DeepModel.defaults({pathSeparator: &apos;/&apos;})
+   *
+   * const model = new DeepModel()
+   * model.set(&apos;a&apos;, {})
+   * model.set(&apos;a/b&apos;, 1)
+   * model.get(&apos;a/b&apos;) //=&gt; 1
+   *
+   * @example
+   * DeepModel.defaults({
+   *   pathParser(path) {
+   *     if (path === &apos;*&apos;) { return [] } // ignore!
+   *     return path.split(&apos;_&apos;)
+   *   }
+   * })
+   *
+   * const model = new DeepModel()
+   * model.set(&apos;a&apos;, {})
+   * model.set(&apos;a_b&apos;, 1)
+   * model.get(&apos;a_b&apos;) //=&gt; 1
+   * model.set(&apos;*&apos;, 2)
+   * model.get(&apos;*&apos;) //=&gt; undefined
+   */
+  static defaults(settings = {}) {
+    return Object.assign(defaults, settings == null ? DEFAULTS : settings)
+  }
+
+  /**
+   * @see http://backbonejs.org/#Model-get
+   * @override
+   * @param {string} attribute
+   * @returns {*}
+   *
+   * @example
+   * model.get(&apos;a.b&apos;)
+   */
+  get(attribute) {
+    return updateObjectPath().get(this.attributes, attribute)
+  }
+
+  /**
+   * @see http://backbonejs.org/#Model-set
+   * @override
+   * @param {string} attribute
+   * @param {*}      value
+   * @param {Object} [options]
+   * @returns {DeepModel}
+   *
+   * @example
+   * model.set({&apos;a.b&apos;: &apos;value&apos;})
+   * model.set(&apos;a.b&apos;, &apos;value&apos;)
+   */
+  set(attribute, value, options) {
+    if (attribute == null) {
+      return this
+    }
+
+    const _ = updateObjectPath()
+
+    let attrs
+    if (typeof attribute === &apos;object&apos;) {
+      attrs = attribute
+      options = value // eslint-disable-line no-param-reassign
+    } else {
+      if (!_.pathParser &amp;&amp; !_.hasSeparator(attribute)) {
+        return super.set(attribute, value, options)
+      }
+      attrs = {}
+      attrs[attribute] = value
+    }
+
+    const newAttrs = Object.keys(attrs).reduce((newObj, path) =&gt; {
+      const paths = _.parse(path)
+
+      if (paths.length === 0) {
+        return newObj
+      }
+      if (paths.length === 1) {
+        newObj[paths[0]] = attrs[path] // eslint-disable-line no-param-reassign
+        return newObj
+      }
+
+      const rootPath = paths[0]
+      let obj = newObj[rootPath]
+      if (obj == null) {
+        obj = deepCopy(this.attributes[rootPath])
+      }
+      if (!isObject(obj)) {
+        throw new Error(`&quot;${path}&quot; does not exist in ${JSON.stringify(this)}`)
+      }
+      newObj[rootPath] = obj // eslint-disable-line no-param-reassign
+
+      return _.set(newObj, paths, attrs[path])
+    }, {})
+
+    return super.set(newAttrs, options)
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.1)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
