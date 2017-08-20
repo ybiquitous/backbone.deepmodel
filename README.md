@@ -10,8 +10,8 @@
 
 # Backbone.DeepModel plugin
 
-Simple and light [Backbone.js](http://backbonejs.org/) plugin
-for handling nested attributes of `Backbone.Model`.
+Super simple and lightweight [Backbone.js](http://backbonejs.org/) plugin
+to handle nested attributes of `Backbone.Model`.
 
 Please see [DEMO](https://ybiquitous.github.io/backbone.deepmodel/demo).
 
