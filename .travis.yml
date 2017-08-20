@@ -10,7 +10,7 @@ script:
   - yarn lint
   - yarn test
   - yarn test:backbone1.2
-  - if [ "$TRAVIS_NODE_VERSION" == "8" ]; then SAUCELABS=true yarn test; fi
+  - if [[ $TRAVIS_NODE_VERSION = '8' ]]; then SAUCELABS=true yarn test; fi
   - yarn benchmark
   - yarn build
 
@@ -27,7 +27,8 @@ deploy:
     node: "8"
 
 after_deploy:
-  - if [ "$TRAVIS_NODE_VERSION" == "8" ]; then yarn release:github; fi
+  - if [[ $TRAVIS_NODE_VERSION = '8' ]]; then yarn release:github; fi
+  - if [[ $TRAVIS_NODE_VERSION = '8' ]]; then yarn doc:publish; fi
 
 notifications:
   email: false
