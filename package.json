@@ -7,9 +7,10 @@
     "test": "karma start --single-run",
     "test:watch": "karma start --auto-watch",
     "test:backbone1.2": "./scripts/test-backbone1.2",
-    "lint": "eslint --max-warnings=0 .",
+    "lint": "eslint --max-warnings=0 --ignore-path=.gitignore .",
     "build": "webpack",
     "fullbuild": "npm run lint && npm test && npm run build",
+    "preexamples": "npm run build",
     "examples": "http-server . -o -c-1 -i false",
     "benchmark": "node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set",
     "prerelease": "npm run lint && npm test",
@@ -88,7 +89,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "node ./scripts/update-version.js && npm run build && git add -A dist",
+      "postbump": "node ./scripts/update-version.js && npm run build",
       "posttag": "node ./scripts/update-version.js --revert && git commit -m \"chore: revert to dummy version\""
     }
   }

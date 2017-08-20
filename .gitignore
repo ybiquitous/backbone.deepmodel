@@ -61,3 +61,6 @@ typings/
 
 # Generated documentation
 docs/
+
+# Generated distribution
+dist/
