@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.1.0...v1.2.0) (2017-08-20)
+
+
+### Features
+
+* move backbone from dependencies to peerDependencies ([#149](https://github.com/ybiquitous/backbone.deepmodel/issues/149)) ([5b63f35](https://github.com/ybiquitous/backbone.deepmodel/commit/5b63f35))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.1.0-alpha.0...v1.1.0) (2017-06-15)
 
