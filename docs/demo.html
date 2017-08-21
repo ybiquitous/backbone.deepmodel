@@ -55,7 +55,7 @@ console.log(p.get('pets[0].name')) //=> 'Tama'
 
     <script>
       output = document.getElementById('normal-case-output')
-      eval(document.getElementById('normal-case-code'))
+      eval(document.getElementById('normal-case-code').textContent)
     </script>
 
     <h2>Custom Parser</h2>
