@@ -13,14 +13,13 @@
 Super simple and lightweight [Backbone.js](http://backbonejs.org/) plugin
 to handle nested attributes of `Backbone.Model`.
 
-Please see [DEMO](https://ybiquitous.github.io/backbone.deepmodel/demo).
+Please see [demo](https://ybiquitous.github.io/backbone.deepmodel/demo).
 
 ## Table of Contents
 
 - [Install](#install)
 - [Dependencies](#dependencies)
 - [Use](#use)
-- [API](#api)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -65,7 +64,7 @@ const p = new Person()
 p.set('name.first', 'Tom')
 ```
 
-in browser:
+In browser:
 
 ```html
 <script src="//unpkg.com/underscore/underscore-min.js"></script>
@@ -73,9 +72,7 @@ in browser:
 <script src="//unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js"></script>
 ```
 
-## API
-
-See [API Documentation](https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/identifiers.html).
+For details, see [API Documentation](https://ybiquitous.github.io/backbone.deepmodel/identifiers.html).
 
 ## Contribute
 
