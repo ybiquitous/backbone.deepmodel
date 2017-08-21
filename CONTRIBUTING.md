@@ -62,5 +62,7 @@ Follow the [Conventional Commits Specification](https://conventionalcommits.org/
 
 ## Release
 
+1. Run `git checkout master && git pull`.
 1. Run `yarn release`. (or "Dry Run" mode via `yarn release:dryrun`)
-2. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
+1. Run `git push --follow-tags`.
+1. Regenerate API documentation on [ESDoc Hosting](https://doc.esdoc.org/).
