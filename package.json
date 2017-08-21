@@ -16,7 +16,7 @@
     "release:dryrun": "npm run release -- --dry-run",
     "release:github": "conventional-github-releaser -p angular",
     "doc": "esdoc",
-    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\"",
+    "doc:publish": "git checkout master && npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg"
   },
