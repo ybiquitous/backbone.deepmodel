@@ -20,6 +20,7 @@ Please see [demo](https://ybiquitous.github.io/backbone.deepmodel/demo).
 - [Install](#install)
 - [Dependencies](#dependencies)
 - [Use](#use)
+- [Changelog](#changelog)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -73,6 +74,10 @@ In browser:
 ```
 
 For details, see [API Documentation](https://ybiquitous.github.io/backbone.deepmodel/identifiers.html).
+
+## Changelog
+
+See [here](CHANGELOG.md).
 
 ## Contribute
 
