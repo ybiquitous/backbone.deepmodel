@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.2.0...v1.2.1) (2017-08-21)
+
+
+### Bug Fixes
+
+* **travis:** missing distribution files on npm registry ([b76233f](https://github.com/ybiquitous/backbone.deepmodel/commit/b76233f))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.1.0...v1.2.0) (2017-08-20)
 
