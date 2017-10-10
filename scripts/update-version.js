@@ -1,5 +1,5 @@
 const {
-  packageVersion, dummyVersion, updateVersion, stageFile,
+  packageVersion, dummyVersion, updateVersion,
 } = require('./utils')
 
 let oldVersion = dummyVersion
@@ -9,5 +9,3 @@ if (process.argv.includes('--revert')) {
   [oldVersion, newVersion] = [newVersion, oldVersion]
 }
 updateVersion(oldVersion, newVersion)
-
-stageFile()

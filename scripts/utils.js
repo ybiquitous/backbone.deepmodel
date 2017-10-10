@@ -1,6 +1,5 @@
 const path = require('path')
 const fs = require('fs')
-const { execSync } = require('child_process')
 
 const encoding = 'utf8'
 const rootDir = path.join(__dirname, '..')
@@ -19,9 +18,5 @@ module.exports = {
     const content = fs.readFileSync(file, encoding)
     const changedContent = content.replace(oldVersion, newVersion)
     fs.writeFileSync(file, changedContent, encoding)
-  },
-
-  stageFile() {
-    execSync(`git add "${targetFile}"`)
   },
 }
