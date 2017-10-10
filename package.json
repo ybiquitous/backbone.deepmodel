@@ -2,7 +2,22 @@
   "name": "backbone.deepmodel",
   "version": "1.2.1",
   "description": "Backbone.DeepModel plugin",
+  "author": "ybiquitous <ybiquitous@gmail.com>",
+  "license": "MIT",
+  "repository": "ybiquitous/backbone.deepmodel",
+  "homepage": "https://github.com/ybiquitous/backbone.deepmodel",
+  "keywords": [
+    "backbone",
+    "plugin"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
   "main": "lib/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "test": "karma start --single-run",
     "test:watch": "karma start --auto-watch",
@@ -21,18 +36,6 @@
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg"
   },
-  "files": [
-    "dist",
-    "lib"
-  ],
-  "keywords": [
-    "backbone",
-    "plugin"
-  ],
-  "author": "ybiquitous <ybiquitous@gmail.com>",
-  "license": "MIT",
-  "repository": "ybiquitous/backbone.deepmodel",
-  "homepage": "https://github.com/ybiquitous/backbone.deepmodel",
   "peerDependencies": {
     "backbone": ">=1.2.0"
   },
@@ -72,9 +75,6 @@
     "standard-version": "*",
     "validate-commit-msg": "*",
     "webpack": "*"
-  },
-  "engines": {
-    "node": ">=6"
   },
   "lint-staged": {
     "*.js": [
