@@ -205,14 +205,16 @@ describe('Backbone.DeepModel', () => {
       'a[4]': { d: 0.1 },
       'a[5][0]': false,
     })
-    assert.deepStrictEqual(model.toJSON(), { a: [
-      '-',
-      10,
-      { b: null },
-      { c: [] },
-      { d: 0.1 },
-      [false],
-    ] })
+    assert.deepStrictEqual(model.toJSON(), {
+      a: [
+        '-',
+        10,
+        { b: null },
+        { c: [] },
+        { d: 0.1 },
+        [false],
+      ],
+    })
   })
 
   it('cannot set non-existent nested attribute', () => {

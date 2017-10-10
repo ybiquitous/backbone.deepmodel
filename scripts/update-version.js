@@ -1,4 +1,6 @@
-const { packageVersion, dummyVersion, updateVersion, stageFile } = require('./utils')
+const {
+  packageVersion, dummyVersion, updateVersion, stageFile,
+} = require('./utils')
 
 let oldVersion = dummyVersion
 let newVersion = packageVersion()

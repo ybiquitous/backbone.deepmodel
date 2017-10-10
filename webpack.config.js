@@ -34,7 +34,7 @@ function config(production) {
     },
 
     plugins: (() => {
-      const env = process.env
+      const { env } = process
       const year = new Date().getFullYear()
       const plugins = [
         new webpack.BannerPlugin(`
