@@ -1,3 +1,5 @@
+# Backbone.DeepModel plugin
+
 [![NPM version][npm-version-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
@@ -7,8 +9,6 @@
 [![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
-
-# Backbone.DeepModel plugin
 
 Super simple and lightweight [Backbone.js](http://backbonejs.org/) plugin
 to handle nested attributes of `Backbone.Model`.
