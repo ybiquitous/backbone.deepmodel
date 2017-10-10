@@ -30,8 +30,7 @@
     "build": "webpack",
     "fullbuild": "npm-run-all --parallel lint test build",
     "benchmark": "node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set",
-    "prerelease": "npm-run-all --parallel lint test",
-    "release": "standard-version",
+    "release": "standard-version --commit-all",
     "release:dry-run": "standard-version --dry-run",
     "doc": "esdoc",
     "doc:publish": "git checkout master && npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
@@ -86,8 +85,8 @@
   },
   "standard-version": {
     "scripts": {
+      "postbump": "node ./scripts/update-version.js && git add .",
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
-      "precommit": "node ./scripts/update-version.js && git add .",
       "posttag": "node ./scripts/update-version.js --revert && git commit -a -m \"chore(release): revert to dummy version\""
     }
   }
