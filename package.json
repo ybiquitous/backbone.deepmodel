@@ -87,7 +87,7 @@
   "standard-version": {
     "scripts": {
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
-      "postbump": "node ./scripts/update-version.js && npm run build",
+      "postbump": "node ./scripts/update-version.js",
       "posttag": "node ./scripts/update-version.js --revert && git commit -n -m \"chore(release): revert to dummy version\""
     }
   }
