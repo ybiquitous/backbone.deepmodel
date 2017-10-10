@@ -5,7 +5,6 @@
 [![Codecov Status][codecov-image]][codecov-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 [![Dependency Status][dependency-image]][dependency-url]
-[![Documentation][documentation-image]][documentation-url]
 [![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
@@ -101,9 +100,6 @@ MIT License. See [here](LICENSE).
 [dependency-image]: https://img.shields.io/david/ybiquitous/backbone.deepmodel.svg
 [dev-dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies
 [dev-dependency-image]: https://img.shields.io/david/dev/ybiquitous/backbone.deepmodel.svg
-
-[documentation-url]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/
-[documentation-image]: https://doc.esdoc.org/github.com/ybiquitous/backbone.deepmodel/badge.svg
 
 [codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [codeclimate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
