@@ -29,8 +29,5 @@ deploy:
     tags: true
     node: "8"
 
-after_deploy:
-  - if [[ $TRAVIS_NODE_VERSION = '8' ]]; then yarn doc:publish; fi
-
 notifications:
   email: false

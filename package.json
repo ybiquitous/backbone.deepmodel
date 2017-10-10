@@ -32,8 +32,9 @@
     "benchmark": "node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set",
     "release": "standard-version --commit-all",
     "release:dry-run": "standard-version --dry-run",
+    "postrelease": "npm run doc:publish",
     "doc": "esdoc",
-    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\" && git push --force --quiet origin HEAD:master",
+    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e"
   },
