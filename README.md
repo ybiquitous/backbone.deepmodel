@@ -84,7 +84,7 @@ See [here](CONTRIBUTING.md).
 
 ## License
 
-MIT License. See [here](LICENSE).
+[MIT](LICENSE) © ybiquitous
 
 [npm-url]: https://npmjs.org/package/backbone.deepmodel
 [npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg
