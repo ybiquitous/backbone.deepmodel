@@ -18,7 +18,7 @@ function perf(name, callback) {
     .run({ async: true })
 }
 
-const argv = process.argv
+const { argv } = process
 if (argv.includes('get')) {
   perf('get', model => model.get('name'))
 } else if (argv.includes('set')) {

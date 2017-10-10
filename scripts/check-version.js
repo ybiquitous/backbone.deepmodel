@@ -1,4 +1,4 @@
-const execSync = require('child_process').execSync
+const { execSync } = require('child_process')
 
 const version = process.env.npm_package_version
 
