@@ -15,8 +15,7 @@ script:
   - yarn build
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - rm -rf coverage
+  - yarn test:coverage
 
 deploy:
   provider: npm
