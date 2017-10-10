@@ -1,19 +1,24 @@
 module.exports = {
-  extends: [
-    'ybiquitous',
-  ],
+  root: true,
 
-  env: {
-    mocha: true,
-  },
+  extends: ['ybiquitous'],
 
   rules: {
     'import/no-extraneous-dependencies': ['error', {
       devDependencies: [
         'benchmark.js',
         '*webpack*.js',
-        'test/**/*.js',
+        '**/test/**/*.js',
       ],
     }],
   },
+
+  overrides: [
+    {
+      files: ['**/test/**/*.js'],
+      env: {
+        mocha: true,
+      },
+    },
+  ],
 }

@@ -23,18 +23,20 @@
     "test:watch": "karma start --auto-watch",
     "test:backbone1.2": "./scripts/test-backbone1.2",
     "test:coverage": "codecov",
-    "lint": "eslint --max-warnings=0 --ignore-path=.gitignore --ignore-pattern=docs .",
+    "lint:js": "eslint --max-warnings=-1 --ignore-path=.gitignore --ignore-pattern=docs --ext=.js --ext=.jsx .",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:md": "markdownlint *.md",
+    "lint": "npm-run-all --print-name --print-label --parallel lint:*",
     "build": "webpack",
-    "fullbuild": "npm run lint && npm test && npm run build",
+    "fullbuild": "npm-run-all --parallel lint test build",
     "benchmark": "node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set",
-    "prerelease": "npm run lint && npm test",
-    "release": "standard-version --no-verify --commit-all",
-    "release:dryrun": "npm run release -- --dry-run",
-    "release:github": "conventional-github-releaser -p angular",
+    "prerelease": "npm-run-all --parallel lint test",
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run",
     "doc": "esdoc",
     "doc:publish": "git checkout master && npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
     "precommit": "lint-staged",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "commitlint -e"
   },
   "peerDependencies": {
     "backbone": ">=1.2.0"
@@ -51,7 +53,6 @@
     "backbone": "*",
     "benchmark": "*",
     "codecov": "*",
-    "conventional-github-releaser": "*",
     "dotenv": "*",
     "esdoc": "*",
     "esdoc-standard-plugin": "*",
@@ -73,22 +74,19 @@
     "power-assert": "*",
     "sinon": "*",
     "standard-version": "*",
-    "validate-commit-msg": "*",
-    "webpack": "*"
+    "webpack": "*",
+    "ybiq": "*"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix --max-warnings=0 --no-ignore",
+    "*.{js,jsx}": [
+      "eslint --fix --max-warnings=-1 --no-ignore",
       "git add"
-    ]
-  },
-  "config": {
-    "validate-commit-msg": {
-      "types": "conventional-commit-types"
-    }
+    ],
+    "*.md": "markdownlint"
   },
   "standard-version": {
     "scripts": {
+      "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
       "postbump": "node ./scripts/update-version.js && npm run build",
       "posttag": "node ./scripts/update-version.js --revert && git commit -m \"chore: revert to dummy version\""
     }
