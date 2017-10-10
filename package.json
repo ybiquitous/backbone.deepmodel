@@ -88,7 +88,7 @@
     "scripts": {
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
       "postbump": "node ./scripts/update-version.js && npm run build",
-      "posttag": "node ./scripts/update-version.js --revert && git commit -a -m \"chore(release): revert to dummy version\""
+      "posttag": "node ./scripts/update-version.js --revert && git commit -m \"chore(release): revert to dummy version\""
     }
   }
 }
