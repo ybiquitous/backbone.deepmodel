@@ -4,7 +4,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
-[![Dependency Status][dependency-image]][dependency-url]
 [![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
@@ -95,11 +94,6 @@ See [here](CONTRIBUTING.md).
 
 [codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel
 [codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg
-
-[dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel
-[dependency-image]: https://img.shields.io/david/ybiquitous/backbone.deepmodel.svg
-[dev-dependency-url]: https://david-dm.org/ybiquitous/backbone.deepmodel#info=devDependencies
-[dev-dependency-image]: https://img.shields.io/david/dev/ybiquitous/backbone.deepmodel.svg
 
 [codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
 [codeclimate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
