@@ -34,7 +34,7 @@
     "release:dry-run": "standard-version --dry-run",
     "postrelease": "npm run doc:publish",
     "doc": "esdoc",
-    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
+    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\"",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e"
   },
