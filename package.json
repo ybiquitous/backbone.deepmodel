@@ -33,7 +33,7 @@
     "release": "standard-version --commit-all",
     "release:dry-run": "standard-version --dry-run",
     "doc": "esdoc",
-    "doc:publish": "git checkout master && npm run doc && git add docs && git commit -m \"docs: publish\" && git push",
+    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\" && git push --force --quiet origin HEAD:master",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e"
   },
