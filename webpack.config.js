@@ -12,7 +12,7 @@ function config(production) {
       libraryTarget: 'umd',
     },
 
-    devtool: (production ? false : 'cheap-module-source-map'),
+    devtool: production ? false : 'cheap-module-source-map',
 
     externals: {
       backbone: {
@@ -36,12 +36,17 @@ function config(production) {
     plugins: (() => {
       const { env } = process
       const year = new Date().getFullYear()
+      const author = `${env.npm_package_author_name} <${
+        env.npm_package_author_email
+      }>`
       const plugins = [
-        new webpack.BannerPlugin(`
+        new webpack.BannerPlugin(
+          `
 ${env.npm_package_name} v${env.npm_package_version}
-Copyright ${year} ${env.npm_package_author_name} <${env.npm_package_author_email}>
+Copyright ${year} ${author}
 ${env.npm_package_license} Licensed
-        `.trim()),
+        `.trim(),
+        ),
       ]
       if (production) {
         plugins.push(new webpack.optimize.UglifyJsPlugin())

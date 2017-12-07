@@ -3,8 +3,8 @@ const webpackConfig = require('./webpack.config')[0]
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'test'
 
-module.exports = (config) => {
-  const autoWatch = (process.argv.indexOf('--auto-watch') >= 0)
+module.exports = config => {
+  const autoWatch = process.argv.indexOf('--auto-watch') >= 0
 
   const settings = {
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,9 +15,7 @@ module.exports = (config) => {
     frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
-    files: [
-      '**/*_spec.js',
-    ],
+    files: ['**/*_spec.js'],
 
     // list of files to exclude
     exclude: [],
