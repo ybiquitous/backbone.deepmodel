@@ -39,15 +39,12 @@ function config(production) {
       const author = `${env.npm_package_author_name} <${
         env.npm_package_author_email
       }>`
-      const plugins = [
-        new webpack.BannerPlugin(
-          `
+      const banner = `
 ${env.npm_package_name} v${env.npm_package_version}
 Copyright ${year} ${author}
 ${env.npm_package_license} Licensed
-        `.trim(),
-        ),
-      ]
+        `.trim()
+      const plugins = [new webpack.BannerPlugin(banner)]
       if (production) {
         plugins.push(new webpack.optimize.UglifyJsPlugin())
       }
