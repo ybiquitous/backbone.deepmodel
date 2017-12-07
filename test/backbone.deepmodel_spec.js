@@ -18,13 +18,16 @@ describe('Backbone.DeepModel', () => {
   })
 
   it('extends custom class by `extend` static method', () => {
-    const Model = DeepModel.extend({
-      initialize() {
-        this.initialized = 1
+    const Model = DeepModel.extend(
+      {
+        initialize() {
+          this.initialized = 1
+        },
       },
-    }, {
-      foo: 1,
-    })
+      {
+        foo: 1,
+      },
+    )
     assert(Model.foo === 1)
     assert(typeof Model.extend === 'function')
     assert(new Model().initialized === 1)
@@ -102,21 +105,13 @@ describe('Backbone.DeepModel', () => {
     assert(model.get('b') === '*')
 
     assert(change.callCount === 2)
-    assert.deepStrictEqual(change.args, [
-      [model, {}],
-      [model, options],
-    ])
+    assert.deepStrictEqual(change.args, [[model, {}], [model, options]])
 
     assert(changeA.callCount === 2)
-    assert.deepStrictEqual(changeA.args, [
-      [model, 1, {}],
-      [model, 2, options],
-    ])
+    assert.deepStrictEqual(changeA.args, [[model, 1, {}], [model, 2, options]])
 
     assert(changeB.callCount === 1)
-    assert.deepStrictEqual(changeB.args, [
-      [model, '*', options],
-    ])
+    assert.deepStrictEqual(changeB.args, [[model, '*', options]])
   })
 
   it('sets nested attribute', () => {
@@ -206,14 +201,7 @@ describe('Backbone.DeepModel', () => {
       'a[5][0]': false,
     })
     assert.deepStrictEqual(model.toJSON(), {
-      a: [
-        '-',
-        10,
-        { b: null },
-        { c: [] },
-        { d: 0.1 },
-        [false],
-      ],
+      a: ['-', 10, { b: null }, { c: [] }, { d: 0.1 }, [false]],
     })
   })
 
@@ -223,10 +211,13 @@ describe('Backbone.DeepModel', () => {
 
   describe('Ajax', () => {
     class User extends DeepModel {
-      urlRoot() { // eslint-disable-line class-methods-use-this
+      // eslint-disable-next-line class-methods-use-this
+      urlRoot() {
         return '/users'
       }
-      defaults() { // eslint-disable-line class-methods-use-this
+
+      // eslint-disable-next-line class-methods-use-this
+      defaults() {
         return {
           name: { first: '', last: '' },
         }
@@ -261,13 +252,15 @@ describe('Backbone.DeepModel', () => {
 
     it('fetches from server', () => {
       respondWith('GET', '/users/1', {
-        id: 1, name: { first: 'John', last: 'Lennon' },
+        id: 1,
+        name: { first: 'John', last: 'Lennon' },
       })
 
       const user = new User({ id: 1 })
       user.fetch()
       assert.deepStrictEqual(user.toJSON(), {
-        id: 1, name: { first: 'John', last: 'Lennon' },
+        id: 1,
+        name: { first: 'John', last: 'Lennon' },
       })
 
       assertRequest('GET', '/users/1')
@@ -315,7 +308,8 @@ describe('Backbone.DeepModel', () => {
       })
 
       assertRequest('PUT', '/users/1', {
-        id: 1, name: { first: 'John', last: 'Lennon' },
+        id: 1,
+        name: { first: 'John', last: 'Lennon' },
       })
     })
   })
@@ -338,7 +332,11 @@ describe('Backbone.DeepModel', () => {
 
       model.set('a/b', 0)
       assert(model.get('a/b') === 0)
-      assert.deepStrictEqual(model.toJSON(), { a: { b: 1 }, 'a.b': 2, 'a/b': 0 })
+      assert.deepStrictEqual(model.toJSON(), {
+        a: { b: 1 },
+        'a.b': 2,
+        'a/b': 0,
+      })
       assert(model.get('a.b') === 1)
     })
 
@@ -382,7 +380,10 @@ describe('Backbone.DeepModel', () => {
 
     it('does nothing when passing no arguments', () => {
       const { pathParser } = DeepModel.defaults({ pathSeparator: '_' })
-      assert.deepStrictEqual(DeepModel.defaults(), { pathSeparator: '_', pathParser })
+      assert.deepStrictEqual(DeepModel.defaults(), {
+        pathSeparator: '_',
+        pathParser,
+      })
     })
 
     afterEach(() => {
