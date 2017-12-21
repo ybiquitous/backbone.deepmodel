@@ -15,7 +15,7 @@ function perf(name, callback) {
     .add(`Backbone.DeepModel#${name}`, () => callback(deepModel))
     .on('cycle', event => log(String(event.target)))
     .on('complete', event =>
-      log(`Fastest is ${event.currentTarget.filter('fastest').map('name')}`),
+      log(`Fastest is ${event.currentTarget.filter('fastest').map('name')}`)
     )
     .run({ async: true })
 }

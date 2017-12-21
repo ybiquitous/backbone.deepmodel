@@ -26,7 +26,7 @@ describe('Backbone.DeepModel', () => {
       },
       {
         foo: 1,
-      },
+      }
     )
     assert(Model.foo === 1)
     assert(typeof Model.extend === 'function')
