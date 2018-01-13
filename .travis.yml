@@ -11,6 +11,7 @@ cache:
     - node_modules
 
 script:
+  - commitlint-travis
   - yarn lint
   - yarn test
   - yarn test:backbone1.2
