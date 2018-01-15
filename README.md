@@ -3,7 +3,7 @@
 [![NPM version][npm-version-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Codecov Status][codecov-image]][codecov-url]
-[![Code Climate][codeclimate-image]][codeclimate-url]
+[![Maintainability][codeclimate-image]][codeclimate-url]
 [![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
 
 [![Sauce Test Status][saucelabs-image]][saucelabs-url]
@@ -95,8 +95,8 @@ See [here](CONTRIBUTING.md).
 [codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel
 [codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg
 
-[codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel
-[codeclimate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/maintainability
+[codeclimate-image]: https://api.codeclimate.com/v1/badges/1e22df68025c6eb5a24b/maintainability
 
 [conventionalcommits-url]: https://conventionalcommits.org
 [conventionalcommits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
