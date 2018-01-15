@@ -1,11 +1,11 @@
 #!/bin/sh
 set -eu
 
-yarn add --no-progress --no-lockfile backbone@1.2
+yarn add --no-progress --no-lockfile --dev backbone@1.2
 
 finally() {
   git checkout package.json
-  yarn --no-progress
+  yarn --no-progress --prefer-offline
 }
 trap finally EXIT
 
