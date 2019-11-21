@@ -31,7 +31,7 @@
     "fullbuild": "npm-run-all --parallel lint test build",
     "benchmark": "node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set",
     "release": "standard-version --commit-all",
-    "release:dry-run": "npm run release -- --dry-run",
+    "release:dry-run": "standard-version --commit-all --dry-run",
     "postrelease": "npm run doc:publish",
     "doc": "esdoc",
     "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\""
