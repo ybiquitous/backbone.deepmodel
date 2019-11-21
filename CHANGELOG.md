@@ -4,6 +4,16 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="1.2.4"></a>
+## [1.2.4](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.2.3...v1.2.4) (2019-11-21)
+
+
+### Bug Fixes
+
+* regression of `DeepModel.extend()` ([#229](https://github.com/ybiquitous/backbone.deepmodel/issues/229)) ([588b371](https://github.com/ybiquitous/backbone.deepmodel/commit/588b371)), closes [#228](https://github.com/ybiquitous/backbone.deepmodel/issues/228)
+
+
+
+<a name="1.2.4"></a>
 ## [1.2.4](https://github.com/ybiquitous/backbone.deepmodel/compare/v1.2.3...v1.2.4) (2017-12-07)
 
 
