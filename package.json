@@ -81,7 +81,7 @@
   "standard-version": {
     "message": "chore(release): new version %s",
     "scripts": {
-      "postbump": "node ./scripts/update-version.js && git add .",
+      "postbump": "node ./scripts/update-version.js && npm run fullbuild && git add .",
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
       "posttag": "node ./scripts/update-version.js --revert && git commit -a -m \"chore(release): revert to dummy version\""
     }
