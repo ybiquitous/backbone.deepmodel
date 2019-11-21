@@ -34,9 +34,7 @@
     "release:dry-run": "npm run release -- --dry-run",
     "postrelease": "npm run doc:publish",
     "doc": "esdoc",
-    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\"",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "doc:publish": "npm run doc && git add docs && git commit -m \"docs: publish\""
   },
   "peerDependencies": {
     "backbone": ">=1.2.0"
@@ -86,6 +84,12 @@
       "postbump": "node ./scripts/update-version.js && git add .",
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\"",
       "posttag": "node ./scripts/update-version.js --revert && git commit -a -m \"chore(release): revert to dummy version\""
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   }
 }
