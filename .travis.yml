@@ -22,14 +22,5 @@ script:
 after_success:
   - yarn test:coverage
 
-deploy:
-  provider: npm
-  email: ybiquitous@gmail.com
-  api_key: $NPM_TOKEN
-  skip_cleanup: true
-  on:
-    tags: true
-    node: "8"
-
 notifications:
   email: false
