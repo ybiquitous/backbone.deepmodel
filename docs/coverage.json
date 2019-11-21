@@ -1,6 +1,6 @@
 {
-  "coverage": "46.15%",
-  "expectCount": 13,
+  "coverage": "50%",
+  "expectCount": 12,
   "actualCount": 6,
   "files": {
     "lib/deep-copy.js": {
@@ -9,14 +9,13 @@
       "undocumentLines": []
     },
     "lib/index.js": {
-      "expectCount": 10,
+      "expectCount": 9,
       "actualCount": 5,
       "undocumentLines": [
         5,
         10,
         12,
-        23,
-        38
+        23
       ]
     },
     "lib/object-path.js": {

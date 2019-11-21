@@ -567,9 +567,9 @@
     "__docId__": 48,
     "kind": "file",
     "name": "lib/deep-copy.js",
-    "content": "/**\n * @private\n * @param {Object|Array} [source]\n * @returns {Object|Array}\n */\nexport default function deepCopy(source) {\n  if (typeof source !== 'object' || source == null) {\n    return source\n  }\n\n  const initial = Array.isArray(source) ? [] : {}\n  return Object.keys(source).reduce(\n    (copy, key) => Object.assign(copy, { [key]: deepCopy(source[key]) }),\n    initial,\n  )\n}\n",
+    "content": "/**\n * @private\n * @param {Object|Array} [source]\n * @returns {Object|Array}\n */\nexport default function deepCopy(source) {\n  if (typeof source !== 'object' || source == null) {\n    return source\n  }\n\n  const initial = Array.isArray(source) ? [] : {}\n  return Object.keys(source).reduce(\n    (copy, key) => Object.assign(copy, { [key]: deepCopy(source[key]) }),\n    initial\n  )\n}\n",
     "static": true,
-    "longname": "/Users/koba/git/backbone.deepmodel/lib/deep-copy.js",
+    "longname": "/Users/koba/git/ybiquitous/backbone.deepmodel/lib/deep-copy.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -622,9 +622,9 @@
     "__docId__": 50,
     "kind": "file",
     "name": "lib/index.js",
-    "content": "import Backbone from 'backbone'\nimport objectPath from './object-path'\nimport deepCopy from './deep-copy'\n\nconst DEFAULTS = Object.freeze({\n  pathSeparator: '.',\n  pathParser: null,\n})\n\nconst defaults = Object.assign({}, DEFAULTS)\n\nfunction updateObjectPath() {\n  objectPath.pathSeparator = defaults.pathSeparator\n\n  const { pathParser } = defaults\n  if (typeof pathParser === 'function' || pathParser == null) {\n    objectPath.pathParser = pathParser\n  }\n\n  return objectPath\n}\n\nfunction isObject(value) {\n  return value != null && typeof value === 'object'\n}\n\n/**\n * @class\n * @see http://backbonejs.org/#Model\n *\n * @example\n * class Person extends DeepModel {...}\n *\n * // or\n * const Person = DeepModel.extend({...})\n */\nexport default class DeepModel extends Backbone.Model {\n  static extend(...args) {\n    return Backbone.Model.extend(...args)\n  }\n\n  /**\n   * this module's version.\n   */\n  static get VERSION() {\n    return '0.0.0'\n  }\n\n  /**\n   * Update default settings.\n   *\n   * @param {Object} [settings={}] reset if `null`\n   * @param {string} [settings.pathSeparator='/']\n   * @param {function(path: string): Array.<string>} [settings.pathParser] ignore if returns `[]`\n   * @returns {Object}\n   *\n   * @example\n   * DeepModel.defaults({anySetting: true})\n   * DeepModel.defaults(null) // reset!\n   *\n   * @example\n   * DeepModel.defaults({pathSeparator: '/'})\n   *\n   * const model = new DeepModel()\n   * model.set('a', {})\n   * model.set('a/b', 1)\n   * model.get('a/b') //=> 1\n   *\n   * @example\n   * DeepModel.defaults({\n   *   pathParser(path) {\n   *     if (path === '*') { return [] } // ignore!\n   *     return path.split('_')\n   *   }\n   * })\n   *\n   * const model = new DeepModel()\n   * model.set('a', {})\n   * model.set('a_b', 1)\n   * model.get('a_b') //=> 1\n   * model.set('*', 2)\n   * model.get('*') //=> undefined\n   */\n  static defaults(settings = {}) {\n    return Object.assign(defaults, settings == null ? DEFAULTS : settings)\n  }\n\n  /**\n   * @see http://backbonejs.org/#Model-get\n   * @override\n   * @param {string} attribute\n   * @returns {*}\n   *\n   * @example\n   * model.get('a.b')\n   */\n  get(attribute) {\n    return updateObjectPath().get(this.attributes, attribute)\n  }\n\n  /**\n   * @see http://backbonejs.org/#Model-set\n   * @override\n   * @param {string} attribute\n   * @param {*}      value\n   * @param {Object} [options]\n   * @returns {DeepModel}\n   *\n   * @example\n   * model.set({'a.b': 'value'})\n   * model.set('a.b', 'value')\n   */\n  set(attribute, value, options) {\n    if (attribute == null) {\n      return this\n    }\n\n    const _ = updateObjectPath()\n\n    let attrs\n    if (typeof attribute === 'object') {\n      attrs = attribute\n      options = value // eslint-disable-line no-param-reassign\n    } else {\n      if (!_.pathParser && !_.hasSeparator(attribute)) {\n        return super.set(attribute, value, options)\n      }\n      attrs = {}\n      attrs[attribute] = value\n    }\n\n    const newAttrs = Object.keys(attrs).reduce((newObj, path) => {\n      const paths = _.parse(path)\n\n      if (paths.length === 0) {\n        return newObj\n      }\n      if (paths.length === 1) {\n        newObj[paths[0]] = attrs[path] // eslint-disable-line no-param-reassign\n        return newObj\n      }\n\n      const rootPath = paths[0]\n      let obj = newObj[rootPath]\n      if (obj == null) {\n        obj = deepCopy(this.attributes[rootPath])\n      }\n      if (!isObject(obj)) {\n        throw new Error(`\"${path}\" does not exist in ${JSON.stringify(this)}`)\n      }\n      newObj[rootPath] = obj // eslint-disable-line no-param-reassign\n\n      return _.set(newObj, paths, attrs[path])\n    }, {})\n\n    return super.set(newAttrs, options)\n  }\n}\n",
+    "content": "import Backbone from 'backbone'\nimport objectPath from './object-path'\nimport deepCopy from './deep-copy'\n\nconst DEFAULTS = Object.freeze({\n  pathSeparator: '.',\n  pathParser: null,\n})\n\nconst defaults = Object.assign({}, DEFAULTS)\n\nfunction updateObjectPath() {\n  objectPath.pathSeparator = defaults.pathSeparator\n\n  const { pathParser } = defaults\n  if (typeof pathParser === 'function' || pathParser == null) {\n    objectPath.pathParser = pathParser\n  }\n\n  return objectPath\n}\n\nfunction isObject(value) {\n  return value != null && typeof value === 'object'\n}\n\n/**\n * @class\n * @see http://backbonejs.org/#Model\n *\n * @example\n * class Person extends DeepModel {...}\n *\n * // or\n * const Person = DeepModel.extend({...})\n */\nexport default class DeepModel extends Backbone.Model {\n  /**\n   * this module's version.\n   */\n  static get VERSION() {\n    return '0.0.0'\n  }\n\n  /**\n   * Update default settings.\n   *\n   * @param {Object} [settings={}] reset if `null`\n   * @param {string} [settings.pathSeparator='/']\n   * @param {function(path: string): Array.<string>} [settings.pathParser] ignore if returns `[]`\n   * @returns {Object}\n   *\n   * @example\n   * DeepModel.defaults({anySetting: true})\n   * DeepModel.defaults(null) // reset!\n   *\n   * @example\n   * DeepModel.defaults({pathSeparator: '/'})\n   *\n   * const model = new DeepModel()\n   * model.set('a', {})\n   * model.set('a/b', 1)\n   * model.get('a/b') //=> 1\n   *\n   * @example\n   * DeepModel.defaults({\n   *   pathParser(path) {\n   *     if (path === '*') { return [] } // ignore!\n   *     return path.split('_')\n   *   }\n   * })\n   *\n   * const model = new DeepModel()\n   * model.set('a', {})\n   * model.set('a_b', 1)\n   * model.get('a_b') //=> 1\n   * model.set('*', 2)\n   * model.get('*') //=> undefined\n   */\n  static defaults(settings = {}) {\n    return Object.assign(defaults, settings == null ? DEFAULTS : settings)\n  }\n\n  /**\n   * @see http://backbonejs.org/#Model-get\n   * @override\n   * @param {string} attribute\n   * @returns {*}\n   *\n   * @example\n   * model.get('a.b')\n   */\n  get(attribute) {\n    return updateObjectPath().get(this.attributes, attribute)\n  }\n\n  /**\n   * @see http://backbonejs.org/#Model-set\n   * @override\n   * @param {string} attribute\n   * @param {*}      value\n   * @param {Object} [options]\n   * @returns {DeepModel}\n   *\n   * @example\n   * model.set({'a.b': 'value'})\n   * model.set('a.b', 'value')\n   */\n  set(attribute, value, options) {\n    if (attribute == null) {\n      return this\n    }\n\n    const _ = updateObjectPath()\n\n    let attrs\n    if (typeof attribute === 'object') {\n      attrs = attribute\n      options = value // eslint-disable-line no-param-reassign\n    } else {\n      if (!_.pathParser && !_.hasSeparator(attribute)) {\n        return super.set(attribute, value, options)\n      }\n      attrs = {}\n      attrs[attribute] = value\n    }\n\n    const newAttrs = Object.keys(attrs).reduce((newObj, path) => {\n      const paths = _.parse(path)\n\n      if (paths.length === 0) {\n        return newObj\n      }\n      if (paths.length === 1) {\n        newObj[paths[0]] = attrs[path] // eslint-disable-line no-param-reassign\n        return newObj\n      }\n\n      const rootPath = paths[0]\n      let obj = newObj[rootPath]\n      if (obj == null) {\n        obj = deepCopy(this.attributes[rootPath])\n      }\n      if (!isObject(obj)) {\n        throw new Error(`\"${path}\" does not exist in ${JSON.stringify(this)}`)\n      }\n      newObj[rootPath] = obj // eslint-disable-line no-param-reassign\n\n      return _.set(newObj, paths, attrs[path])\n    }, {})\n\n    return super.set(newAttrs, options)\n  }\n}\n\nDeepModel.extend = Backbone.Model.extend\n",
     "static": true,
-    "longname": "/Users/koba/git/backbone.deepmodel/lib/index.js",
+    "longname": "/Users/koba/git/ybiquitous/backbone.deepmodel/lib/index.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -758,34 +758,6 @@
   },
   {
     "__docId__": 56,
-    "kind": "method",
-    "name": "extend",
-    "memberof": "lib/index.js~DeepModel",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "lib/index.js~DeepModel.extend",
-    "access": "public",
-    "description": null,
-    "lineNumber": 38,
-    "undocument": true,
-    "params": [
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 57,
     "kind": "get",
     "name": "VERSION",
     "memberof": "lib/index.js~DeepModel",
@@ -795,7 +767,7 @@
     "longname": "lib/index.js~DeepModel.VERSION",
     "access": "public",
     "description": "this module's version.",
-    "lineNumber": 45,
+    "lineNumber": 41,
     "type": {
       "types": [
         "string"
@@ -803,7 +775,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 57,
     "kind": "method",
     "name": "defaults",
     "memberof": "lib/index.js~DeepModel",
@@ -818,7 +790,7 @@
       "DeepModel.defaults({pathSeparator: '/'})\n\nconst model = new DeepModel()\nmodel.set('a', {})\nmodel.set('a/b', 1)\nmodel.get('a/b') //=> 1",
       "DeepModel.defaults({\n  pathParser(path) {\n    if (path === '*') { return [] } // ignore!\n    return path.split('_')\n  }\n})\n\nconst model = new DeepModel()\nmodel.set('a', {})\nmodel.set('a_b', 1)\nmodel.get('a_b') //=> 1\nmodel.set('*', 2)\nmodel.get('*') //=> undefined"
     ],
-    "lineNumber": 84,
+    "lineNumber": 80,
     "unknown": [
       {
         "tagName": "@returns",
@@ -871,7 +843,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 58,
     "kind": "method",
     "name": "get",
     "memberof": "lib/index.js~DeepModel",
@@ -887,7 +859,7 @@
     "see": [
       "http://backbonejs.org/#Model-get"
     ],
-    "lineNumber": 97,
+    "lineNumber": 93,
     "unknown": [
       {
         "tagName": "@returns",
@@ -917,7 +889,7 @@
     "override": true
   },
   {
-    "__docId__": 60,
+    "__docId__": 59,
     "kind": "method",
     "name": "set",
     "memberof": "lib/index.js~DeepModel",
@@ -933,7 +905,7 @@
     "see": [
       "http://backbonejs.org/#Model-set"
     ],
-    "lineNumber": 113,
+    "lineNumber": 109,
     "unknown": [
       {
         "tagName": "@returns",
@@ -983,18 +955,18 @@
     "override": true
   },
   {
-    "__docId__": 61,
+    "__docId__": 60,
     "kind": "file",
     "name": "lib/object-path.js",
     "content": "function ARRAY_PATTERN() {\n  return /\\[(\\w+)]/g\n}\n\nfunction isArrayIndex(value) {\n  const num = Number(value)\n  return num >= 0 && num % 1 === 0\n}\n\nexport default {\n  pathSeparator: '.',\n\n  /**\n   * @param {?string} s\n   * @returns {boolean}\n   */\n  hasSeparator(s) {\n    return (\n      typeof s === 'string' &&\n      (s.indexOf(this.pathSeparator) >= 0 || ARRAY_PATTERN().test(s))\n    )\n  },\n\n  /**\n   * @param {string | string[]} path\n   * @returns {string[]}\n   *\n   * @example\n   * parse('a.b')      //=> ['a', 'b']\n   * parse('a[0]')     //=> ['a', '0']\n   * parse(['a', 'b']) //=> ['a', 'b']\n   */\n  parse(path) {\n    if (Array.isArray(path)) {\n      return path\n    }\n    if (typeof this.pathParser === 'function') {\n      return this.pathParser(path)\n    }\n    if (!this.hasSeparator(path)) {\n      return [path]\n    }\n    const sep = this.pathSeparator\n    return path.replace(ARRAY_PATTERN(), `${sep}$1`).split(sep)\n  },\n\n  /**\n   * @param {Object} obj\n   * @param {string | string[]} path\n   * @returns {?*}\n   */\n  get(obj, path) {\n    const pathElements = this.parse(path)\n    if (pathElements.length === 0) {\n      return undefined\n    }\n\n    // TODO: Because of \"Symbol is not defined\", cannot use `for..of`\n    let value = obj\n    for (let i = 0, len = pathElements.length; i < len; i += 1) {\n      const pathElement = pathElements[i]\n      if (pathElement in value) {\n        value = value[pathElement]\n      } else {\n        return undefined\n      }\n    }\n    return value\n  },\n\n  /**\n   * @param {Object} obj\n   * @param {string | string[]} path\n   * @param {*} value\n   * @returns {Object} given `obj`\n   */\n  set(obj, path, value) {\n    const pathElements = this.parse(path)\n    const lastIndex = pathElements.length - 1\n    pathElements.reduce((current, pathElement, index) => {\n      /* eslint-disable no-param-reassign */\n      if (index < lastIndex) {\n        if (pathElement in current) {\n          current = current[pathElement]\n        } else {\n          const newObj = isArrayIndex(pathElements[index + 1]) ? [] : {}\n          current[pathElement] = newObj\n          current = newObj\n        }\n      } else {\n        current[pathElement] = value\n      }\n      return current\n      /* eslint-enable no-param-reassign */\n    }, obj)\n    return obj\n  },\n}\n",
     "static": true,
-    "longname": "/Users/koba/git/backbone.deepmodel/lib/object-path.js",
+    "longname": "/Users/koba/git/ybiquitous/backbone.deepmodel/lib/object-path.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 62,
+    "__docId__": 61,
     "kind": "function",
     "name": "ARRAY_PATTERN",
     "memberof": "lib/object-path.js",
@@ -1018,7 +990,7 @@
     "ignore": true
   },
   {
-    "__docId__": 63,
+    "__docId__": 62,
     "kind": "function",
     "name": "isArrayIndex",
     "memberof": "lib/object-path.js",
@@ -1050,16 +1022,16 @@
   },
   {
     "kind": "index",
-    "content": "# Backbone.DeepModel plugin\n\n[![NPM version][npm-version-image]][npm-url]\n[![Build Status][travis-image]][travis-url]\n[![Codecov Status][codecov-image]][codecov-url]\n[![Code Climate][codeclimate-image]][codeclimate-url]\n[![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]\n\n[![Sauce Test Status][saucelabs-image]][saucelabs-url]\n\nSuper simple and lightweight [Backbone.js](http://backbonejs.org/) plugin\nto handle nested attributes of `Backbone.Model`.\n\nPlease see [demo](https://ybiquitous.github.io/backbone.deepmodel/demo).\n\n## Table of Contents\n\n- [Install](#install)\n- [Dependencies](#dependencies)\n- [Use](#use)\n- [Changelog](#changelog)\n- [Contribute](#contribute)\n- [License](#license)\n\n## Install\n\nvia `npm`:\n\n```sh\nnpm install backbone backbone.deepmodel\n```\n\nvia `yarn`:\n\n```sh\nyarn add backbone backbone.deepmodel\n```\n\nor download manually:\n\n- [backbone.deepmodel.min.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js)\n- [backbone.deepmodel.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.js)\n\n## Dependencies\n\n- [Backbone.js](http://backbonejs.org/) 1.2+\n\n## Use\n\n```js\nimport DeepModel from 'backbone.deepmodel'\n\nclass Person extends DeepModel {\n  defaults() {\n    return {\n      name: {first: '', last: ''},\n      pets: []\n    }\n  }\n}\n\nconst p = new Person()\np.set('name.first', 'Tom')\n```\n\nIn browser:\n\n```html\n<script src=\"//unpkg.com/underscore/underscore-min.js\"></script>\n<script src=\"//unpkg.com/backbone/backbone-min.js\"></script>\n<script src=\"//unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js\"></script>\n```\n\nFor details, see [API Documentation](https://ybiquitous.github.io/backbone.deepmodel/identifiers.html).\n\n## Changelog\n\nSee [here](CHANGELOG.md).\n\n## Contribute\n\nSee [here](CONTRIBUTING.md).\n\n## License\n\n[MIT](LICENSE) © ybiquitous\n\n[npm-url]: https://npmjs.org/package/backbone.deepmodel\n[npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg\n[npm-downloads-image]: https://img.shields.io/npm/dm/backbone.deepmodel.svg\n\n[travis-url]: https://travis-ci.org/ybiquitous/backbone.deepmodel\n[travis-image]: https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg\n\n[codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel\n[codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg\n\n[codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel\n[codeclimate-image]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/badges/gpa.svg\n\n[conventionalcommits-url]: https://conventionalcommits.org\n[conventionalcommits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg\n\n[saucelabs-url]: https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64\n[saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg\n",
-    "longname": "/Users/koba/git/backbone.deepmodel/README.md",
+    "content": "# Backbone.DeepModel plugin\n\n[![NPM version][npm-version-image]][npm-url]\n[![Build Status][travis-image]][travis-url]\n[![Codecov Status][codecov-image]][codecov-url]\n[![Maintainability][codeclimate-image]][codeclimate-url]\n[![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]\n\n[![Sauce Test Status][saucelabs-image]][saucelabs-url]\n\nSuper simple and lightweight [Backbone.js](http://backbonejs.org/) plugin\nto handle nested attributes of `Backbone.Model`.\n\nPlease see [demo](https://ybiquitous.github.io/backbone.deepmodel/demo).\n\n## Table of Contents\n\n- [Install](#install)\n- [Dependencies](#dependencies)\n- [Use](#use)\n- [Changelog](#changelog)\n- [Contribute](#contribute)\n- [License](#license)\n\n## Install\n\nvia `npm`:\n\n```sh\nnpm install backbone backbone.deepmodel\n```\n\nvia `yarn`:\n\n```sh\nyarn add backbone backbone.deepmodel\n```\n\nor download manually:\n\n- [backbone.deepmodel.min.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js)\n- [backbone.deepmodel.js](https://unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.js)\n\n## Dependencies\n\n- [Backbone.js](http://backbonejs.org/) 1.2+\n\n## Use\n\n```js\nimport DeepModel from 'backbone.deepmodel'\n\nclass Person extends DeepModel {\n  defaults() {\n    return {\n      name: {first: '', last: ''},\n      pets: []\n    }\n  }\n}\n\nconst p = new Person()\np.set('name.first', 'Tom')\n```\n\nIn browser:\n\n```html\n<script src=\"//unpkg.com/underscore/underscore-min.js\"></script>\n<script src=\"//unpkg.com/backbone/backbone-min.js\"></script>\n<script src=\"//unpkg.com/backbone.deepmodel/dist/backbone.deepmodel.min.js\"></script>\n```\n\nFor details, see [API Documentation](https://ybiquitous.github.io/backbone.deepmodel/identifiers.html).\n\n## Changelog\n\nSee [here](CHANGELOG.md).\n\n## Contribute\n\nSee [here](CONTRIBUTING.md).\n\n## License\n\n[MIT](LICENSE) © ybiquitous\n\n[npm-url]: https://npmjs.org/package/backbone.deepmodel\n[npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg\n[npm-downloads-image]: https://img.shields.io/npm/dm/backbone.deepmodel.svg\n\n[travis-url]: https://travis-ci.org/ybiquitous/backbone.deepmodel\n[travis-image]: https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg\n\n[codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel\n[codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg\n\n[codeclimate-url]: https://codeclimate.com/github/ybiquitous/backbone.deepmodel/maintainability\n[codeclimate-image]: https://api.codeclimate.com/v1/badges/1e22df68025c6eb5a24b/maintainability\n\n[conventionalcommits-url]: https://conventionalcommits.org\n[conventionalcommits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg\n\n[saucelabs-url]: https://saucelabs.com/beta/builds/cef26002b550423191e4d8d8cbb1ed64\n[saucelabs-image]: https://saucelabs.com/browser-matrix/ybiquitous.svg\n",
+    "longname": "/Users/koba/git/ybiquitous/backbone.deepmodel/README.md",
     "name": "./README.md",
     "static": true,
     "access": "public"
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"backbone.deepmodel\",\n  \"version\": \"1.2.4\",\n  \"description\": \"Backbone.DeepModel plugin\",\n  \"author\": \"ybiquitous <ybiquitous@gmail.com>\",\n  \"license\": \"MIT\",\n  \"repository\": \"ybiquitous/backbone.deepmodel\",\n  \"homepage\": \"https://github.com/ybiquitous/backbone.deepmodel\",\n  \"keywords\": [\n    \"backbone\",\n    \"plugin\"\n  ],\n  \"files\": [\n    \"dist\",\n    \"lib\"\n  ],\n  \"main\": \"lib/index.js\",\n  \"engines\": {\n    \"node\": \">=6\"\n  },\n  \"scripts\": {\n    \"test\": \"karma start --single-run\",\n    \"test:watch\": \"karma start --auto-watch\",\n    \"test:backbone1.2\": \"./scripts/test-backbone1.2\",\n    \"test:coverage\": \"codecov\",\n    \"lint:js\": \"eslint --ignore-path .gitignore --ignore-pattern docs --ext .js,.jsx .\",\n    \"lint:js:fix\": \"npm run lint:js -- --fix\",\n    \"lint:md\": \"markdownlint *.md\",\n    \"lint\": \"npm-run-all --print-name --print-label --parallel lint:*\",\n    \"build\": \"webpack\",\n    \"fullbuild\": \"npm-run-all --parallel lint test build\",\n    \"benchmark\": \"node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set\",\n    \"release\": \"standard-version --commit-all\",\n    \"release:dry-run\": \"standard-version --dry-run\",\n    \"postrelease\": \"npm run doc:publish\",\n    \"doc\": \"esdoc\",\n    \"doc:publish\": \"npm run doc && git add docs && git commit -m \\\"docs: publish\\\"\",\n    \"precommit\": \"lint-staged\",\n    \"commitmsg\": \"commitlint -e\"\n  },\n  \"peerDependencies\": {\n    \"backbone\": \">=1.2.0\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"*\",\n    \"babel-loader\": \"*\",\n    \"babel-plugin-add-module-exports\": \"*\",\n    \"babel-plugin-istanbul\": \"*\",\n    \"babel-plugin-transform-object-assign\": \"*\",\n    \"babel-preset-env\": \"*\",\n    \"babel-preset-power-assert\": \"*\",\n    \"babel-register\": \"*\",\n    \"backbone\": \"*\",\n    \"benchmark\": \"*\",\n    \"codecov\": \"*\",\n    \"dotenv\": \"*\",\n    \"esdoc\": \"*\",\n    \"esdoc-standard-plugin\": \"*\",\n    \"jquery\": \"*\",\n    \"jsdom\": \"*\",\n    \"karma\": \"*\",\n    \"karma-coverage\": \"*\",\n    \"karma-jsdom-launcher\": \"*\",\n    \"karma-mocha\": \"*\",\n    \"karma-sauce-launcher\": \"*\",\n    \"karma-sourcemap-loader\": \"*\",\n    \"karma-threshold-reporter\": \"*\",\n    \"karma-webpack\": \"*\",\n    \"mocha\": \"*\",\n    \"power-assert\": \"*\",\n    \"sinon\": \"*\",\n    \"webpack\": \"*\",\n    \"ybiq\": \"*\"\n  },\n  \"lint-staged\": {\n    \"*.{js,jsx}\": [\n      \"eslint --fix --no-ignore\",\n      \"git add\"\n    ],\n    \"*.md\": \"markdownlint\"\n  },\n  \"standard-version\": {\n    \"message\": \"chore(release): new version %s\",\n    \"scripts\": {\n      \"postbump\": \"node ./scripts/update-version.js && git add .\",\n      \"postchangelog\": \"prepend CHANGELOG.md \\\"<!-- markdownlint-disable -->\\n\\\"\",\n      \"posttag\": \"node ./scripts/update-version.js --revert && git commit -a -m \\\"chore(release): revert to dummy version\\\"\"\n    }\n  }\n}\n",
-    "longname": "/Users/koba/git/backbone.deepmodel/package.json",
+    "content": "{\n  \"name\": \"backbone.deepmodel\",\n  \"version\": \"1.2.4\",\n  \"description\": \"Backbone.DeepModel plugin\",\n  \"author\": \"ybiquitous <ybiquitous@gmail.com>\",\n  \"license\": \"MIT\",\n  \"repository\": \"ybiquitous/backbone.deepmodel\",\n  \"homepage\": \"https://github.com/ybiquitous/backbone.deepmodel\",\n  \"keywords\": [\n    \"backbone\",\n    \"plugin\"\n  ],\n  \"files\": [\n    \"dist\",\n    \"lib\"\n  ],\n  \"main\": \"lib/index.js\",\n  \"engines\": {\n    \"node\": \">=6\"\n  },\n  \"scripts\": {\n    \"test\": \"karma start --single-run\",\n    \"test:watch\": \"karma start --auto-watch\",\n    \"test:backbone1.2\": \"./scripts/test-backbone1.2\",\n    \"test:coverage\": \"codecov\",\n    \"lint:js\": \"eslint --ignore-path .gitignore --ignore-pattern docs --ext .js,.jsx,.mjs .\",\n    \"lint:js:fix\": \"npm run lint:js -- --fix\",\n    \"lint:md\": \"markdownlint *.md\",\n    \"lint\": \"npm-run-all --print-name --print-label --parallel lint:*\",\n    \"build\": \"webpack\",\n    \"fullbuild\": \"npm-run-all --parallel lint test build\",\n    \"benchmark\": \"node -r babel-register benchmark.js get ; echo ; node -r babel-register benchmark.js set\",\n    \"release\": \"standard-version --commit-all\",\n    \"release:dry-run\": \"standard-version --commit-all --dry-run\",\n    \"postrelease\": \"npm run doc:publish\",\n    \"doc\": \"esdoc\",\n    \"doc:publish\": \"npm run doc && git add docs && git commit -m \\\"docs: publish\\\"\"\n  },\n  \"peerDependencies\": {\n    \"backbone\": \">=1.2.0\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"*\",\n    \"babel-loader\": \"*\",\n    \"babel-plugin-add-module-exports\": \"*\",\n    \"babel-plugin-istanbul\": \"*\",\n    \"babel-plugin-transform-object-assign\": \"*\",\n    \"babel-preset-env\": \"*\",\n    \"babel-preset-power-assert\": \"*\",\n    \"babel-register\": \"*\",\n    \"backbone\": \"*\",\n    \"benchmark\": \"*\",\n    \"codecov\": \"*\",\n    \"dotenv\": \"*\",\n    \"esdoc\": \"*\",\n    \"esdoc-standard-plugin\": \"*\",\n    \"husky\": \"1\",\n    \"jquery\": \"*\",\n    \"jsdom\": \"*\",\n    \"karma\": \"*\",\n    \"karma-coverage\": \"*\",\n    \"karma-jsdom-launcher\": \"*\",\n    \"karma-mocha\": \"*\",\n    \"karma-sauce-launcher\": \"*\",\n    \"karma-sourcemap-loader\": \"*\",\n    \"karma-threshold-reporter\": \"*\",\n    \"karma-webpack\": \"*\",\n    \"mocha\": \"*\",\n    \"power-assert\": \"*\",\n    \"sinon\": \"*\",\n    \"webpack\": \"*\",\n    \"ybiq\": \"*\"\n  },\n  \"lint-staged\": {\n    \"*.{js,jsx,mjs}\": [\n      \"eslint --fix --no-ignore\",\n      \"git add\"\n    ],\n    \"*.md\": \"markdownlint\"\n  },\n  \"standard-version\": {\n    \"message\": \"chore(release): new version %s\",\n    \"scripts\": {\n      \"postbump\": \"node ./scripts/update-version.js && npm run fullbuild && git add .\",\n      \"postchangelog\": \"prepend CHANGELOG.md \\\"<!-- markdownlint-disable -->\\n\\\"\",\n      \"posttag\": \"node ./scripts/update-version.js --revert && git commit -a -m \\\"chore(release): revert to dummy version\\\"\"\n    }\n  },\n  \"husky\": {\n    \"hooks\": {\n      \"commit-msg\": \"commitlint -e $HUSKY_GIT_PARAMS\",\n      \"pre-commit\": \"lint-staged\"\n    }\n  }\n}\n",
+    "longname": "/Users/koba/git/ybiquitous/backbone.deepmodel/package.json",
     "name": "package.json",
     "static": true,
     "access": "public"

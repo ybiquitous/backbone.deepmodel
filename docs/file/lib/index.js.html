@@ -73,10 +73,6 @@ function isObject(value) {
  * const Person = DeepModel.extend({...})
  */
 export default class DeepModel extends Backbone.Model {
-  static extend(...args) {
-    return Backbone.Model.extend(...args)
-  }
-
   /**
    * this module&apos;s version.
    */
@@ -194,6 +190,8 @@ export default class DeepModel extends Backbone.Model {
     return super.set(newAttrs, options)
   }
 }
+
+DeepModel.extend = Backbone.Model.extend
 </code></pre>
 
 </div>

@@ -49,7 +49,7 @@ export default function deepCopy(source) {
   const initial = Array.isArray(source) ? [] : {}
   return Object.keys(source).reduce(
     (copy, key) =&gt; Object.assign(copy, { [key]: deepCopy(source[key]) }),
-    initial,
+    initial
   )
 }
 </code></pre>
