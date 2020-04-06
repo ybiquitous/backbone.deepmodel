@@ -1,7 +1,7 @@
 # Backbone.DeepModel plugin
 
 [![NPM version][npm-version-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+![Test](https://github.com/ybiquitous/backbone.deepmodel/workflows/Test/badge.svg)
 [![Codecov Status][codecov-image]][codecov-url]
 [![Maintainability][codeclimate-image]][codeclimate-url]
 [![Conventional Commits][conventionalcommits-image]][conventionalcommits-url]
@@ -88,9 +88,6 @@ See [here](CONTRIBUTING.md).
 [npm-url]: https://npmjs.org/package/backbone.deepmodel
 [npm-version-image]: https://img.shields.io/npm/v/backbone.deepmodel.svg
 [npm-downloads-image]: https://img.shields.io/npm/dm/backbone.deepmodel.svg
-
-[travis-url]: https://travis-ci.org/ybiquitous/backbone.deepmodel
-[travis-image]: https://img.shields.io/travis/ybiquitous/backbone.deepmodel.svg
 
 [codecov-url]: https://codecov.io/gh/ybiquitous/backbone.deepmodel
 [codecov-image]: https://codecov.io/gh/ybiquitous/backbone.deepmodel/branch/master/graph/badge.svg
