@@ -21,7 +21,6 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - uses: codecov/codecov-action@v1
-        if: ${{ matrix.node-version }} == "12.x"
       - run: npm run test:backbone1.2
       - run: npm run benchmark
       - run: npm run build
