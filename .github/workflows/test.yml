@@ -24,3 +24,16 @@ jobs:
       - run: npm run test:backbone1.2
       - run: npm run benchmark
       - run: npm run build
+  test-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: yarn install
+      - run: npm run test
+        env:
+          SAUCELABS: true
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+          SAUCE_USERNAME: ybiquitous
