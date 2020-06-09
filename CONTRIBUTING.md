@@ -16,7 +16,7 @@ You can work on either *Linux* or *Windows*.
 ```sh
 git clone https://github.com/ybiquitous/backbone.deepmodel.git
 cd backbone.deepmodel
-yarn
+npm install
 ```
 
 ## Test
@@ -24,19 +24,19 @@ yarn
 Test runner used in this project is [Karma](https://karma-runner.github.io/).
 
 ```sh
-yarn test
+npm test
 ```
 
 Watching file changes:
 
 ```sh
-yarn test:watch
+npm run test:watch
 ```
 
 ## Lint
 
 ```sh
-yarn lint
+npm run lint
 ```
 
 ## Build
@@ -47,13 +47,13 @@ Source code is written in *ECMAScript 2015+*. Build by
 - [Webpack](https://webpack.github.io/)
 
 ```sh
-yarn build
+npm run build
 ```
 
 Full-build includes test and lint:
 
 ```sh
-yarn fullbuild
+npm run fullbuild
 ```
 
 ## Commit
@@ -63,5 +63,5 @@ Follow the [Conventional Commits Specification](https://conventionalcommits.org/
 ## Release
 
 1. `git checkout master && git pull`
-1. `yarn release` (or `yarn release:dry-run`)
+1. `npm run release` (or `npm run release:dry-run`)
 1. `git push --follow-tags`

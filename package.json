@@ -63,6 +63,7 @@
     "karma-sourcemap-loader": "*",
     "karma-threshold-reporter": "*",
     "karma-webpack": "*",
+    "markdownlint-cli": "^0.23.1",
     "mocha": "*",
     "power-assert": "*",
     "sinon": "*",

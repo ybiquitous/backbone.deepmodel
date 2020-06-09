@@ -1,12 +1,12 @@
 #!/bin/sh
 set -eu
 
-yarn add --no-progress --no-lockfile --dev backbone@1.2
+npm install --no-progress --save-dev backbone@1.2
 
 finally() {
   git checkout package.json
-  yarn --no-progress --prefer-offline
+  npm install --no-progress --prefer-offline
 }
 trap finally EXIT
 
-yarn test
+npm test
