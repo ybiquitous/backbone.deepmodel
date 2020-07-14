@@ -36,9 +36,7 @@ function config(production) {
     plugins: (() => {
       const { env } = process
       const year = new Date().getFullYear()
-      const author = `${env.npm_package_author_name} <${
-        env.npm_package_author_email
-      }>`
+      const author = `${env.npm_package_author_name} <${env.npm_package_author_email}>`
       const banner = `
 ${env.npm_package_name} v${env.npm_package_version}
 Copyright ${year} ${author}
