@@ -105,10 +105,16 @@ describe('Backbone.DeepModel', () => {
     assert(model.get('b') === '*')
 
     assert(change.callCount === 2)
-    assert.deepStrictEqual(change.args, [[model, {}], [model, options]])
+    assert.deepStrictEqual(change.args, [
+      [model, {}],
+      [model, options],
+    ])
 
     assert(changeA.callCount === 2)
-    assert.deepStrictEqual(changeA.args, [[model, 1, {}], [model, 2, options]])
+    assert.deepStrictEqual(changeA.args, [
+      [model, 1, {}],
+      [model, 2, options],
+    ])
 
     assert(changeB.callCount === 1)
     assert.deepStrictEqual(changeB.args, [[model, '*', options]])
