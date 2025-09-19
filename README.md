@@ -1,3 +1,6 @@
+> [!CAUTION]
+> **This package is deprecated and will no longer be maintained.**
+
 # Backbone.DeepModel plugin
 
 [![NPM version][npm-version-image]][npm-url]
